@@ -112,6 +112,7 @@
                 </div>
                 <?php } ?>
             </div>
+            <a class="btn btn-outline-warning mt-3 p-1 fs-5" href="produk.php">See More</a>
         </div>
     </div>
 
