@@ -89,7 +89,7 @@
     </div>
 
     <!-- footer -->
-    <?php require “footer.php’; ?>
+    <?php require "footer.php"; ?>
 
     <script src=”bootstrap/js/boothstrap.bundle.min.js”></script>
 	<script src=”fontawesome/js/all.min.js”></script>
