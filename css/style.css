@@ -18,21 +18,21 @@
 /* === BANNER === */
 .banner {
     height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.png');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner1.png');
     background-size: cover;
     background-position: center;
 }
 
 .banner2 {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.png');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner1.png');
     background-size: cover;
     background-position: center;
 }
 
 .banner-produk {
     height: 40vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.png');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner1.png');
     background-size: cover;
     background-position: center;
 }
@@ -154,7 +154,7 @@
 
 .banner-produk {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.png');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner1.png');
     background-size: cover;
     background-position: center;
 }
