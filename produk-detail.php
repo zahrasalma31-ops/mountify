@@ -51,7 +51,7 @@
         </div>
 
         <div class="col-lg-6 offset-lg-1">
-          <h1><?php echo $produk['nama']; ?></h1>
+          <h1 class="product-title"><?php echo $produk['nama']; ?></h1>
           <p class="fs-5" style="text-align: justify;">
             <?php echo nl2br ($produk['detail']); ?>
           </p>
