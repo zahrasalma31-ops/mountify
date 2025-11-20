@@ -70,15 +70,21 @@
 
                     <?php while($produk = mysqli_fetch_array($queryProduk)){ ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="image-box">
-                                <img src="image/<?php echo $produk['foto']; ?>" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body text-center">
-                                <h4 class="card-title"><?php echo $produk['nama']; ?></h4>
-                                <p class="card-text text-truncate"><?php echo $produk['detail']; ?></p>
-                                <p class="card-text text-harga">Rp <?php echo $produk['harga']; ?></p>
-                                <a href="produk-detail.php?nama=<?php echo $produk['nama']; ?>"class="btn warna2 text-white">Lihat Detail</a>
+                        <div class="produk-card">
+                            <img src="image/<?php echo $produk['foto']; ?>" class="produk-img" alt="produk">
+
+                            <h4 class="produk-nama text-center mt-3">
+                                <?php echo $produk['nama']; ?>
+                            </h4>
+
+                            <p class="produk-harga text-center">
+                                Rp<?php echo number_format($produk['harga'], 0, ',', '.'); ?>
+                            </p>
+
+                            <div class="text-center">
+                                <a href="produk-detail.php?nama=<?php echo $produk['nama']; ?>" class="btn btn-lihat">
+                                    Lihat
+                                </a>
                             </div>
                         </div>
                     </div>
