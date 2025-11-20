@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Online | Home</title>
+    <title>Mountify | Home</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,7 @@
     <!-- banner -->
     <div class="container-fluid banner d-flex align-items-center">
         <div class="container text-center text-white">
-            <h1>Moountify Outdoor</h1>
+            <h1>Mountify Outdoor</h1>
             <h4>Find Your Adventure Essentials Here!</h4>
             <div class="col-md-8 offset-md-2">
                 <form method="get" action="produk.php">
@@ -45,7 +45,7 @@
     <!-- highlighted kategori -->
     <div class="container-fluid py-5">
         <div class="container text-center">
-            <h3>Kategori Terlaris</h3>
+            <h3>Top Picks</h3>
 
             <div class="row mt-5">
                 <div class="col-md-4 mb-3">
@@ -76,16 +76,15 @@
     <!-- tentang kami -->
     <div class="container-fluid warna3 py-5">
         <div class="container text-center">
-            <h3>Tentang Kami</h3>
+            <h3>About Us</h3>
             <p class="fs-5 mt-3">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque incidunt necessitatibus
-                placeat ea deleniti obcaecati nisi eum cupiditate itaque, officiis animi quis rem labore
-                quasi, eveniet eius inventore vero! Rem nam, labore voluptate aperiam explicabo tenetur
-                earum ducimus, asperiores eveniet suscipit cupiditate sunt ex? Ut omnis, deleniti
-                laboriosam beatae inventore provident quidem animi doloribus eius soluta quas dolorum
-                pariatur blanditiis nisi corrupti aspernatur amet dolores harum magnam. Maxime, in
-                voluptates? Exercitationem dolore suscipit necessitatibus aspernatur possimus aperiam
-                amet iure sunt.
+                Mountify is your go-to place for practical, ready-to-use outdoor gear.
+                We offer easy and affordable gear rentals for anyone who wants to step into nature without the extra weight — literally and figuratively.
+
+                Based in Tembalang, Semarang, we’re here for students, hikers, and nature lovers who believe that every journey begins with the right equipment, not with a burden.
+
+                At Mountify, we like to say that adventures don’t need to be complicated — they just need a little courage and the right gear.
+                That’s why we stand by our principle: “Practical Adventure Made Simple.”
             </p>
         </div>
     </div>
@@ -93,7 +92,7 @@
     <!-- produk -->
     <div class="container-fluid py-5">
         <div class="container text-center">
-            <h3>Produk</h3>
+            <h3>Product</h3>
 
             <div class="row mt-5">
                 <?php while($data = mysqli_fetch_array($queryProduk)) { ?>
