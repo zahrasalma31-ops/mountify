@@ -59,7 +59,7 @@ $countData = mysqli_num_rows($queryProduk);
 <!-- Produk Grid -->
 <div class="container py-5">
     <?php if ($countData < 1) { ?>
-        <h3 class="text-center my-5">Produk tidak ditemukan</h3>
+        <h3 class="text-center my-5">Product Not Found</h3>
     <?php } ?>
 
     <div class="row">
