@@ -44,19 +44,19 @@
 }
 
 .kategori-sepatu {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/sepatu1.jpeg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/sepatu\ top.jpeg');
     background-size: cover;
     background-position: center;
 }
 
 .kategori-carrier {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/carrier1.jpeg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/carrier\ top.jpeg');
     background-size: cover;
     background-position: center;
 }
 
 .kategori-tenda {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/tenda1.jpeg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/tenda\ top.jpeg');
     background-size: cover;
     background-position: center;
 }
