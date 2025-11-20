@@ -13,9 +13,9 @@
     <?php require "navbar.php"; ?>
 
     <!-- banner -->
-    <div class="container-fluid banner2 d-flex align-items-center">
+    <div class="container-fluid banner-produk d-flex align-items-center">
         <div class="container">
-            <h1 class="text-white text-center">T</h1>
+            <h1 class="text-white text-center">Tentang Kami</h1>
         </div>
     </div>
 

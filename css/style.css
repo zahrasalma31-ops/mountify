@@ -1,18 +1,18 @@
 /* === WARNA TEMA === */
 .warna1 {
-    background-color: #876445;
+    background-color: #294B29;
 }
 
 .warna2 {
-    background-color: #CA965C;
+    background-color: #50623A;
 }
 
 .warna3 { 
-    background-color: #EEC373;
+    background-color: #789461;
 }
 
 .warna4 { 
-    background-color: #F4DFBA;
+    background-color: #DBE7C9;
 }
 
 /* === BANNER === */
@@ -150,4 +150,18 @@
 
 .content-subscribe a {
     color: #fff;
+}
+
+.banner-produk {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.produk-terkait-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
