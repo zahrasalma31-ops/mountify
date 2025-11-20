@@ -63,7 +63,7 @@
                 </div>    
                 <div>
                     <label for="harga">Harga</label>
-                    <input type="number" class="form-control" value="<?php echo $data['harga']; ?>" name="harga" required>
+                    <input type="text" class="form-control" value="<?php echo number_format($data['harga'], 0, ',', '.'); ?>" name="harga" required>
                 </div>
                 <div>
                     <label for="currentFoto">Foto Produk Sekarang</label><br>
@@ -82,13 +82,13 @@
                     <select name="ketersediaan_stok" id="ketersediaan_stok" class="form-control">
                         <option value="<?php echo $data['ketersediaan_stok']; ?>"><?php echo $data['ketersediaan_stok']; ?></option>
                         <?php
-                            if($data['ketersediaan_stok']=='tersedia'){
+                            if($data['ketersediaan_stok']=='Tersedia'){
                         ?>
-                            <option value="habis">habis</option>
+                            <option value="Habis">Habis</option>
                         <?php
                             } else {
                         ?>
-                            <option value="tersedia">tersedia</option>
+                            <option value="Tersedia">Tersedia</option>
                         <?php
                             }
                         ?>

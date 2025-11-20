@@ -92,8 +92,8 @@
                 <div>
                     <label for="ketersediaan_stok">Ketersediaan Stok</label>
                     <select name="ketersediaan_stok" id="ketersediaan_stok" class="form-control">
-                        <option value="tersedia">Tersedia</option>
-                        <option value="tidak_tersedia">Tidak Tersedia</option>
+                        <option value="Tersedia">Tersedia</option>
+                        <option value="Tidak_tersedia">Tidak Tersedia</option>
                         </select>
                 </div>
                 <div>
