@@ -15,7 +15,7 @@
     <!-- banner -->
     <div class="container-fluid banner-produk d-flex align-items-center">
         <div class="container">
-            <h1 class="text-white text-center">Tentang Kami</h1>
+            <h1 class="text-white text-center">Help</h1>
         </div>
     </div>
 
