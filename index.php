@@ -20,21 +20,21 @@
     <!-- banner -->
     <div class="container-fluid banner d-flex align-items-center">
         <div class="container text-center text-white">
-            <h1>Toko Online Fashion</h1>
-            <h3>Mau Cari Apa ?</h3>
+            <h1>Moountify Outdoor</h1>
+            <h4>Find Your Adventure Essentials Here!</h4>
             <div class="col-md-8 offset-md-2">
                 <form method="get" action="produk.php">
                     <div class="input-group input-group-lg my-4">
                         <input 
                             type="text" 
                             class="form-control" 
-                            placeholder="Nama Barang"
+                            placeholder="What Are You Looking For?"
                             aria-label="Recipient's username" 
                             aria-describedby="basic-addon2" 
                             name="keyword"
                         >
                         <button type="submit" class="btn warna2 text-white">
-                            Telusuri
+                            Find
                         </button>
                     </div>
                 </form>
