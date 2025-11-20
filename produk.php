@@ -59,27 +59,31 @@ $countData = mysqli_num_rows($queryProduk);
 <!-- Produk Grid -->
 <div class="container py-5">
     <?php if ($countData < 1) { ?>
-        <h3 class="text-center my-5">Produk tidak ditemukan</h3>
+        <h3 class="text-center my-5">Product Not Found</h3>
     <?php } ?>
 
-    <div class="produk-grid">
+    <div class="row">
 
         <?php while($produk = mysqli_fetch_assoc($queryProduk)) { ?>
-            <div class="produk-card">
+            
+            <div class="col-6 col-md-3 col-lg-3 mb-4">
+                <div class="produk-card">
 
-                <img src="image/<?= $produk['foto']; ?>" class="produk-img">
+                    <img src="image/<?= $produk['foto']; ?>" class="produk-img">
 
-                <h4 class="produk-nama"><?= $produk['nama']; ?></h4>
+                    <h4 class="produk-nama"><?= $produk['nama']; ?></h4>
 
-                <p class="produk-harga">
-                    Rp<?= number_format($produk['harga'], 0, ',', '.'); ?>
-                </p>
+                    <p class="produk-harga">
+                        Rp<?= number_format($produk['harga'], 0, ',', '.'); ?>
+                    </p>
 
-                <a href="produk-detail.php?id=<?= $produk['id']; ?>" class="btn-lihat">
-                    Lihat
-                </a>
+                    <a href="produk-detail.php?id=<?= $produk['id']; ?>" class="btn-lihat">
+                        Detail
+                    </a>
 
+                </div>
             </div>
+
         <?php } ?>
 
     </div>
