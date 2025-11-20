@@ -1,33 +1,29 @@
 <?php
-	require "koneksi.php";
+require "koneksi.php";
 
-    $queryKategori = mysqli_query($con, "SELECT * FROM kategori");
+// Ambil kategori
+$queryKategori = mysqli_query($con, "SELECT * FROM kategori ORDER BY nama ASC");
 
-    // get produk by nama produk/keyword
-    if(isset($_GET['keyword'])){
-        $queryProduk = mysqli_query($con, "SELECT * FROM produk WHERE nama LIKE '%$_GET[keyword]%'");
-    }
-    // get produk by kategori
-    else if(isset($_GET['kategori'])){
-        $queryGetKategoriId = mysqli_query($con, "SELECT id FROM kategori WHERE nama='$_GET[kategori]'");
-        $kategoriId = mysqli_fetch_array($queryGetKategoriId);
+// Ambil produk berdasarkan kondisi
+if (isset($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+    $queryProduk = mysqli_query($con, "SELECT * FROM produk WHERE nama LIKE '%$keyword%'");
+}
+else if (isset($_GET['kategori'])) {
+    $kategoriId = $_GET['kategori'];
+    $queryProduk = mysqli_query($con, "SELECT * FROM produk WHERE kategori_id='$kategoriId'");
+}
+else {
+    $queryProduk = mysqli_query($con, "SELECT * FROM produk ORDER BY id DESC");
+}
 
-        $queryProduk = mysqli_query($con, "SELECT * FROM produk WHERE kategori_id='$kategoriId[id]'");
-    }
-    // get produk default
-    else{
-        $queryProduk = mysqli_query($con, "SELECT * FROM produk");
-    } 
-    
-    $countData = mysqli_num_rows($queryProduk);
+$countData = mysqli_num_rows($queryProduk);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mountify | Produk</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
@@ -37,67 +33,62 @@
 
 <?php require "navbar.php"; ?>
 
-    <!-- banner -->
-    <div class="container-fluid banner-produk d-flex align-items-center">
-        <div class="container">
-            <h1 class="text-white text-center">Produk</h1>
-        </div>
+<!-- Banner -->
+<div class="container-fluid banner-produk d-flex align-items-center">
+    <div class="container">
+        <h1 class="text-white text-center">Product</h1>
     </div>
+</div>
 
-    <!-- body -->
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-3 mb-5">
-                <h3>Kategori</h3>
-                <ul class="list-group">
-                    <?php while($kategori = mysqli_fetch_array($queryKategori)){ ?>
-                        <a class="no-decoration" href="produk.php?kategori=<?php echo $kategori['nama']; ?>">
-                            <li class="list-group-item"><?php echo $kategori['nama']; ?></li>
-                        </a>
-                    <?php } ?>
-                </ul>
+<!-- Kategori Horizontal -->
+<div class="kategori-container">
+    <a href="produk.php" 
+        class="kategori-btn <?= (!isset($_GET['kategori'])) ? 'active' : '' ?>">
+        ALL
+    </a>
+
+    <?php while($kategori = mysqli_fetch_assoc($queryKategori)) { ?>
+        <a href="produk.php?kategori=<?= $kategori['id']; ?>"
+            class="kategori-btn <?= (isset($_GET['kategori']) && $_GET['kategori'] == $kategori['id']) ? 'active' : '' ?>">
+            <?= strtoupper($kategori['nama']); ?>
+        </a>
+    <?php } ?>
+</div>
+
+
+<!-- Produk Grid -->
+<div class="container py-5">
+    <?php if ($countData < 1) { ?>
+        <h3 class="text-center my-5">Produk tidak ditemukan</h3>
+    <?php } ?>
+
+    <div class="produk-grid">
+
+        <?php while($produk = mysqli_fetch_assoc($queryProduk)) { ?>
+            <div class="produk-card">
+
+                <img src="image/<?= $produk['foto']; ?>" class="produk-img">
+
+                <h4 class="produk-nama"><?= $produk['nama']; ?></h4>
+
+                <p class="produk-harga">
+                    Rp<?= number_format($produk['harga'], 0, ',', '.'); ?>
+                </p>
+
+                <a href="produk-detail.php?id=<?= $produk['id']; ?>" class="btn-lihat">
+                    Lihat
+                </a>
+
             </div>
-            <div class="col-lg-9">
-                <h3 class="text-center mb-3">Produk</h3>
-                <div class="row">
-                    <?php
-                        if($countData<1){
-                    ?>
-                        <h4 class="text-center my-5">Produk yang anda cari tidak tersedia</h4>
-                    <?php
-                        }
-                    ?>
+        <?php } ?>
 
-                    <?php while($produk = mysqli_fetch_array($queryProduk)){ ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="produk-card">
-                            <img src="image/<?php echo $produk['foto']; ?>" class="produk-img" alt="produk">
-
-                            <h4 class="produk-nama text-center mt-3">
-                                <?php echo $produk['nama']; ?>
-                            </h4>
-
-                            <p class="produk-harga text-center">
-                                Rp<?php echo number_format($produk['harga'], 0, ',', '.'); ?>
-                            </p>
-
-                            <div class="text-center">
-                                <a href="produk-detail.php?nama=<?php echo $produk['nama']; ?>" class="btn btn-lihat">
-                                    Lihat
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-     </div>
     </div>
+</div>
 
-    <!-- footer -->
-    <?php require "footer.php"; ?>
+<?php require "footer.php"; ?>
 
-    <script src=”bootstrap/js/bootstrap.bundle.min.js”></script>
-	<script src=”fontawesome/js/all.min.js”></script>
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="fontawesome/js/all.min.js"></script>
+
 </body>
 </html>

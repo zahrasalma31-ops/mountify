@@ -1,6 +1,6 @@
 <div class="container-fluid py-5 content-subscribe text-light">
     <div class="container">
-        <h5 class="text-center mb-4">Temui Kami</h5>
+        <h5 class="text-center mb-4">Find Us</h5>
         <div class="row justify-content-center">
             <div class="col-sm-1 d-flex justify-content-center mb-2">
                 <a href="https://wa.me/628988712806?text=Hai%20saya%20ingin%20booking%20produk%20"><i class="fab fa-whatsapp fs-2"></i></a>
