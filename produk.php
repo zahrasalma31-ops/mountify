@@ -44,7 +44,7 @@ $countData = mysqli_num_rows($queryProduk);
 <div class="kategori-container">
     <a href="produk.php" 
         class="kategori-btn <?= (!isset($_GET['kategori'])) ? 'active' : '' ?>">
-        SEMUA
+        ALL
     </a>
 
     <?php while($kategori = mysqli_fetch_assoc($queryKategori)) { ?>
