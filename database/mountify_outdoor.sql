@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2025 at 04:40 AM
+-- Generation Time: Nov 20, 2025 at 07:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -42,7 +42,12 @@ INSERT INTO `kategori` (`id`, `nama`) VALUES
 (5, 'Sepatu Trail Running'),
 (6, 'Jaket'),
 (7, 'Tenda'),
-(8, 'Carrier');
+(8, 'Carrier'),
+(9, 'Hiking Packs'),
+(10, 'Cooking Set'),
+(11, 'Camping Gear'),
+(12, 'Hiking Gear'),
+(13, 'Apparel');
 
 -- --------------------------------------------------------
 
@@ -54,10 +59,10 @@ CREATE TABLE `produk` (
   `id` int(11) NOT NULL,
   `kategori_id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `harga` double NOT NULL,
+  `harga` int(11) NOT NULL,
   `foto` varchar(255) DEFAULT NULL,
   `detail` text DEFAULT NULL,
-  `ketersediaan_stok` enum('tidak tersedia','tersedia') DEFAULT 'tersedia'
+  `ketersediaan_stok` enum('Tidak tersedia','Tersedia') DEFAULT 'Tersedia'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -65,7 +70,9 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `kategori_id`, `nama`, `harga`, `foto`, `detail`, `ketersediaan_stok`) VALUES
-(1, 3, 'The North Face 3 Season - Sleeping Bag', 20000, 'NgeNppKb6wSrU4eFBB0H.jpg', '', 'tersedia');
+(6, 9, 'Greenforest Arvensis Hydration Pack 10L', 25000, '5xzuZ9hrPYxp9fGdWCGy.png', 'Hydration vest ringan untuk trail run, hiking, gowes, atau summit. Kapasitas 10L dengan kompartemen lengkap buat HP, snack, soft flask, dan perlengkapan kecil. Nyaman dipakai, breathable, dan stabil saat bergerak.\r\n\r\n𝗙𝗶𝘁𝘂𝗿 𝗽𝗿𝗼𝗱𝘂𝗸 :\r\n• Kapasitas 10L\r\n• Material ringan (Nylon + Spandex)\r\n• Bobot cuma ±222g\r\n• Mesh breathable\r\n• Banyak kantong fungsional\r\n• Adjustable strap, fit di badan\r\n\r\n𝗖𝗼𝗰𝗼𝗸 𝘂𝗻𝘁𝘂𝗸 : Hiking, trail running, summit, speed hiking, cycling.', 'Tersedia'),
+(7, 7, 'BigAdventure Tambora Series - Tenda 2P', 45000, 'zhOu5VUcySWELDWEBvUi.jpg', 'Bigadventure Tambora Series adalah tenda kapasitas 2 orang dengan material premium yang tahan cuaca ekstrem. Cocok untuk pendakian gunung, camping, maupun ekspedisi outdoor. Menggunakan bahan ripstop, waterproof tinggi, serta rangka aluminium yang kuat namun ringan.\r\n\r\n𝗦𝗽𝗲𝘀𝗶𝗳𝗶𝗸𝗮𝘀𝗶 𝗣𝗿𝗼𝗱𝘂𝗸:\r\n• Flysheet: 210T Ripstop Polyester, PU 3000mm, UPF 50+, seam taped\r\n• Inner Tent: 190T Ripstop breathable + B3 mesh\r\n• Lantai Tenda: 210T Ripstop Polyester, PU 3000mm, seam taped\r\n• Footprint: 210T Ripstop Polyester PU 3000mm (200 gram)\r\n• Rangka (Poles): Aluminium 8.5 mm dengan triangle joining\r\n• Pasak: Aluminium Y-stakes\r\n• Guyrope: Reflective D3mm with aluminium stopper\r\n• Fitur Tambahan: Saku penyimpanan, lamp hanger\r\n• Ukuran Terpasang: 210 × (70 + 140 + 70) × 105 cm\r\n• Ukuran Packing: 40 × 15 cm\r\n• Berat: 2350 gram (tanpa footprint)', 'Tersedia'),
+(8, 5, '910 Nineten Yuza Evo - Sepatu Trail Running', 35000, 'ALWxgulBnR5isIcfAYBT.jpg', 'Yuza Evo adalah sepatu lari trail terbaru dari Yuza yang dirancang khusus untuk medan alam tropis Indonesia. Menggabungkan teknologi modern untuk memberikan kenyamanan, stabilitas, dan daya tahan maksimal saat berlari di jalur off-road.\r\n\r\n𝗦𝗽𝗲𝘀𝗶𝗳𝗶𝗸𝗮𝘀𝗶 𝗣𝗿𝗼𝗱𝘂𝗸:\r\n• Upper Maxi Breathe: ringan &amp; breathable\r\n• Hexa Cush insole: empuk, tidak mudah panas\r\n• Seamlock: upper kokoh &amp; fleksibel\r\n• HyperWeb: struktur stabil tanpa menambah beban\r\n• Airflex Sole: grip kuat &amp; ringan\r\n• Rubber Tech-Outsole: traksi tinggi, tahan abrasi\r\n\r\n𝗨𝗸𝘂𝗿𝗮𝗻 : 39-44', 'Tersedia');
 
 -- --------------------------------------------------------
 
@@ -118,13 +125,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
