@@ -45,53 +45,33 @@
     </div>
 
     <!-- body -->
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-3 mb-5">
-                <h3>Kategori</h3>
-                <ul class="list-group">
-                    <?php while($kategori = mysqli_fetch_array($queryKategori)){ ?>
-                        <a class="no-decoration" href="produk.php?kategori=<?php echo $kategori['nama']; ?>">
-                            <li class="list-group-item"><?php echo $kategori['nama']; ?></li>
-                        </a>
-                    <?php } ?>
-                </ul>
+    <!-- Kategori Bar -->
+    <div class="kategori-container">
+        <a href="produk.php" class="kategori-btn <?= $kategoriDipilih == "" ? 'active' : '' ?>">Semua</a>
+
+        <?php while ($kategori = mysqli_fetch_assoc($queryKategori)) { ?>
+            <a href="produk.php?kategori=<?= $kategori['kategori_id']; ?>"
+            class="kategori-btn <?= $kategoriDipilih == $kategori['kategori_id'] ? 'active' : '' ?>">
+            <?= strtoupper($kategori['nama']); ?>
+            </a>
+        <?php } ?>
+    </div>
+
+
+    <!-- Produk List -->
+    <div class="produk-grid">
+        <?php while ($produk = mysqli_fetch_assoc($queryProduk)) { ?>
+            <div class="produk-card">
+                
+                <img src="image/<?= $produk['foto']; ?>" class="produk-img" alt="Produk">
+
+                <h4 class="produk-nama"><?= $produk['nama']; ?></h4>
+
+                <p class="produk-harga">Rp<?= number_format($produk['harga'], 0, ',', '.'); ?></p>
+
+                <a href="produk-detail.php?id=<?= $produk['id']; ?>" class="btn-lihat">Lihat</a>
             </div>
-            <div class="col-lg-9">
-                <h3 class="text-center mb-3">Produk</h3>
-                <div class="row">
-                    <?php
-                        if($countData<1){
-                    ?>
-                        <h4 class="text-center my-5">Produk yang anda cari tidak tersedia</h4>
-                    <?php
-                        }
-                    ?>
-
-                    <?php while($produk = mysqli_fetch_array($queryProduk)){ ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="produk-card">
-                            <img src="image/<?php echo $produk['foto']; ?>" class="produk-img" alt="produk">
-
-                            <h4 class="produk-nama text-center mt-3">
-                                <?php echo $produk['nama']; ?>
-                            </h4>
-
-                            <p class="produk-harga text-center">
-                                Rp<?php echo number_format($produk['harga'], 0, ',', '.'); ?>
-                            </p>
-
-                            <div class="text-center">
-                                <a href="produk-detail.php?nama=<?php echo $produk['nama']; ?>" class="btn btn-lihat">
-                                    Lihat
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-     </div>
+        <?php } ?>
     </div>
 
     <!-- footer -->
