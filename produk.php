@@ -57,7 +57,7 @@
                     <?php } ?>
                 </ul>
             </div>
-            <div class="col-lg-9"></div>
+            <div class="col-lg-9">
                 <h3 class="text-center mb-3">Produk</h3>
                 <div class="row">
                     <?php
@@ -74,7 +74,7 @@
                             <div class="image-box">
                                 <img src="image/<?php echo $produk['foto']; ?>" class="card-img-top" alt="...">
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-center">
                                 <h4 class="card-title"><?php echo $produk['nama']; ?></h4>
                                 <p class="card-text text-truncate"><?php echo $produk['detail']; ?></p>
                                 <p class="card-text text-harga">Rp <?php echo $produk['harga']; ?></p>
@@ -91,7 +91,7 @@
     <!-- footer -->
     <?php require "footer.php"; ?>
 
-    <script src=”bootstrap/js/boothstrap.bundle.min.js”></script>
+    <script src=”bootstrap/js/bootstrap.bundle.min.js”></script>
 	<script src=”fontawesome/js/all.min.js”></script>
 </body>
 </html>
