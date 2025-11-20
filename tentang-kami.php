@@ -23,16 +23,6 @@
     <div class="container-fluid py-5">
         <div class="container">
 
-            <!-- Header Help (opsional, biar lebih cantik) -->
-            <div class="text-center mb-4">
-                <div class="help-header-title">Informasi dan Petunjuk</div>
-                <div class="help-main-title">Bantuan</div>
-                <p class="mt-3 text-muted">
-                    Informasi dan petunjuk penggunaan layanan Mountify Outdoor dapat kamu lihat pada menu di bawah ini.
-                </p>
-                <div class="help-divider"></div>
-            </div>
-
             <!-- Tabs -->
             <ul class="nav justify-content-center help-tabs mb-4" id="helpTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -156,7 +146,7 @@
                         <li>Setelah formulir dikirim kembali, tim Mountify akan memeriksa ketersediaan produk dan memberikan konfirmasi melalui WhatsApp.</li>
                         <li>Persetujuan perubahan jadwal tergantung pada ketersediaan produk sewa, dan Mountify berhak menolak pengajuan jika alat tidak tersedia pada tanggal baru.</li>
                         <li>Periode sewa yang telah dikonfirmasi tidak dapat ditambah atau dikurangi, kecuali dengan membuat pemesanan baru.</li>
-                        <li><strong>Pastikan kamu telah menerima konfirmasi dari tim Mountify agar perubahan jadwalmu resmi tercatat.</strong></li>
+                        <li>Pastikan kamu telah menerima konfirmasi dari tim Mountify agar perubahan jadwalmu resmi tercatat.</li>
                     </ol>
                 </div>
 

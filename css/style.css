@@ -271,3 +271,152 @@
     background-color: #1e3328;
     color: #fff;
 }
+
+/* === HELP PAGE (TENTANG-KAMI) === */
+
+.help-header-title {
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    color: #50623A; /* warna2 */
+    text-transform: uppercase;
+}
+
+.help-main-title {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #294B29; /* warna1 */
+}
+
+.help-divider {
+    width: 120px;
+    height: 3px;
+    background-color: #789461; /* warna3 */
+    margin: 1.5rem auto 2rem;
+    border-radius: 999px;
+}
+
+/* TAB BUTTONS HELP */
+.help-tabs .nav-link {
+    border-radius: 6px;                 /* tidak terlalu round */
+    background-color: #294B29;          /* warna1 */
+    color: #fff;
+    margin: 0 0.35rem 0.75rem;
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.help-tabs .nav-link i {
+    font-size: 0.9rem;
+}
+
+.help-tabs .nav-link:hover {
+    background-color: #50623A;          /* warna2 saat hover */
+}
+
+.help-tabs .nav-link.active {
+    background-color: #789461;          /* warna3 untuk aktif */
+    color: #fff;
+}
+
+/* KONTEN HELP UMUM */
+.help-section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #294B29;
+}
+
+.help-section-subtitle {
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.help-list {
+    padding-left: 1.2rem;
+}
+
+.help-list li {
+    margin-bottom: 0.45rem;
+    line-height: 1.5;
+}
+
+/* PAYMENT – LIST UTAMA TANPA NOMOR, PAKAI ICON */
+.help-payment-main {
+    list-style: none;
+    padding-left: 0;
+}
+
+.help-payment-main > li {
+    margin-bottom: 1rem;
+}
+
+.help-payment-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #294B29;
+    margin-bottom: 0.3rem;
+}
+
+.help-payment-title i {
+    color: #294B29;
+}
+
+/* Supaya sublist tetap bullet biasa */
+.help-payment-main > li > ul {
+    list-style: disc;
+    padding-left: 1.3rem;
+}
+
+/* CANCEL & REFUND – HEADING PAKAI ICON SEBAGAI "BULLET" */
+.help-cancel-heading {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0.3rem;
+}
+
+.help-cancel-heading li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #294B29;
+}
+
+.help-cancel-heading i {
+    color: #294B29;
+}
+
+/* OPERATIONAL – JUDUL PAKAI EMOJI, TANPA BULLET */
+.help-operational-block {
+    margin-bottom: 0.9rem;      /* sedikit lebih rapat antar blok */
+}
+
+.help-operational-title {
+    font-weight: 700;
+    color: #294B29;
+    margin-bottom: 0.15rem;     /* judul ke isi lebih dekat */
+}
+
+/* Paragraph di dalam block operational */
+.help-operational-block p {
+    margin-bottom: 0.2rem;      /* jarak baris lebih kecil */
+}
+
+/* Bullet untuk isi operational */
+.help-operational-list {
+    list-style: disc;
+    padding-left: 1.3rem;
+    margin-bottom: 0;           /* hilangkan extra space bawaan UL */
+}
+
+.help-operational-list li {
+    margin-bottom: 0.25rem;     /* jarak antar bullet */
+}
