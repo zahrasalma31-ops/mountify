@@ -165,3 +165,9 @@
     object-fit: cover;
     object-position: center;
 }
+
+.product-title {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 18px;
+}
