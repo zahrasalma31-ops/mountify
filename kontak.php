@@ -45,7 +45,7 @@ if (isset($_POST['kirim'])) {
 <!-- Banner  -->
 <div class="container-fluid banner-produk d-flex align-items-center">
     <div class="container">
-        <h1 class="text-white text-center">Kontak Kami</h1>
+        <h1 class="text-white text-center">Contact Us</h1>
     </div>
 </div>
 
@@ -55,7 +55,7 @@ if (isset($_POST['kirim'])) {
 
         <!-- FORM KONTAK -->
         <div class="col-12 col-lg-6">
-            <h2 class="mb-4">Kontak Kami</h2>
+            <h2 class="mb-4">Contact Us</h2>
 
             <?php if ($success != '') { ?>
                 <div class="alert alert-success"><?= $success; ?></div>
@@ -68,17 +68,17 @@ if (isset($_POST['kirim'])) {
             <form action="" method="post" class="contact-box">
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label small fw-semibold">Nama depan</label>
+                        <label class="form-label small fw-semibold">First Name</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="text" name="nama_depan" class="form-control" placeholder="Nama depan" required>
+                            <input type="text" name="nama_depan" class="form-control" placeholder="First Name" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label small fw-semibold">Nama belakang</label>
+                        <label class="form-label small fw-semibold">Last Name</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="text" name="nama_belakang" class="form-control" placeholder="Nama belakang">
+                            <input type="text" name="nama_belakang" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
                 </div>
@@ -92,28 +92,28 @@ if (isset($_POST['kirim'])) {
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label small fw-semibold">Nomor telepon</label>
+                        <label class="form-label small fw-semibold">Phone Number</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                            <input type="text" name="telepon" class="form-control" placeholder="Nomor WhatsApp" required>
+                            <input type="text" name="telepon" class="form-control" placeholder="WhatsApp Number" required>
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold">Pesan Anda</label>
-                    <textarea name="pesan" rows="5" class="form-control" placeholder="Pesan Anda" required></textarea>
+                    <label class="form-label small fw-semibold">Your Message</label>
+                    <textarea name="pesan" rows="5" class="form-control" placeholder="Type your message here..." required></textarea>
                 </div>
 
                 <button type="submit" name="kirim" class="btn btn-success w-100">
-                    Kirim Pesan <i class="fas fa-arrow-right ms-2"></i>
+                    Send Message <i class="fas fa-arrow-right ms-2"></i>
                 </button>
             </form>
         </div>
 
         <!-- MAP ALAMAT -->
         <div class="col-12 col-lg-6">
-            <h2 class="mb-4">Lokasi Kami</h2>
+            <h2 class="mb-4">Find Us Here!</h2>
             <p class="mb-2">
                 Jl. Banjarsari No. 27, Tembalang – Semarang<br>
                 Jawa Tengah, Indonesia
