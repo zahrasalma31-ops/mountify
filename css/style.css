@@ -420,3 +420,123 @@
 .help-operational-list li {
     margin-bottom: 0.25rem;     /* jarak antar bullet */
 }
+
+
+/* ====================== REGISTER PAGE ====================== */
+
+.register-wrapper {
+    min-height: calc(100vh - 120px); /* kira-kira sisa tinggi setelah navbar+footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+    background: #f7f8f4; /* sedikit kehijauan lembut */
+}
+
+.register-card {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px 40px 45px;
+    border: 1px solid #e3e7db;      /* border lembut seperti tone hijau-keabu */
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
+}
+
+.register-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: #2d483a;                  /* selaras tombol .btn-lihat */
+    letter-spacing: 0.03em;
+}
+
+/* input + icon */
+.input-icon-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d5dec7;
+    border-radius: 12px;
+    padding: 0 16px;
+    background-color: #ffffff;
+    margin-bottom: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-icon-wrapper i {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #50623A;                  /* sama tone dengan .help-header-title */
+}
+
+.input-icon-wrapper input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 0.95rem;
+    color: #2d483a;
+    background: transparent;
+}
+
+.input-icon-wrapper input::placeholder {
+    color: #9aaa8a;
+}
+
+.input-icon-wrapper:focus-within {
+    border-color: #2d483a;
+    box-shadow: 0 0 0 3px rgba(80, 98, 58, 0.15);
+}
+
+/* tombol register – tone sama dengan .btn-lihat */
+.btn-register {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: #2d483a;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-register:hover {
+    background-color: #1e3328;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.btn-register:active {
+    transform: translateY(0);
+}
+
+/* teks bawah */
+.register-bottom-text {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #50623A;
+}
+
+.register-bottom-text a {
+    color: #2d483a;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.register-bottom-text a:hover {
+    text-decoration: underline;
+}
+
+/* responsif kecil */
+@media (max-width: 576px) {
+    .register-card {
+        padding: 30px 20px 35px;
+    }
+    .register-title {
+        font-size: 28px;
+    }
+}
