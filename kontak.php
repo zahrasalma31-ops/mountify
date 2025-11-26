@@ -88,14 +88,14 @@ if (isset($_POST['kirim'])) {
                         <label class="form-label small fw-semibold">Email</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            <input type="email" name="email" class="form-control" placeholder="sayatampan@email.com" required>
+                            <input type="email" name="email" class="form-control" placeholder="mountify@email.com" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label small fw-semibold">Nomor telepon</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                            <input type="text" name="telepon" class="form-control" placeholder="Tulis nomor WhatsApp jika ada" required>
+                            <input type="text" name="telepon" class="form-control" placeholder="Nomor WhatsApp" required>
                         </div>
                     </div>
                 </div>
@@ -120,12 +120,7 @@ if (isset($_POST['kirim'])) {
             </p>
 
             <div class="contact-map">
-                <!-- Ganti src ini dengan embed map lokasi kamu sendiri dari Google Maps -->
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.861952589329!2d110.423!3d-7.027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDAnMDkuMCJTIDExMMKwMjUnMjguMCJF!5e0!3m2!1sid!2sid!4v0000000000000"
-                    width="100%" height="400" style="border:0;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7919.025809760157!2d110.41817827770998!3d-7.066371599999981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708fe07789ba5b%3A0x161cadacffd527c9!2sRental%20Alat%20Outdoor%20Camping!5e0!3m2!1sid!2sid!4v1764161013615!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
 
