@@ -274,6 +274,8 @@
 
 /* === HELP PAGE (TENTANG-KAMI) === */
 
+/* === HELP PAGE (TENTANG-KAMI) === */
+
 .help-header-title {
     letter-spacing: 0.15em;
     font-size: 0.85rem;
@@ -346,55 +348,56 @@
     line-height: 1.5;
 }
 
-/* PAYMENT – LIST UTAMA TANPA NOMOR, PAKAI ICON */
-.help-payment-main {
-    list-style: none;
-    padding-left: 0;
+/* CARD / BOX untuk semua section Help */
+.help-box,
+.help-rent-box {
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    max-width: 950px;
+    margin: 0 auto 10px; /* center + sedikit jarak bawah */
 }
 
-.help-payment-main > li {
-    margin-bottom: 1rem;
-}
-
-.help-payment-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+/* Judul di dalam card */
+.help-box .help-section-title,
+.help-rent-box .help-section-title {
     font-weight: 700;
-    color: #294B29;
-    margin-bottom: 0.3rem;
+    font-size: 1.75rem;
+    color: #294B29; /* warna tema hijau gelap */
 }
 
-.help-payment-title i {
-    color: #294B29;
+.help-box .help-section-subtitle,
+.help-rent-box .help-section-subtitle {
+    font-size: 1.05rem;
+    color: #666;
 }
 
-/* Supaya sublist tetap bullet biasa */
-.help-payment-main > li > ul {
-    list-style: disc;
-    padding-left: 1.3rem;
+/* Efek hover untuk semua card help */
+.help-box,
+.help-rent-box {
+    transition: 0.25s ease-in-out;
 }
 
-/* CANCEL & REFUND – HEADING PAKAI ICON SEBAGAI "BULLET" */
-.help-cancel-heading {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0.3rem;
+.help-box:hover,
+.help-rent-box:hover {
+    transform: translateY(-6px);     /* card naik */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12); /* shadow lebih tebal */
 }
 
-.help-cancel-heading li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    color: #294B29;
+/* Kurangi jarak antara konten Help dan footer */
+.help-main-section {
+    padding-top: 3rem;
+    padding-bottom: 0.2rem;
 }
 
-.help-cancel-heading i {
-    color: #294B29;
+/* Pastikan tab-content dan card tidak nambah jarak berlebihan */
+.help-main-section .tab-content {
+    margin-bottom: 0;
 }
 
-/* OPERATIONAL – JUDUL PAKAI EMOJI, TANPA BULLET */
+/* OPERATIONAL – JUDUL PAKAI EMOJI, TANPA BULLET untuk judulnya */
 .help-operational-block {
     margin-bottom: 0.9rem;      /* sedikit lebih rapat antar blok */
 }
@@ -420,55 +423,6 @@
 .help-operational-list li {
     margin-bottom: 0.25rem;     /* jarak antar bullet */
 }
-
-.help-rent-box {
-    background: #ffffff;
-    border: 1px solid #e3e3e3;
-    border-radius: 12px;
-    padding: 35px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    max-width: 950px;
-    margin: 0 auto; /* biar box center */
-}
-
-.help-rent-box .help-section-title {
-    font-weight: 700;
-    font-size: 1.75rem;
-    color: #294B29; /* warna tema hijau gelap */
-}
-
-.help-rent-box .help-section-subtitle {
-    font-size: 1.05rem;
-    color: #666;
-}
-
-/* Efek hover untuk semua card help */
-.help-rent-box,
-.help-box {
-    transition: 0.25s ease-in-out;
-}
-
-.help-rent-box:hover,
-.help-box:hover {
-    transform: translateY(-6px);     /* card naik */
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12); /* shadow lebih tebal */
-}
-
-/* Kurangi jarak antara konten Help dan footer */
-.help-main-section {
-    padding-top: 3rem;        /* boleh diubah sesuai selera */
-    padding-bottom: 0.2rem;     /* ini yang bikin ke footer jadi dekat */
-}
-
-/* Pastikan tab-content dan card tidak nambah jarak berlebihan */
-.help-main-section .tab-content {
-    margin-bottom: 0;
-}
-
-.help-rent-box {
-    margin-bottom: 10px;      /* kecil saja biar nggak ngedorong footer jauh */
-}
-
 
 
 /* ====================== REGISTER PAGE ====================== */
@@ -637,7 +591,7 @@
 .brand-track {
     display: flex;
     gap: 28px;
-    animation: brandScroll 25s linear infinite;
+    animation: brandScroll 15s linear infinite;
 }
 
 /* card logo */
