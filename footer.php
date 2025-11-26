@@ -63,3 +63,17 @@
         <span>Created by Kelompok 2</span>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const nav = document.querySelector('.custom-navbar');
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 40) {
+            nav.classList.add('navbar-scrolled');
+        } else {
+            nav.classList.remove('navbar-scrolled');
+        }
+    });
+});
+</script>
+

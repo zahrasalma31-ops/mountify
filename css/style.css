@@ -705,3 +705,82 @@
     padding: 12px 0;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
+
+/* === NAVBAR EFFECT === */
+/* NAVBAR — posisi awal transparan & nempel di banner */
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    background: rgba(255,255,255,0); /* full transparent */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* override warna1 agar tidak mengganggu */
+.warna1 {
+    background: transparent !important;
+}
+
+/* NAVBAR SAAT DISCROLL */
+.custom-navbar.navbar-scrolled {
+    background: linear-gradient(
+        to right,
+        rgba(78, 97, 78, 0.45),
+        rgba(92, 112, 92, 0.45),
+        rgba(110, 132, 110, 0.45)
+    ) !important;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Link kanan (Login) */
+.nav-login {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+.nav-login:hover {
+    opacity: 0.8;
+}
+
+/* Tombol keranjang */
+.nav-cart {
+    padding: 6px 14px;
+    border-radius: 16px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+.nav-cart i {
+    color: #0c2a37;
+    font-size: 1.05rem;
+}
+
+/* Badge jumlah item di keranjang */
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ff4d4f;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+/* Border bawah navbar (selalu tampil, meski transparan) */
+.custom-navbar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35); /* garis putih semi-transparan */
+}
+
+/* Saat discroll, bisa sedikit lebih gelap agar terlihat rapi */
+.custom-navbar.navbar-scrolled {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
