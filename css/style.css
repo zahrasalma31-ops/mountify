@@ -540,3 +540,28 @@
         font-size: 28px;
     }
 }
+
+/* === KONTAK KAMI === */
+.contact-section h2 {
+    font-weight: 700;
+}
+
+.contact-box {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    padding: 20px;
+}
+
+.contact-box .input-group-text {
+    background-color: #F5F5F5;
+    border-right: 0;
+}
+
+.contact-box .form-control {
+    border-left: 0;
+}
+
+.contact-map iframe {
+    border-radius: 10px;
+}
