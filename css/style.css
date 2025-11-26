@@ -640,71 +640,89 @@
     margin-bottom: 35px;
 }
 
-/* === FOOTER BARU (PAKAI WARNA TEMA) === */
+/* ===== FOOTER BARU ===== */
 
 .footer-main {
-    background-color: #294B29;      /* warna1 */
-    color: #DBE7C9;                 /* warna4 */
-    font-size: 14px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    background-color: #294B29;   /* warna1 */
+    color: #ffffff;
+    padding: 40px 0;
 }
 
+/* Supaya row di footer NGESEBAR, nggak ikut .row global yg center */
+.footer-main .row {
+    justify-content: space-between;  
+    gap: 20px 0;       /* vertikal 20px, horizontal 0 */
+}
+
+
+/* Judul "Mountify Outdoor" */
+.footer-brand-name {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+/* LOGO di footer (kecil, nggak gede banget) */
 .footer-logo {
-    max-width: 140px;   /* ukuran logo aman */
+    max-width: 120px;      /* atur ukuran logo di sini */
     height: auto;
     display: block;
-    margin-bottom: 15px;
 }
 
+/* Info alamat / jam / email */
+.footer-info li {
+    font-size: 14px;
+}
 
-
-
+/* Judul kolom (Help, About Mountify, Find Us) */
 .footer-title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-.footer-links li {
-    margin-bottom: 6px;
-}
-
+/* Link di kolom Help & About Mountify */
 .footer-links a {
+    color: #DBE7C9;             /* hijau muda, nyambung sama warna4 */
     text-decoration: none;
-    color: #DBE7C9;                 
-    transition: 0.2s;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
 }
 
 .footer-links a:hover {
-    color: #789461;                
+    color: #EEC373;             /* kuning soft waktu hover */
 }
 
-.footer-whatsapp {
-    font-size: 22px;
-    font-weight: bold;
-    color: #DBE7C9;               
-}
-
+/* Sosmed icon */
 .footer-sosmed a {
-    font-size: 22px;
     color: #ffffff;
-    transition: 0.2s;
+    font-size: 22px;
 }
 
 .footer-sosmed a:hover {
-    color: #789461;                 
-    transform: translateY(-3px);
+    color: #EEC373;
 }
 
+/* Bar paling bawah */
 .footer-bottom {
-    background-color: #1f381f;      
-    color: #DBE7C9;
-    font-size: 13px;
+    background-color: #1b331c;  /* sedikit lebih gelap dari warna1 */
+    color: #ffffff;
     padding: 12px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
 }
+
+.footer-main .container {
+    max-width: 1200px;    /* biar nggak terlalu lebar di layar besar */
+}
+
+/* pastikan semua kolom sejajar vertikal */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 
 /* === NAVBAR EFFECT === */
 /* NAVBAR — posisi awal transparan & nempel di banner */

@@ -3,48 +3,56 @@
     <div class="container">
         <div class="row gy-4">
 
-            <!-- KIRI -->
-            <div class="col-md-5">
-                <h3 class="footer-logo">Mountify Outdoor</h3>
-                <img src="image/mountifylogo.jpeg" alt="Mountify Outdoor" class="footer-logo">
+            <!-- KOLOM 1 – MOUNTIFY OUTDOOR -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 footer-col">
+                <h3 class="footer-brand-name mb-3">Mountify Outdoor</h3>
 
+                <img src="image/mountifylogo.jpeg"
+                     alt="Mountify Outdoor"
+                     class="footer-logo mb-3">
 
-                <p class="mb-2">
-                    <i class="fas fa-map-marker-alt me-2"></i>
-                    Jl. Banjarsari No. 27, Tembalang – Semarang
-                </p>
-
-                <p class="mb-2">
-                    <i class="fas fa-clock me-2"></i>
-                    Senin – Jumat: 08.00 – 20.00 WIB<br>
-                    Sabtu – Minggu &amp; Hari Libur: 06.00 – 21.00 WIB
-                </p>
-
-                <p>
-                    <i class="fas fa-envelope me-2"></i>
-                    mountifyoutdoor@gmail.com
-                </p>
-            </div>
-
-            <!-- TENGAH -->
-            <div class="col-md-3 col-6">
-                <h5 class="footer-title">Tentang Kami</h5>
-                <ul class="footer-links list-unstyled">
-                    <li><a href="tentang-kami.php#tab-rent">Rent</a></li>
-                    <li><a href="tentang-kami.php#tab-cancel">Terms &amp; Conditions</a></li>
-                    <li><a href="tentang-kami.php#tab-cancel">Returns &amp; Refund</a></li>
-                    <li><a href="tentang-kami.php#tab-operational">Operational</a></li>
+                <ul class="list-unstyled footer-info">
+                    <li class="mb-1">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Jl. Banjarsari No. 27, Tembalang – Semarang
+                    </li>
+                    <li class="mb-1">
+                        <i class="fas fa-clock me-2"></i>
+                        Senin – Jumat: 08.00 – 20.00 WIB
+                    </li>
+                    <li class="mb-1 ps-4">
+                        Sabtu – Minggu &amp; Hari Libur: 06.00 – 21.00 WIB
+                    </li>
+                    <li class="mb-1">
+                        <i class="fas fa-envelope me-2"></i>
+                        mountifyoutdoor@gmail.com
+                    </li>
                 </ul>
             </div>
 
-            <!-- KANAN -->
-            <div class="col-md-4 col-6">
+            <!-- KOLOM 2 – HELP (TAB DI TENTANG-KAMI.PHP) -->
+            <div class="col-lg-2 col-md-3 col-sm-6 col-12 footer-col">
+                <h5 class="footer-title">Help</h5>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="tentang-kami.php#rent">Rent</a></li>
+                    <li><a href="tentang-kami.php#tnc">Terms &amp; Conditions</a></li>
+                    <li><a href="tentang-kami.php#returns">Returns</a></li>
+                    <li><a href="tentang-kami.php#operational">Operational</a></li>
+                </ul>
+            </div>
+
+            <!-- KOLOM 3 – ABOUT MOUNTIFY (SECTION DI INDEX.PHP) -->
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 footer-col">
+                <h5 class="footer-title">About Mountify</h5>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="index.php#about-section">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- KOLOM 4 – FIND US (SOSMED) -->
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 footer-col">
                 <h5 class="footer-title">Find Us</h5>
-
-                <p class="mb-1"><i class="fab fa-whatsapp me-2"></i> WhatsApp Kami:</p>
-                <p class="footer-whatsapp">0878 1200 0155</p>
-
-                <div class="d-flex gap-3 footer-sosmed">
+                <div class="d-flex gap-3 footer-sosmed mt-2">
                     <a href="https://wa.me/628988712806?text=Hai%20saya%20ingin%20booking%20produk%20"><i class="fab fa-whatsapp"></i></a>
                     <a href="http://instagram.com/zahramylndaaa"><i class="fab fa-instagram"></i></a>
                     <a href="http://x.com/vegarchive"><i class="fab fa-twitter"></i></a>
@@ -55,6 +63,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- FOOTER BAWAH -->
 <div class="footer-bottom container-fluid">

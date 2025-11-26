@@ -509,5 +509,43 @@
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="fontawesome/js/all.min.js"></script>
+ 
+<script>
+function activateTabFromHash() {
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const map = {
+        '#rent': 'rent-tab',
+        '#tnc': 'tnc-tab',
+        '#returns': 'returns-tab',
+        '#operational': 'operational-tab'
+    };
+
+    const tabId = map[hash];
+    if (!tabId) return;
+
+    const triggerEl = document.getElementById(tabId);
+    if (!triggerEl) return;
+
+    const tab = new bootstrap.Tab(triggerEl);
+    tab.show();
+
+    const section = document.querySelector('.help-main-section');
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // jalan pas halaman pertama kali dibuka
+    activateTabFromHash();
+
+    // jalan lagi tiap hash berubah (klik link #tnc / #returns dll di halaman yang sama)
+    window.addEventListener('hashchange', activateTabFromHash);
+});
+</script>
+
+
 </body>
 </html>

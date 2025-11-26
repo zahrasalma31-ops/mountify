@@ -207,7 +207,7 @@
     </div>
 
     <!-- tentang kami -->
-    <div class="container-fluid warna3 py-5">
+    <div id="about-section" class="container-fluid warna3 py-5">
         <div class="container text-center">
             <h3>About Us</h3>
             <p class="fs-5 mt-3">
