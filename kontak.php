@@ -42,14 +42,14 @@ if (isset($_POST['kirim'])) {
 
 <?php require "navbar.php"; ?>
 
-<!-- Banner (boleh pakai banner-produk biar konsisten) -->
+<!-- Banner  -->
 <div class="container-fluid banner-produk d-flex align-items-center">
     <div class="container">
         <h1 class="text-white text-center">Kontak Kami</h1>
     </div>
 </div>
 
-<!-- Konten Kontak -->
+<!-- Kontak -->
 <div class="container contact-section py-5">
     <div class="row g-4">
 
@@ -111,7 +111,7 @@ if (isset($_POST['kirim'])) {
             </form>
         </div>
 
-        <!-- MAP + ALAMAT -->
+        <!-- MAP ALAMAT -->
         <div class="col-12 col-lg-6">
             <h2 class="mb-4">Lokasi Kami</h2>
             <p class="mb-2">
