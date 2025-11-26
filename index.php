@@ -42,6 +42,139 @@
         </div>
     </div>
 
+        <!-- PILIHAN BRAND (SLIDER) -->
+    <div class="container-fluid brand-section py-5">
+    <div class="container">
+        <h2 class="brand-title">Brand Collection</h2>
+        <p class="brand-subtitle">
+            Handpicked from top brands for the best experience.
+        </p>
+    </div>
+
+        <div class="brand-marquee">
+            <div class="brand-track">
+                <!-- 1 set logo -->
+                <div class="brand-card">
+                    <img src="image/tnf.png" alt="The North Face">
+                </div>
+                <div class="brand-card">
+                    <img src="image/rei.png" alt="Rei">
+                </div>
+                <div class="brand-card">
+                    <img src="image/salomon.png" alt="Salomon">
+                </div>
+                <div class="brand-card">
+                    <img src="image/osprey.png" alt="Osprey">
+                </div>
+                <div class="brand-card">
+                    <img src="image/quechua.jpeg" alt="Quechua">
+                </div>
+                <div class="brand-card">
+                    <img src="image/eiger.jpg" alt="Eiger">
+                </div>
+                <div class="brand-card">
+                    <img src="image/ortuseight.png" alt="Ortuseight">
+                </div>
+                <div class="brand-card">
+                    <img src="image/naturehike.png" alt="Nature Hike">
+                </div>
+                <div class="brand-card">
+                    <img src="image/hoka.png" alt="Hoka">
+                </div>
+                <div class="brand-card">
+                    <img src="image/greenforest.jpg" alt="Greenforest">
+                </div>
+                <div class="brand-card">
+                    <img src="image/credifox.jpg" alt="Credifox">
+                </div>
+                <div class="brand-card">
+                    <img src="image/consina.png" alt="Consina">
+                </div>
+                <div class="brand-card">
+                    <img src="image/carumby.png" alt="Carumby">
+                </div>
+                <div class="brand-card">
+                    <img src="image/bogaboo.png" alt="Bogaboo">
+                </div>
+                <div class="brand-card">
+                    <img src="image/bigarmour.png" alt="Bigarmour">
+                </div>
+                <div class="brand-card">
+                    <img src="image/aonijie.png" alt="Aonijie">
+                </div>
+                <div class="brand-card">
+                    <img src="image/antarestar.png" alt="Antarestar">
+                </div>
+                <div class="brand-card">
+                    <img src="image/altitude.png" alt="Altitude Gear">
+                </div>
+                <div class="brand-card">
+                    <img src="image/910.png" alt="910 Nineteen">
+                </div>
+
+                <!-- duplikat 1 set yang sama biar looping-nya halus -->
+                <div class="brand-card">
+                    <img src="image/tnf.png" alt="The North Face">
+                </div>
+                <div class="brand-card">
+                    <img src="image/rei.png" alt="Rei">
+                </div>
+                <div class="brand-card">
+                    <img src="image/salomon.png" alt="Salomon">
+                </div>
+                <div class="brand-card">
+                    <img src="image/osprey.png" alt="Osprey">
+                </div>
+                <div class="brand-card">
+                    <img src="image/quechua.jpeg" alt="Quechua">
+                </div>
+                <div class="brand-card">
+                    <img src="image/eiger.jpg" alt="Eiger">
+                </div>
+                <div class="brand-card">
+                    <img src="image/ortuseight.png" alt="Ortuseight">
+                </div>
+                <div class="brand-card">
+                    <img src="image/naturehike.png" alt="Nature Hike">
+                </div>
+                <div class="brand-card">
+                    <img src="image/hoka.png" alt="Hoka">
+                </div>
+                <div class="brand-card">
+                    <img src="image/greenforest.jpg" alt="Greenforest">
+                </div>
+                <div class="brand-card">
+                    <img src="image/credifox.jpg" alt="Credifox">
+                </div>
+                <div class="brand-card">
+                    <img src="image/consina.png" alt="Consina">
+                </div>
+                <div class="brand-card">
+                    <img src="image/carumby.png" alt="Carumby">
+                </div>
+                <div class="brand-card">
+                    <img src="image/bogaboo.png" alt="Bogaboo">
+                </div>
+                <div class="brand-card">
+                    <img src="image/bigarmour.png" alt="Bigarmour">
+                </div>
+                <div class="brand-card">
+                    <img src="image/aonijie.png" alt="Aonijie">
+                </div>
+                <div class="brand-card">
+                    <img src="image/antarestar.png" alt="Antarestar">
+                </div>
+                <div class="brand-card">
+                    <img src="image/altitude.png" alt="Altitude Gear">
+                </div>
+                <div class="brand-card">
+                    <img src="image/910.png" alt="910 Nineteen">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- highlighted kategori -->
     <div class="container-fluid py-5">
         <div class="container text-center">

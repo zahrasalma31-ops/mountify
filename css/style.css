@@ -614,3 +614,74 @@
 .contact-map iframe {
     border-radius: 10px;
 }
+
+/* === PILIHAN BRAND SLIDER === */
+
+.brand-section {
+    /* ganti hijau jadi gradasi abu muda -> putih */
+    background: linear-gradient(to bottom, #f1f1f1, #ffffff);
+}
+
+.brand-title {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+/* area luar, supaya konten yang keluar layar disembunyikan */
+.brand-marquee {
+    overflow: hidden;
+    padding: 10px 0 20px;
+}
+
+/* track yang bergerak ke kiri */
+.brand-track {
+    display: flex;
+    gap: 28px;
+    animation: brandScroll 25s linear infinite;
+}
+
+/* card logo */
+.brand-card {
+    min-width: 180px;       /* lebih lebar biar logo leluasa */
+    height: 130px;          /* lebih tinggi */
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 16px;
+}
+
+.brand-card img {
+    max-width: 150px;       /* WAS 120px -> logo lebih besar */
+    max-height: 100px;      /* WAS 70px */
+    object-fit: contain;
+    transform: scale(1.05); /* sedikit zoom */
+}
+
+/* animasi jalan ke kiri terus */
+@keyframes brandScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);  /* karena kita duplikat set logo 2x */
+    }
+}
+
+/* Judul  */
+.brand-title {
+    font-size: 48px;         /* ukuran besar */
+    font-weight: 700;        /* tebal */
+    color: #000;             /* hitam */
+    margin-bottom: 8px;
+}
+
+/* Subjudul  */
+.brand-subtitle {
+    font-size: 20px;         /* ukuran sedang */
+    color: #666;             /* abu-abu soft */
+    font-weight: 400;        /* tipis */
+    margin-bottom: 35px;
+}
