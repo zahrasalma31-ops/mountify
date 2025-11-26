@@ -50,28 +50,24 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 
 <?php require "navbar.php"; ?>
 
-<!-- Wrapper utama: kasih tinggi min 75% viewport dan center vertikal -->
-<div class="container min-vh-75 d-flex align-items-center py-5">
-    <div class="row w-100 justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card border-0 shadow-sm p-4 text-center">
+<!-- Pakai wrapper & card yang sama dengan halaman register -->
+<div class="container register-wrapper">
+    <div class="register-card mx-auto text-center">
 
-                <h3 class="mb-3">
-                    <?= $success ? "Verifikasi Berhasil" : "Verifikasi Gagal"; ?>
-                </h3>
+        <h3 class="mb-3">
+            <?= $success ? "Verifikasi Berhasil" : "Verifikasi Gagal"; ?>
+        </h3>
 
-                <p class="mb-4">
-                    <?= htmlspecialchars($status); ?>
-                </p>
+        <p class="mb-4">
+            <?= htmlspecialchars($status); ?>
+        </p>
 
-                <a href="login.php"
-                   class="btn btn-success px-4 py-2"
-                   style="background-color:#2d483a;border:none;border-radius:8px;">
-                    Ke Halaman Login
-                </a>
+        <a href="login.php"
+           class="btn btn-success px-4 py-2"
+           style="background-color:#2d483a;border:none;border-radius:8px;">
+            Ke Halaman Login
+        </a>
 
-            </div>
-        </div>
     </div>
 </div>
 
