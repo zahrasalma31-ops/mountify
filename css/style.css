@@ -421,6 +421,55 @@
     margin-bottom: 0.25rem;     /* jarak antar bullet */
 }
 
+.help-rent-box {
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    max-width: 950px;
+    margin: 0 auto; /* biar box center */
+}
+
+.help-rent-box .help-section-title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #294B29; /* warna tema hijau gelap */
+}
+
+.help-rent-box .help-section-subtitle {
+    font-size: 1.05rem;
+    color: #666;
+}
+
+/* Efek hover untuk semua card help */
+.help-rent-box,
+.help-box {
+    transition: 0.25s ease-in-out;
+}
+
+.help-rent-box:hover,
+.help-box:hover {
+    transform: translateY(-6px);     /* card naik */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12); /* shadow lebih tebal */
+}
+
+/* Kurangi jarak antara konten Help dan footer */
+.help-main-section {
+    padding-top: 3rem;        /* boleh diubah sesuai selera */
+    padding-bottom: 0.2rem;     /* ini yang bikin ke footer jadi dekat */
+}
+
+/* Pastikan tab-content dan card tidak nambah jarak berlebihan */
+.help-main-section .tab-content {
+    margin-bottom: 0;
+}
+
+.help-rent-box {
+    margin-bottom: 10px;      /* kecil saja biar nggak ngedorong footer jauh */
+}
+
+
 
 /* ====================== REGISTER PAGE ====================== */
 

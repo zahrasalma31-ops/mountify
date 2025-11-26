@@ -20,7 +20,7 @@
     </div>
 
     <!-- main -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-4 help-main-section">
         <div class="container">
 
             <!-- Tabs -->
@@ -63,28 +63,84 @@
             </ul>
 
             <!-- Tab Content -->
-            <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab-rent" role="tabpanel" aria-labelledby="rent-tab">
 
-                <!-- RENT (tetap angka) -->
-                <div class="tab-pane fade show active" id="tab-rent" role="tabpanel" aria-labelledby="rent-tab">
-                    <h3 class="help-section-title">Rent</h3>
-                    <p class="help-section-subtitle">Informasi &amp; Petunjuk Sewa</p>
-                    <ol class="help-list">
-                        <li>Buka website Mountify dan pilih menu <strong>Product</strong>.</li>
-                        <li>Telusuri produk yang tersedia dan baca deskripsi serta detail perlengkapannya.</li>
-                        <li>Setelah menentukan perlengkapan yang ingin disewa, tekan tombol
-                            <strong>“Booking”</strong> untuk melakukan pemesanan.</li>
-                        <li>Kirim detail pesananmu melalui WhatsApp sesuai format yang tertera.</li>
-                        <li>Tim Mountify akan mengonfirmasi ketersediaan alat dan total biaya sewa.</li>
-                        <li>Lakukan pembayaran sesuai instruksi yang diberikan.</li>
-                        <li>Ambil dan kembalikan alat di Basecamp Mountify, Tembalang – Semarang sesuai jadwal booking
-                            (check-in &amp; check-out).</li>
-                        <li>Keterlambatan pengembalian dikenakan biaya tambahan per hari sesuai harga reguler.</li>
-                        <li>Mohon menjaga perlengkapan selama masa sewa. Kerusakan atau kehilangan menjadi
-                            tanggung jawab penyewa dan dikenakan biaya ganti sesuai kondisi alat.</li>
-                        <li>Gunakan dengan bijak, jaga kebersihan, dan nikmati petualanganmu bersama Mountify!</li>
+                <div class="help-rent-box">
+
+                    <h3 class="help-section-title text-center mb-1">CARA SEWA</h3>
+                    <p class="help-section-subtitle text-center mb-4">
+                        Panduan Penyewaan Peralatan di Mountify Outdoor
+                    </p>
+
+                    <p>
+                        Sebagai penyedia layanan penyewaan peralatan pendakian dan kegiatan outdoor, 
+                        <strong>Mountify Outdoor</strong> berkomitmen memberikan kemudahan dan kenyamanan dalam setiap proses pemesanan. 
+                        Berikut langkah-langkah yang perlu Anda ikuti:
+                    </p>
+
+                    <ol class="help-list mt-3">
+                        <li>
+                            <strong>Periksa Ketersediaan Peralatan</strong>
+                            <ul>
+                                <li>Silakan kunjungi situs resmi Mountify Outdoor untuk melihat daftar peralatan yang tersedia untuk disewa.</li>
+                                <li>Informasi tersebut diperbarui secara berkala agar Anda dapat merencanakan kegiatan dengan lebih tepat.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Pastikan Anda Telah Terdaftar sebagai Anggota</strong>
+                            <ul>
+                                <li>Layanan penyewaan hanya tersedia bagi pengguna yang telah menjadi anggota resmi Mountify Outdoor.</li>
+                                <li>Jika Anda belum memiliki akun, silakan lakukan pendaftaran terlebih dahulu melalui website kami.</li>
+                                <li>Panduan lengkap mengenai proses registrasi tersedia di laman keanggotaan.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Pilih Barang dan Lakukan Transaksi melalui Website</strong>
+                            <ul>
+                                <li>Setelah memastikan Anda telah menjadi anggota, silakan pilih peralatan yang diinginkan melalui website Mountify Outdoor.</li>
+                                <li>Lanjutkan transaksi penyewaan secara langsung di website dan unggah bukti pembayaran pada halaman yang telah disediakan.</li>
+                                <li>Setelah bukti pembayaran diunggah, harap konfirmasikan kepada tim Mountify Outdoor melalui WhatsApp untuk memastikan proses penyewaan berjalan dengan lancar.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Pengambilan Peralatan di Lokasi Store</strong>
+                            <ul>
+                                <li>Datanglah ke store Mountify Outdoor sesuai dengan jadwal pengambilan yang telah disepakati.</li>
+                                <li>Informasi lengkap mengenai lokasi, waktu operasional, dan prosedur pengambilan peralatan tersedia di website.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Gunakan Peralatan dengan Tanggung Jawab</strong>
+                            <ul>
+                                <li>Selama masa sewa, harap gunakan peralatan sesuai fungsinya dan dengan penuh kehati-hatian.</li>
+                                <li>Jaga kondisi peralatan sebagaimana Anda menjaga perlengkapan pribadi.</li>
+                                <li>Bila terjadi kerusakan akibat kelalaian, akan dikenakan denda sesuai ketentuan yang berlaku secara wajar.</li>
+                                <li>Segera laporkan jika terdapat kerusakan atau kendala teknis pada peralatan kepada tim Mountify Outdoor.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Pengembalian Peralatan</strong>
+                            <ul>
+                                <li>Setelah masa sewa berakhir, kembalikan peralatan ke store Mountify Outdoor sesuai jadwal yang ditentukan.</li>
+                                <li>Peralatan tidak perlu dicuci sebelum dikembalikan. Tim kami yang menangani kebersihan.</li>
+                                <li>Detail lebih lanjut mengenai prosedur pengembalian tersedia di laman panduan.</li>
+                            </ul>
+                        </li>
                     </ol>
-                </div>
+
+                    <p class="mt-3">
+                        <strong>Butuh bantuan?</strong> Hubungi WhatsApp resmi Mountify Outdoor
+                        untuk informasi dan pertanyaan lebih lanjut.
+                    </p>
+
+                </div> <!-- end .help-rent-box -->
+
+            </div>
 
                 <!-- PAYMENT: judul metode TIDAK bernomor, pakai ikon -->
                 <div class="tab-pane fade" id="tab-payment" role="tabpanel" aria-labelledby="payment-tab">
