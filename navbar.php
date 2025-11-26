@@ -15,7 +15,7 @@
                     <a class="nav-link" href="tentang-kami.php">Help</a>
                 </li>
                 <li class="nav-item me-4">
-                    <a class="nav-link" href="kontak.php">Kontak</a>
+                    <a class="nav-link" href="kontak.php">Contact</a>
                 </li>
 
             </ul>
