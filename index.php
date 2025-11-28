@@ -17,30 +17,66 @@
 <body>
 	<?php require 'navbar.php'; ?>
 
-    <!-- banner -->
-    <div class="container-fluid banner d-flex align-items-center">
-        <div class="container text-center text-white">
-            <h1>Mountify Outdoor</h1>
-            <h4>Find Your Adventure Essentials Here!</h4>
-            <div class="col-md-8 offset-md-2">
-                <form method="get" action="produk.php">
-                    <div class="input-group input-group-lg my-4">
-                        <input 
-                            type="text" 
-                            class="form-control" 
+<!-- banner -->
+<div class="container-fluid banner d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-9">
+
+                <!-- tagline kecil hijau -->
+                <p class="hero-kicker">MOUNTIFY OUTDOOR</p>
+
+                <!-- judul besar -->
+                <h1 class="hero-title">
+                    Gear Up for Your <br>
+                    Next Adventure.
+                </h1>
+
+                <!-- badge benefit -->
+                <span class="hero-badge">
+                    <div class="hero-icon-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    Fully-Updated Gear
+                </span>
+
+                <span class="hero-badge">
+                    <div class="hero-icon-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    Quick &amp; Easy Rental
+                </span>
+
+                <span class="hero-badge">
+                    <div class="hero-icon-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    Tembalang Exclusive Service
+                </span>
+
+
+                <!-- search bar versi baru -->
+                <form method="get" action="produk.php" class="hero-search">
+                    <div class="input-group input-group-lg">
+                        <input
+                            type="text"
+                            class="form-control hero-search-input"
                             placeholder="What Are You Looking For?"
-                            aria-label="Recipient's username" 
-                            aria-describedby="basic-addon2" 
+                            aria-label="Search product"
                             name="keyword"
                         >
-                        <button type="submit" class="btn warna2 text-white">
+                        <button type="submit" class="btn warna2 text-white hero-search-btn">
                             Find
                         </button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
+</div>
+
+
 
         <!-- PILIHAN BRAND (SLIDER) -->
     <div class="container-fluid brand-section py-5">

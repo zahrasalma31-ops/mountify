@@ -95,6 +95,65 @@ $queryProdukTerkait = mysqli_query(
         </a>
       </div>
 
+      
+    <!-- BLOK SEWA (CARD LEBAR DI BAWAH GAMBAR + DETAIL) -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8">
+        <div class="sewa-card p-3 p-md-4">
+          <div class="row gy-3 align-items-end">
+
+            <!-- Tanggal Ambil -->
+            <div class="col-md-4">
+              <div class="sewa-label">Tanggal Ambil</div>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="far fa-calendar"></i>
+                </span>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="tglAmbil"
+                >
+              </div>
+            </div>
+
+            <!-- Durasi -->
+            <div class="col-md-4">
+              <div class="sewa-label">Durasi Sewa</div>
+              <div class="input-group">
+                <select class="form-select" id="durasiSewa">
+                  <option value="1">1 Hari</option>
+                  <option value="2">2 Hari</option>
+                  <option value="3" selected>3 Hari</option>
+                  <option value="4">4 Hari</option>
+                  <option value="5">5 Hari</option>
+                  <option value="6">6 Hari</option>
+                  <option value="7">7 Hari</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Maks. Pengembalian -->
+            <div class="col-md-4">
+              <div class="sewa-label">Maks. Pengembalian</div>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tglKembali"
+                  readonly
+                >
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     </div>
   </div>
 </div>
@@ -124,6 +183,53 @@ $queryProdukTerkait = mysqli_query(
 
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="fontawesome/js/all.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tglAmbilInput   = document.getElementById('tglAmbil');
+  const durasiSelect    = document.getElementById('durasiSewa');
+  const tglKembaliInput = document.getElementById('tglKembali');
+
+  // Set default tgl ambil = hari ini
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm   = String(today.getMonth() + 1).padStart(2, '0');
+  const dd   = String(today.getDate()).padStart(2, '0');
+  tglAmbilInput.value = `${yyyy}-${mm}-${dd}`;
+
+  function formatTanggalIndo(date) {
+    const hari  = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+    const bulan = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+
+    const h = hari[date.getDay()];
+    const d = String(date.getDate()).padStart(2, '0');
+    const b = bulan[date.getMonth()];
+    const y = date.getFullYear();
+    return `${h}, ${d} ${b} ${y}`;
+  }
+
+  function updateTglKembali() {
+    if (!tglAmbilInput.value) return;
+
+    const start = new Date(tglAmbilInput.value);
+    const durasi = parseInt(durasiSelect.value || '1', 10);
+
+    // di sini aku buat: kembali = tgl ambil + durasi hari
+    // (kalau mau beda logika tinggal ubah angka +durasi)
+    const kembali = new Date(start);
+    kembali.setDate(kembali.getDate() + durasi);
+
+    tglKembaliInput.value = formatTanggalIndo(kembali);
+  }
+
+  // Hitung pertama kali
+  updateTglKembali();
+
+  // Recalculate kalau user ganti tanggal / durasi
+  tglAmbilInput.addEventListener('change', updateTglKembali);
+  durasiSelect.addEventListener('change', updateTglKembali);
+});
+</script>
 
 </body>
 </html>
