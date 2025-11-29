@@ -19,6 +19,10 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                     <a class="nav-link" href="booking-list.php">Booking</a>
+                </li>
+
                 <li class="nav-item me-4">
                     <a class="nav-link" href="produk.php">
                         <i class="fas fa-box-open"></i> Produk

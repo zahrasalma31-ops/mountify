@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <?php require "navbar.php"; ?>
 
-<div class="container register-wrapper">
+<div class="register-wrapper">
     <div class="register-card mx-auto">
 
         <h1 class="register-title">Registrasi</h1>

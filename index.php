@@ -35,21 +35,21 @@
                 <!-- badge benefit -->
                 <span class="hero-badge">
                     <div class="hero-icon-circle">
-                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check-circle"></i>
                     </div>
                     Fully-Updated Gear
                 </span>
 
                 <span class="hero-badge">
                     <div class="hero-icon-circle">
-                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check-circle"></i>
                     </div>
                     Quick &amp; Easy Rental
                 </span>
 
                 <span class="hero-badge">
                     <div class="hero-icon-circle">
-                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check-circle"></i>
                     </div>
                     Tembalang Exclusive Service
                 </span>

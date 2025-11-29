@@ -51,7 +51,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 <?php require "navbar.php"; ?>
 
 <!-- Pakai wrapper & card yang sama dengan halaman register -->
-<div class="container register-wrapper">
+<div class="register-wrapper">
     <div class="register-card mx-auto text-center">
 
         <h3 class="mb-3">

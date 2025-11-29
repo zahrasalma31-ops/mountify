@@ -24,12 +24,14 @@
     background-position: center;
 }
 
-/* konten kiri */
+/* konten kiri, putih semua */
 .hero-kicker,
 .hero-title,
-.hero-badge {
+.hero-badge,
+.hero-badge i {
     color: #ffffff;
 }
+
 
 /* tagline kecil hijau */
 .hero-kicker {
@@ -123,19 +125,6 @@
     }
 }
 
-/* ikon centang bulat hijau */
-.hero-badge-icon {
-    width: 22px;
-    height: 22px;
-    border-radius: 999px;
-    background-color: #9FE870;      /* hijau terang */
-    color: #1b331c;                 /* ikon gelap */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;                /* ukuran check */
-}
-
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -146,17 +135,6 @@
     background-color: rgba(0, 0, 0, 0.45);
 }
 
-/* lingkaran hijau */
-.hero-icon-circle {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #9FE870;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
 
 /* ikon centang di dalam lingkaran */
 .hero-icon-circle i {
@@ -296,109 +274,94 @@
     border: 1px solid #ececec;
 }
 
-/* label kecil di atas input */
-.sewa-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #777;
-    margin-bottom: 4px;
-}
-
-/* rapihin input group di dalam box */
-.sewa-box .input-group-text {
-    background-color: #f7f7f7;
-    border-right: 0;
-}
-
-.sewa-box .form-control,
-.sewa-box .form-select {
-    border-left: 0;
-    font-size: 14px;
-}
-
-.sewa-box .form-control,
-.sewa-box .form-select,
-.sewa-box .input-group-text {
-    border-radius: 10px;
-}
-
-/* biar card tetap rapi di layar kecil */
-@media (max-width: 768px) {
-    .sewa-box {
-        border-radius: 14px;
-    }
-}
-
 /* ==== CARD SEWA DETAIL PRODUK ==== */
-
 .sewa-card {
-    background-color: #294B29;      /* hijau gelap tema Mountify */
-    border-radius: 22px;            /* kotak luar tumpul */
+    background-color: #778873;
+    border-radius: 22px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
 }
 
-/* label kecil di atas input */
+/* ===== LABEL ===== */
 .sewa-label {
     font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.03em;
     text-transform: uppercase;
-    margin-bottom: 4px;
-    color: #DBE7C9;                 /* hijau muda (warna4) */
+    letter-spacing: 0.03em;
+    color: #DBE7C9;
+    text-align: center !important;
+    margin-bottom: 6px;
+    display: block;
 }
 
-/* supaya kotak input di dalamnya tetap putih & rapi */
+/* ====== INPUT GROUP (BIAR NGGAK BULAT) ====== */
+.sewa-card .input-group {
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+/* ikon kiri */
 .sewa-card .input-group-text {
     background-color: #ffffff;
     border: none;
-    border-radius: 999px 0 0 999px;
+    border-radius: 12px 0 0 12px !important;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
+/* input tanggal & kotak kanan */
 .sewa-card .form-control,
 .sewa-card .form-select {
     background-color: #ffffff;
     border: none;
-    border-radius: 0 999px 999px 0;
+    border-radius: 0 12px 12px 0 !important;
+    font-size: 0.9rem;
+    height: 40px;
+    padding-left: 12px;
+}
+
+/* ====== Select dropdown agar TIDAK bulat saat dibuka ====== */
+.sewa-card select.form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+}
+
+.sewa-card .form-select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ====== Select2 FIX – biar sama tinggi, tidak bulat ====== */
+.sewa-card .select2-container--default .select2-selection--single {
+    height: 40px !important;
+    border-radius: 12px !important;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+
+.sewa-card .select2-selection__rendered {
+    line-height: normal !important;
     font-size: 0.9rem;
 }
 
-/* biar input group-nya sedikit lebih tumpul & enak dilihat */
-.sewa-card .input-group {
-    border-radius: 999px;
-    overflow: hidden;
+.sewa-card .select2-selection__arrow {
+    height: 40px !important;
 }
 
-/* spacing di dalam card biar lega dikit */
+/* ===== spacing ===== */
 .sewa-card .row > [class^="col-"] {
     padding-top: 4px;
     padding-bottom: 4px;
 }
-
-
-.sewa-card {
-    max-width: 710px;  /* bebas kamu tentukan */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* biar label ditengah */
-.sewa-label {
-    text-align: center;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 6px;
-}
-
-.sewa-container-left {
-    display: flex;
-    justify-content: flex-start; /* geser ke kiri */
-}
-
-.sewa-card {
-    max-width: 600px; /* biar tidak terlalu panjang */
-}
-
 
 
 /* === PRODUK TERKAIT === */
@@ -433,7 +396,7 @@
 .product-title {
     font-family: Georgia, serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 /*  === KATEGORI BAR BARU (HORIZONTAL) === */
@@ -697,6 +660,7 @@
     padding: 40px 15px;
     background: #f7f8f4; /* sedikit kehijauan lembut */
 }
+
 
 .register-card {
     width: 100%;
@@ -1031,30 +995,6 @@
     opacity: 0.8;
 }
 
-/* Tombol keranjang */
-.nav-cart {
-    padding: 6px 14px;
-    border-radius: 16px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-.nav-cart i {
-    color: #0c2a37;
-    font-size: 1.05rem;
-}
-
-/* Badge jumlah item di keranjang */
-.cart-badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background: #ff4d4f;
-    color: #fff;
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    border-radius: 999px;
-    font-weight: 700;
-}
-
 /* Border bawah navbar (selalu tampil, meski transparan) */
 .custom-navbar {
     border-bottom: 1px solid rgba(255, 255, 255, 0.35); /* garis putih semi-transparan */
@@ -1064,3 +1004,87 @@
 .custom-navbar.navbar-scrolled {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
+
+/* Warna tulisan user di navbar (Milan) jadi putih */
+.custom-navbar .dropdown > .nav-link {
+    color: #ffffff !important;
+}
+
+/* Biar pas hover tetap putih */
+.custom-navbar .dropdown > .nav-link:hover,
+.custom-navbar .dropdown > .nav-link:focus {
+    color: #ffffff !important;
+}
+
+/* Warna tanda panah kecil (caret) juga putih */
+.custom-navbar .dropdown-toggle::after {
+    border-top-color: #ffffff;
+}
+
+/* Style dasar item dropdown user */
+.custom-navbar .dropdown-menu {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e3e7db;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.custom-navbar .dropdown-menu .dropdown-item {
+    padding: 8px 18px;
+    transition: background-color 0.15s ease, 
+                transform 0.15s ease, 
+                box-shadow 0.15s ease;
+}
+
+/* Efek timbul + sedikit geser saat hover */
+.custom-navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #f3f6ee;
+    transform: translateX(3px);
+    box-shadow: inset 3px 0 0 #2d483a; /* garis kecil di kiri, biar kerasa aktif */
+}
+
+/* ===== RIWAYAT BOOKING ===== */
+
+.riwayat-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;            /* biar kontennya di tengah layar */
+}
+
+.riwayat-title {
+    font-size: 45px;
+    font-weight: 750; /* lebih bold */
+    color: #2d483a;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Card putih mengelilingi tabel, mirip "Cara Sewa" */
+.riwayat-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px 30px 35px;
+    border: 1px solid #e3e7db;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Biar tabel jadi rapih di dalam card */
+.riwayat-table th,
+.riwayat-table td {
+    vertical-align: middle;
+    border-color: #edf0e6;
+    font-size: 0.95rem;
+}
+
+.riwayat-table thead th {
+    font-weight: 600;
+}
+
+.riwayat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12); /* lebih timbul */
+}
+
+
