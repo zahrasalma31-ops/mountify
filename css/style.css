@@ -189,6 +189,29 @@
     background-position: center;
 }
 
+.top-picks-title {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    color: #2d483a; /* hijau Mountify */
+    margin-bottom: 40px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.top-picks-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 4px 14px rgba(0,0,0,0.45);
+}
+
+
 /* === LIST KATEGORI === */
 .no-decoration {
     text-decoration: none;
@@ -1087,4 +1110,67 @@
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12); /* lebih timbul */
 }
 
+/* =========================
+   PRODUCT HERO BANNER
+   ========================= */
+.product-hero-banner {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* sama tinggi vibes-nya kayak home */
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url('../image/banner1.png');  /* pakai banner yang sama */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;      /* supaya tidak ketutup navbar yang fixed */
+}
 
+.product-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent; /* overlay sudah dari linear-gradient di atas */
+}
+
+.product-hero-text {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Teks kecil "MOUNTIFY OUTDOOR" */
+.hero-small-title {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9FE870;      /* hijau sama kayak hero home */
+    margin-bottom: 12px;
+}
+
+/* Judul besar putih */
+.hero-big-title {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* mobile */
+@media (max-width: 576px) {
+    .product-hero-banner {
+        height: 260px;
+        padding-top: 70px;
+    }
+    .hero-big-title {
+        font-size: 32px;
+    }
+    .hero-small-title {
+        font-size: 13px;
+        letter-spacing: 0.06em;
+    }
+}

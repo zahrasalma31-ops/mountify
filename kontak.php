@@ -42,12 +42,16 @@ if (isset($_POST['kirim'])) {
 
 <?php require "navbar.php"; ?>
 
-<!-- Banner  -->
-<div class="container-fluid banner-produk d-flex align-items-center">
-    <div class="container">
-        <h1 class="text-white text-center">Contact Us</h1>
+<!-- CONTACT HERO -->
+<section class="product-hero-banner">
+    <div class="product-hero-overlay"></div>
+
+    <div class="product-hero-text">
+        <p class="hero-small-title">MOUNTIFY OUTDOOR</p>
+        <h1 class="hero-big-title">We’re Here When You Need Us.</h1>
     </div>
-</div>
+</section>
+
 
 <!-- Kontak -->
 <div class="container contact-section py-5">

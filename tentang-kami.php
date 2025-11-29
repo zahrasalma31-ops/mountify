@@ -13,11 +13,16 @@
     <?php require "navbar.php"; ?>
 
     <!-- banner -->
-    <div class="container-fluid banner-produk d-flex align-items-center">
-        <div class="container">
-            <h1 class="text-white text-center">Help</h1>
-        </div>
+<!-- HELP HERO -->
+<section class="product-hero-banner">
+    <div class="product-hero-overlay"></div>
+
+    <div class="product-hero-text">
+        <p class="hero-small-title">MOUNTIFY OUTDOOR</p>
+        <h1 class="hero-big-title">Your Guide to a Smooth Rental Experience.</h1>
     </div>
+</section>
+
 
     <!-- main -->
     <div class="container-fluid py-4 help-main-section">

@@ -214,13 +214,13 @@
     <!-- highlighted kategori -->
     <div class="container-fluid py-5">
         <div class="container text-center">
-            <h3>Top Picks</h3>
+            <h3 class="top-picks-title">Top Picks</h3>
 
             <div class="row mt-5">
                 <div class="col-md-4 mb-3">
                     <div class="highlighted-kategori kategori-sepatu d-flex justify-content-center align-items-center">
                         <h4 class="text-white">
-                            <a class="no-decoration" href="produk.php?kategori=Sepatu Hiking">Sepatu Hiking</a>
+                            <a class="no-decoration" href="produk.php?kategori=Sepatu Hiking">Hiking Shoes</a>
                         </h4>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="highlighted-kategori kategori-tenda d-flex justify-content-center align-items-center">
                         <h4 class="text-white">
-                            <a class="no-decoration" href="produk.php?kategori=Tenda">Tenda</a>
+                            <a class="no-decoration" href="produk.php?kategori=Tenda">Tent</a>
                         </h4>
                     </div>
                 </div>

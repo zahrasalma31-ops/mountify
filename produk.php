@@ -33,12 +33,15 @@ $countData = mysqli_num_rows($queryProduk);
 
 <?php require "navbar.php"; ?>
 
-<!-- Banner -->
-<div class="container-fluid banner-produk d-flex align-items-center">
-    <div class="container">
-        <h1 class="text-white text-center">Product</h1>
+<!-- PRODUCT HERO -->
+<section class="product-hero-banner">
+    <div class="product-hero-overlay"></div>
+
+    <div class="product-hero-text">
+        <p class="hero-small-title">MOUNTIFY OUTDOOR</p>
+        <h1 class="hero-big-title">Everything You Need for the Trail.</h1>
     </div>
-</div>
+</section>
 
 <!-- Kategori Horizontal -->
 <div class="kategori-container">
