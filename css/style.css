@@ -673,34 +673,37 @@
 }
 
 
-/* ====================== REGISTER PAGE ====================== */
+/* ====================== REGISTER / AUTH CARD ====================== */
 
+/* Wrapper umum (dipakai di halaman yang TIDAK memakai .banner, misal verify.php) */
+/* Untuk register.php di dalam .banner, wrapper ini tidak dipakai, jadi aman.    */
 .register-wrapper {
-    min-height: calc(100vh - 120px); /* kira-kira sisa tinggi setelah navbar+footer */
+    min-height: calc(100vh - 120px); 
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 15px;
-    background: #f7f8f4; /* sedikit kehijauan lembut */
+    padding: 60px 15px;
+    background: transparent;        
 }
 
-
+/* Kartu form */
 .register-card {
     width: 100%;
     max-width: 650px;
     background: #ffffff;
     border-radius: 20px;
     padding: 40px 40px 45px;
-    border: 1px solid #e3e7db;      /* border lembut seperti tone hijau-keabu */
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e3e7db;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22); /* sedikit lebih kuat biar terlihat di atas foto */
 }
 
+/* Judul */
 .register-title {
     text-align: center;
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 28px;
-    color: #2d483a;                  /* selaras tombol .btn-lihat */
+    color: #2d483a;
     letter-spacing: 0.03em;
 }
 
@@ -719,7 +722,7 @@
 .input-icon-wrapper i {
     font-size: 16px;
     margin-right: 10px;
-    color: #50623A;                  /* sama tone dengan .help-header-title */
+    color: #50623A;
 }
 
 .input-icon-wrapper input {

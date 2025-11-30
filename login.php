@@ -52,8 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         header("Location: index.php");
                     }
                     exit();
-                }
-                else {
+                } else {
                     $error = "Password yang Anda masukkan salah.";
                 }
             }
@@ -78,54 +77,63 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <?php require "navbar.php"; ?>
 
-<div class="register-wrapper">
-    <div class="register-card mx-auto">
+<!-- BACKGROUND GUNUNG SAMA SEPERTI INDEX/REGISTER -->
+<div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
 
-        <h1 class="register-title">Login</h1>
+                <div class="register-card mx-auto">
 
-        <?php if ($error) { ?>
-            <div class="alert alert-danger">
-                <?= htmlspecialchars($error); ?>
+                    <h1 class="register-title">Login</h1>
+
+                    <?php if ($error) { ?>
+                        <div class="alert alert-danger">
+                            <?= htmlspecialchars($error); ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php if ($success) { ?>
+                        <div class="alert alert-success">
+                            <?= htmlspecialchars($success); ?>
+                        </div>
+                    <?php } ?>
+
+                    <form method="POST" action="">
+
+                        <div class="input-icon-wrapper">
+                            <i class="far fa-envelope"></i>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Email"
+                                value="<?= isset($email) ? htmlspecialchars($email) : '' ?>"
+                                required>
+                        </div>
+
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="Password" 
+                                required>
+                        </div>
+
+                        <button type="submit" class="btn-register">
+                            Login <span class="ms-1">→</span>
+                        </button>
+
+                    </form>
+
+                    <p class="register-bottom-text">
+                        Belum punya akun? <a href="register.php">Daftar sekarang</a>
+                    </p>
+
+                </div>
+
             </div>
-        <?php } ?>
-
-        <?php if ($success) { ?>
-            <div class="alert alert-success">
-                <?= htmlspecialchars($success); ?>
-            </div>
-        <?php } ?>
-
-        <form method="POST" action="">
-
-            <div class="input-icon-wrapper">
-                <i class="far fa-envelope"></i>
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Email"
-                    value="<?= isset($email) ? htmlspecialchars($email) : '' ?>"
-                    required>
-            </div>
-
-            <div class="input-icon-wrapper">
-                <i class="fas fa-lock"></i>
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Password" 
-                    required>
-            </div>
-
-            <button type="submit" class="btn-register">
-                Login <span class="ms-1">→</span>
-            </button>
-
-        </form>
-
-        <p class="register-bottom-text">
-            Belum punya akun? <a href="register.php">Daftar sekarang</a>
-        </p>
-
+        </div>
     </div>
 </div>
 

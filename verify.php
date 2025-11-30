@@ -44,30 +44,39 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
     <meta charset="UTF-8">
     <title>Verifikasi Akun</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <?php require "navbar.php"; ?>
 
-<!-- Pakai wrapper & card yang sama dengan halaman register -->
-<div class="register-wrapper">
-    <div class="register-card mx-auto text-center">
+<!-- Background gunung sama seperti index / register / login -->
+<div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
 
-        <h3 class="mb-3">
-            <?= $success ? "Verifikasi Berhasil" : "Verifikasi Gagal"; ?>
-        </h3>
+                <div class="register-card mx-auto text-center">
 
-        <p class="mb-4">
-            <?= htmlspecialchars($status); ?>
-        </p>
+                    <h3 class="mb-3">
+                        <?= $success ? "Verifikasi Berhasil" : "Verifikasi Gagal"; ?>
+                    </h3>
 
-        <a href="login.php"
-           class="btn btn-success px-4 py-2"
-           style="background-color:#2d483a;border:none;border-radius:8px;">
-            Ke Halaman Login
-        </a>
+                    <p class="mb-4">
+                        <?= htmlspecialchars($status); ?>
+                    </p>
 
+                    <a href="login.php"
+                       class="btn btn-success px-4 py-2"
+                       style="background-color:#2d483a;border:none;border-radius:8px;">
+                        Ke Halaman Login
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 

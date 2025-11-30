@@ -39,8 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             );
 
             if ($simpan) {
-                // ====== MODE LOCALHOST: TAMPILKAN LINK VERIFIKASI DI HALAMAN ======
-                // GANTI baseUrl dengan URL project kamu
+                // MODE LOCALHOST: pakai link verifikasi, tapi ditampilkan via tombol
                 $baseUrl    = "http://localhost/mountify"; 
                 $verifyLink = $baseUrl . "/verify.php?email=" . urlencode($email) . "&token=" . $token;
 
@@ -67,84 +66,93 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <?php require "navbar.php"; ?>
 
-<div class="register-wrapper">
-    <div class="register-card mx-auto">
+<!-- BAGIAN BANNER DENGAN BACKGROUND SAMA SEPERTI INDEX -->
+<div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Lebar kartu registrasi -->
+            <div class="col-lg-5 col-md-7">
 
-        <h1 class="register-title">Registrasi</h1>
+                <div class="register-card mx-auto">
 
-        <?php if ($error) { ?>
-            <div class="alert alert-danger">
-                <?= htmlspecialchars($error); ?>
+                    <h1 class="register-title">Registrasi</h1>
+
+                    <?php if ($error) { ?>
+                        <div class="alert alert-danger">
+                            <?= htmlspecialchars($error); ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php if ($success) { ?>
+                        <div class="alert alert-success text-center">
+                            <?= htmlspecialchars($success); ?>
+
+                            <?php if ($verifyLink) { ?>
+                                <div class="mt-3">
+                                    <a href="<?= htmlspecialchars($verifyLink); ?>" 
+                                       class="btn btn-success px-4 py-2"
+                                       style="border-radius: 8px; background-color:#2d483a; border:none;">
+                                        Verifikasi Akun →
+                                    </a>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+
+                    <form method="POST" action="">
+
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input 
+                                type="text" 
+                                name="username" 
+                                placeholder="username"
+                                value="<?= isset($username) ? htmlspecialchars($username) : '' ?>"
+                                required>
+                        </div>
+
+                        <div class="input-icon-wrapper">
+                            <i class="far fa-envelope"></i>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Email"
+                                value="<?= isset($email) ? htmlspecialchars($email) : '' ?>"
+                                required>
+                        </div>
+
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="Password" 
+                                required>
+                        </div>
+
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                name="password2" 
+                                placeholder="Konfirmasi password" 
+                                required>
+                        </div>
+
+                        <button type="submit" class="btn-register">
+                            Register <span class="ms-1">→</span>
+                        </button>
+
+                    </form>
+
+                    <p class="register-bottom-text">
+                        Sudah punya akun? <a href="login.php">Ayo login!</a>
+                    </p>
+
+                </div>
+
             </div>
-        <?php } ?>
-
-        <?php if ($success) { ?>
-            <div class="alert alert-success">
-                <?= htmlspecialchars($success); ?>
-
-                <?php if ($verifyLink) { ?>
-                    <div class="mt-3 text-center">
-                        <a href="<?= htmlspecialchars($verifyLink); ?>" 
-                        class="btn btn-success px-4 py-2"
-                        style="border-radius: 8px; background-color:#2d483a; border:none;">
-                            Verifikasi Akun →
-                        </a>
-                    </div>
-                <?php } ?>
-
-            </div>
-        <?php } ?>
-
-        <form method="POST" action="">
-
-            <div class="input-icon-wrapper">
-                <i class="fas fa-user"></i>
-                <input 
-                    type="text" 
-                    name="username" 
-                    placeholder="username"
-                    value="<?= isset($username) ? htmlspecialchars($username) : '' ?>"
-                    required>
-            </div>
-
-            <div class="input-icon-wrapper">
-                <i class="far fa-envelope"></i>
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Email"
-                    value="<?= isset($email) ? htmlspecialchars($email) : '' ?>"
-                    required>
-            </div>
-
-            <div class="input-icon-wrapper">
-                <i class="fas fa-lock"></i>
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Password" 
-                    required>
-            </div>
-
-            <div class="input-icon-wrapper">
-                <i class="fas fa-lock"></i>
-                <input 
-                    type="password" 
-                    name="password2" 
-                    placeholder="Konfirmasi password" 
-                    required>
-            </div>
-
-            <button type="submit" class="btn-register">
-                Register <span class="ms-1">→</span>
-            </button>
-
-        </form>
-
-        <p class="register-bottom-text">
-            Sudah punya akun? <a href="login.php">Ayo login!</a>
-        </p>
-
+        </div>
     </div>
 </div>
 
