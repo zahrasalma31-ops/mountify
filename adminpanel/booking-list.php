@@ -34,13 +34,11 @@ $query = mysqli_query($con, $sql);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<?php 
-// kalau kamu punya navbar khusus admin, panggil di sini
-// require "navbar.php"; 
-?>
+<?php require "navbar.php"; ?>
 
 <div class="container py-5">
     <h1 class="mb-4" style="color:#2d483a;">Daftar Booking</h1>

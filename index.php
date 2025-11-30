@@ -1,6 +1,7 @@
 <?php
     require "koneksi.php";
-    $queryProduk = mysqli_query($con, "SELECT id, nama, harga, foto, detail FROM produk LIMIT 6")
+    // ambil beberapa produk untuk ditampilkan di home
+    $queryProduk = mysqli_query($con, "SELECT id, nama, harga, foto, detail FROM produk LIMIT 8");
 ?>
 
 <!DOCTYPE html>
@@ -13,205 +14,129 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-	<?php require 'navbar.php'; ?>
 
-<!-- banner -->
-<div class="container-fluid banner d-flex align-items-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-md-9">
+    <?php require 'navbar.php'; ?>
 
-                <!-- tagline kecil hijau -->
-                <p class="hero-kicker">MOUNTIFY OUTDOOR</p>
+    <!-- HERO BANNER-->
+    <div class="container-fluid banner d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-9">
 
-                <!-- judul besar -->
-                <h1 class="hero-title">
-                    Gear Up for Your <br>
-                    Next Adventure.
-                </h1>
+                    <!-- tagline kecil hijau -->
+                    <p class="hero-kicker">MOUNTIFY OUTDOOR</p>
 
-                <!-- badge benefit -->
-                <span class="hero-badge">
-                    <div class="hero-icon-circle">
-                        <i class="fas fa-check-circle"></i>
+                    <!-- judul besar -->
+                    <h1 class="hero-title">
+                        Gear Up for Your <br>
+                        Next Adventure.
+                    </h1>
+
+                    <!-- badges benefit (dibungkus .hero-badges agar CSS kepakai) -->
+                    <div class="hero-badges">
+                        <span class="hero-badge">
+                            <div class="hero-icon-circle">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            Fully-Updated Gear
+                        </span>
+
+                        <span class="hero-badge">
+                            <div class="hero-icon-circle">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            Quick &amp; Easy Rental
+                        </span>
+
+                        <span class="hero-badge">
+                            <div class="hero-icon-circle">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            Tembalang Exclusive Service
+                        </span>
                     </div>
-                    Fully-Updated Gear
-                </span>
 
-                <span class="hero-badge">
-                    <div class="hero-icon-circle">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    Quick &amp; Easy Rental
-                </span>
+                    <!-- search bar -->
+                    <form method="get" action="produk.php" class="hero-search">
+                        <div class="input-group input-group-lg">
+                            <input
+                                type="text"
+                                class="form-control hero-search-input"
+                                placeholder="What Are You Looking For?"
+                                aria-label="Search product"
+                                name="keyword"
+                            >
+                            <button type="submit" class="btn warna2 text-white hero-search-btn">
+                                Find
+                            </button>
+                        </div>
+                    </form>
 
-                <span class="hero-badge">
-                    <div class="hero-icon-circle">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    Tembalang Exclusive Service
-                </span>
-
-
-                <!-- search bar versi baru -->
-                <form method="get" action="produk.php" class="hero-search">
-                    <div class="input-group input-group-lg">
-                        <input
-                            type="text"
-                            class="form-control hero-search-input"
-                            placeholder="What Are You Looking For?"
-                            aria-label="Search product"
-                            name="keyword"
-                        >
-                        <button type="submit" class="btn warna2 text-white hero-search-btn">
-                            Find
-                        </button>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-        <!-- PILIHAN BRAND (SLIDER) -->
+    <!-- BRAND MARQUEE -->
     <div class="container-fluid brand-section py-5">
-    <div class="container">
-        <h2 class="brand-title">Brand Collection</h2>
-        <p class="brand-subtitle">
-            Handpicked from top brands for the best experience.
-        </p>
-    </div>
+        <div class="container">
+            <h2 class="brand-title">Brand Collection</h2>
+            <p class="brand-subtitle">
+                Handpicked from top brands for the best experience.
+            </p>
+        </div>
 
         <div class="brand-marquee">
             <div class="brand-track">
-                <!-- 1 set logo -->
-                <div class="brand-card">
-                    <img src="image/tnf.png" alt="The North Face">
-                </div>
-                <div class="brand-card">
-                    <img src="image/rei.png" alt="Rei">
-                </div>
-                <div class="brand-card">
-                    <img src="image/salomon.png" alt="Salomon">
-                </div>
-                <div class="brand-card">
-                    <img src="image/osprey.png" alt="Osprey">
-                </div>
-                <div class="brand-card">
-                    <img src="image/quechua.jpeg" alt="Quechua">
-                </div>
-                <div class="brand-card">
-                    <img src="image/eiger.jpg" alt="Eiger">
-                </div>
-                <div class="brand-card">
-                    <img src="image/ortuseight.png" alt="Ortuseight">
-                </div>
-                <div class="brand-card">
-                    <img src="image/naturehike.png" alt="Nature Hike">
-                </div>
-                <div class="brand-card">
-                    <img src="image/hoka.png" alt="Hoka">
-                </div>
-                <div class="brand-card">
-                    <img src="image/greenforest.jpg" alt="Greenforest">
-                </div>
-                <div class="brand-card">
-                    <img src="image/credifox.jpg" alt="Credifox">
-                </div>
-                <div class="brand-card">
-                    <img src="image/consina.png" alt="Consina">
-                </div>
-                <div class="brand-card">
-                    <img src="image/carumby.png" alt="Carumby">
-                </div>
-                <div class="brand-card">
-                    <img src="image/bogaboo.png" alt="Bogaboo">
-                </div>
-                <div class="brand-card">
-                    <img src="image/bigarmour.png" alt="Bigarmour">
-                </div>
-                <div class="brand-card">
-                    <img src="image/aonijie.png" alt="Aonijie">
-                </div>
-                <div class="brand-card">
-                    <img src="image/antarestar.png" alt="Antarestar">
-                </div>
-                <div class="brand-card">
-                    <img src="image/altitude.png" alt="Altitude Gear">
-                </div>
-                <div class="brand-card">
-                    <img src="image/910.png" alt="910 Nineteen">
-                </div>
+                <!-- satu set logo -->
+                <div class="brand-card"><img src="image/tnf.png" alt="The North Face"></div>
+                <div class="brand-card"><img src="image/rei.png" alt="Rei"></div>
+                <div class="brand-card"><img src="image/salomon.png" alt="Salomon"></div>
+                <div class="brand-card"><img src="image/osprey.png" alt="Osprey"></div>
+                <div class="brand-card"><img src="image/quechua.jpeg" alt="Quechua"></div>
+                <div class="brand-card"><img src="image/eiger.jpg" alt="Eiger"></div>
+                <div class="brand-card"><img src="image/ortuseight.png" alt="Ortuseight"></div>
+                <div class="brand-card"><img src="image/naturehike.png" alt="Nature Hike"></div>
+                <div class="brand-card"><img src="image/hoka.png" alt="Hoka"></div>
+                <div class="brand-card"><img src="image/greenforest.jpg" alt="Greenforest"></div>
+                <div class="brand-card"><img src="image/credifox.jpg" alt="Credifox"></div>
+                <div class="brand-card"><img src="image/consina.png" alt="Consina"></div>
+                <div class="brand-card"><img src="image/carumby.png" alt="Carumby"></div>
+                <div class="brand-card"><img src="image/bogaboo.png" alt="Bogaboo"></div>
+                <div class="brand-card"><img src="image/bigarmour.png" alt="Bigarmour"></div>
+                <div class="brand-card"><img src="image/aonijie.png" alt="Aonijie"></div>
+                <div class="brand-card"><img src="image/antarestar.png" alt="Antarestar"></div>
+                <div class="brand-card"><img src="image/altitude.png" alt="Altitude Gear"></div>
+                <div class="brand-card"><img src="image/910.png" alt="910 Nineteen"></div>
 
-                <!-- duplikat 1 set yang sama biar looping-nya halus -->
-                <div class="brand-card">
-                    <img src="image/tnf.png" alt="The North Face">
-                </div>
-                <div class="brand-card">
-                    <img src="image/rei.png" alt="Rei">
-                </div>
-                <div class="brand-card">
-                    <img src="image/salomon.png" alt="Salomon">
-                </div>
-                <div class="brand-card">
-                    <img src="image/osprey.png" alt="Osprey">
-                </div>
-                <div class="brand-card">
-                    <img src="image/quechua.jpeg" alt="Quechua">
-                </div>
-                <div class="brand-card">
-                    <img src="image/eiger.jpg" alt="Eiger">
-                </div>
-                <div class="brand-card">
-                    <img src="image/ortuseight.png" alt="Ortuseight">
-                </div>
-                <div class="brand-card">
-                    <img src="image/naturehike.png" alt="Nature Hike">
-                </div>
-                <div class="brand-card">
-                    <img src="image/hoka.png" alt="Hoka">
-                </div>
-                <div class="brand-card">
-                    <img src="image/greenforest.jpg" alt="Greenforest">
-                </div>
-                <div class="brand-card">
-                    <img src="image/credifox.jpg" alt="Credifox">
-                </div>
-                <div class="brand-card">
-                    <img src="image/consina.png" alt="Consina">
-                </div>
-                <div class="brand-card">
-                    <img src="image/carumby.png" alt="Carumby">
-                </div>
-                <div class="brand-card">
-                    <img src="image/bogaboo.png" alt="Bogaboo">
-                </div>
-                <div class="brand-card">
-                    <img src="image/bigarmour.png" alt="Bigarmour">
-                </div>
-                <div class="brand-card">
-                    <img src="image/aonijie.png" alt="Aonijie">
-                </div>
-                <div class="brand-card">
-                    <img src="image/antarestar.png" alt="Antarestar">
-                </div>
-                <div class="brand-card">
-                    <img src="image/altitude.png" alt="Altitude Gear">
-                </div>
-                <div class="brand-card">
-                    <img src="image/910.png" alt="910 Nineteen">
-                </div>
+                <!-- duplikat biar looping animasi halus -->
+                <div class="brand-card"><img src="image/tnf.png" alt="The North Face"></div>
+                <div class="brand-card"><img src="image/rei.png" alt="Rei"></div>
+                <div class="brand-card"><img src="image/salomon.png" alt="Salomon"></div>
+                <div class="brand-card"><img src="image/osprey.png" alt="Osprey"></div>
+                <div class="brand-card"><img src="image/quechua.jpeg" alt="Quechua"></div>
+                <div class="brand-card"><img src="image/eiger.jpg" alt="Eiger"></div>
+                <div class="brand-card"><img src="image/ortuseight.png" alt="Ortuseight"></div>
+                <div class="brand-card"><img src="image/naturehike.png" alt="Nature Hike"></div>
+                <div class="brand-card"><img src="image/hoka.png" alt="Hoka"></div>
+                <div class="brand-card"><img src="image/greenforest.jpg" alt="Greenforest"></div>
+                <div class="brand-card"><img src="image/credifox.jpg" alt="Credifox"></div>
+                <div class="brand-card"><img src="image/consina.png" alt="Consina"></div>
+                <div class="brand-card"><img src="image/carumby.png" alt="Carumby"></div>
+                <div class="brand-card"><img src="image/bogaboo.png" alt="Bogaboo"></div>
+                <div class="brand-card"><img src="image/bigarmour.png" alt="Bigarmour"></div>
+                <div class="brand-card"><img src="image/aonijie.png" alt="Aonijie"></div>
+                <div class="brand-card"><img src="image/antarestar.png" alt="Antarestar"></div>
+                <div class="brand-card"><img src="image/altitude.png" alt="Altitude Gear"></div>
+                <div class="brand-card"><img src="image/910.png" alt="910 Nineteen"></div>
             </div>
         </div>
     </div>
 
-
-    <!-- highlighted kategori -->
+    <!-- TOP PICKS (HIGHLIGHTED CATEGORY) -->
     <div class="container-fluid py-5">
         <div class="container text-center">
             <h3 class="top-picks-title">Top Picks</h3>
@@ -242,52 +167,144 @@
         </div>
     </div>
 
-    <!-- tentang kami -->
+    <!-- ABOUT US -->
     <div id="about-section" class="container-fluid warna3 py-5">
-        <div class="container text-center">
-            <h3>About Us</h3>
-            <p class="fs-5 mt-3">
-                Mountify is your go-to place for practical, ready-to-use outdoor gear.
-                We offer easy and affordable gear rentals for anyone who wants to step into nature without the extra weight — literally and figuratively.
+        <div class="container">
 
-                Based in Tembalang, Semarang, we’re here for students, hikers, and nature lovers who believe that every journey begins with the right equipment, not with a burden.
+            <!-- Judul + subjudul -->
+            <div class="text-center mb-5">
+                <p class="about-kicker">ABOUT MOUNTIFY</p>
+                <h3 class="about-title">Practical Adventure Made Simple</h3>
+                <p class="about-subtitle">
+                    Gear rental made easy for students, hikers, and nature lovers in Tembalang, Semarang.
+                </p>
+            </div>
 
-                At Mountify, we like to say that adventures don’t need to be complicated — they just need a little courage and the right gear.
-                That’s why we stand by our principle: “Practical Adventure Made Simple.”
-            </p>
+            <div class="row align-items-center gy-4">
+                <!-- KIRI: cerita singkat -->
+                <div class="col-lg-6">
+                    <p class="about-text">
+                        Mountify is your go-to place for practical, ready-to-use outdoor gear. 
+                        We offer easy and affordable rentals so you can step into nature without 
+                        carrying the extra weight — literally and figuratively.
+                    </p>
+                    <p class="about-text">
+                        We’re based in Tembalang, Semarang, and built for students, weekend hikers, 
+                        and anyone who wants to explore more with the right equipment, not with a burden.
+                    </p>
+
+                    <div class="about-pill-wrap">
+                        <span class="about-pill">Student Friendly</span>
+                        <span class="about-pill">Quality Gear</span>
+                        <span class="about-pill">Tembalang Area</span>
+                    </div>
+                </div>
+
+                <!-- KANAN: kartu Why Mountify -->
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="about-card">
+                                <i class="fas fa-mountain about-icon"></i>
+                                <h5>Curated Gear</h5>
+                                <p>Only trusted outdoor brands, checked and cleaned before every trip.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-card">
+                                <i class="fas fa-clock about-icon"></i>
+                                <h5>Simple Booking</h5>
+                                <p>Chat, pick your date, and your gear is ready when you are.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-card">
+                                <i class="fas fa-users about-icon"></i>
+                                <h5>For Campus & Crew</h5>
+                                <p>Perfect for college trips, hiking clubs, and small group adventures.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-card">
+                                <i class="fas fa-leaf about-icon"></i>
+                                <h5>Rent, Not Buy</h5>
+                                <p>Save money, save space, and reduce unused gear at home.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How it works -->
+            <div class="about-steps mt-5 pt-4">
+                <h5 class="text-center mb-4">How It Works</h5>
+                <div class="row text-center g-4">
+                    <div class="col-md-4">
+                        <div class="about-step">
+                            <span class="step-number">1</span>
+                            <h6>Choose Your Gear</h6>
+                            <p>Browse products and pick what you need for your next trip.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="about-step">
+                            <span class="step-number">2</span>
+                            <h6>Set Your Dates</h6>
+                            <p>Tell us when you’ll go, and we’ll prepare everything on time.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="about-step">
+                            <span class="step-number">3</span>
+                            <h6>Pick Up & Go</h6>
+                            <p>Grab your gear in Tembalang and enjoy your adventure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- produk -->
+    <!-- PRODUCT GRID  -->
     <div class="container-fluid py-5">
         <div class="container text-center">
             <h3>Product</h3>
 
             <div class="row mt-5">
                 <?php while($data = mysqli_fetch_array($queryProduk)) { ?>
-                <div class="col-6 col-md-3 col-lg-3 mb-4">
-                    <div class="card h-100">
-                        <div class="image-box">
-                            <img src="image/<?php echo $data['foto']; ?>" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title"><?php echo $data['nama']; ?></h4>
-                            <p class="card-text text-truncate"><?php echo $data['detail']; ?></p>
-                            <p class="card-text text-harga">Rp<?= number_format($data['harga'], 0, ',', '.'); ?></p>
-                            <a href="produk-detail.php?nama=<?php echo $data['nama']; ?>" class="btn warna2 text-white">Detail</a>
+                    <div class="col-6 col-md-3 col-lg-3 mb-4">
+                        <div class="produk-card">
+                            <img src="image/<?= $data['foto']; ?>" 
+                                 class="produk-img" 
+                                 alt="<?= htmlspecialchars($data['nama']); ?>">
+
+                            <h4 class="produk-nama">
+                                <?= $data['nama']; ?>
+                            </h4>
+
+                            <p class="produk-harga">
+                                Rp<?= number_format($data['harga'], 0, ',', '.'); ?>
+                            </p>
+
+                            <a href="produk-detail.php?id=<?= $data['id']; ?>" class="btn-lihat">
+                                Detail
+                            </a>
                         </div>
                     </div>
-                </div>
                 <?php } ?>
-            </div>
-            <a class="btn btn-outline-warning mt-3 p-1 fs-5" href="produk.php">See More</a>
+                        </div>
+
+            <a href="produk.php" class="btn-see-more mt-3">
+                See More
+            </a>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <?php require "footer.php"; ?>
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="fontawesome/js/all.min.js"></script>
 </body>
-</html> 
+</html>

@@ -4,75 +4,115 @@ session_start(); // selalu di paling atas sebelum HTML
 // pastikan file koneksi ada di ../koneksi.php
 require_once __DIR__ . "/../koneksi.php";
 
+$error = "";
+
 // kalau form login dikirim
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
 
-    // Query ambil data admin berdasarkan username
-    $query = mysqli_query($con, "SELECT * FROM users WHERE username='$username'");
-
-    // Cek apakah username ada
-    if (mysqli_num_rows($query) > 0) {
-        $data = mysqli_fetch_assoc($query);
-
-        // Cek password (jika belum hash, pakai perbandingan biasa)
-        if (password_verify($password, $data['password'])) {
-            // simpan session
-            $_SESSION['login'] = true;
-            $_SESSION['username'] = $data['username'];
-
-            // redirect ke dashboard admin
-            header("Location: index.php");
-            exit;
-        } else {
-            echo "<script>alert('❌ Password salah!'); window.location='login.php';</script>";
-        }
+    if ($username === '' || $password === '') {
+        $error = "Username dan password wajib diisi.";
     } else {
-        echo "<script>alert('❌ Username tidak ditemukan!'); window.location='login.php';</script>";
+        // Query ambil data admin berdasarkan username
+        $usernameEsc = mysqli_real_escape_string($con, $username);
+        $query = mysqli_query($con, "SELECT * FROM users WHERE username='$usernameEsc' LIMIT 1");
+
+        // Cek apakah username ada
+        if (mysqli_num_rows($query) > 0) {
+            $data = mysqli_fetch_assoc($query);
+
+            // Cek password (pakai password_verify karena password sudah di-hash)
+            if (password_verify($password, $data['password'])) {
+                // simpan session
+                $_SESSION['login']    = true;
+                $_SESSION['username'] = $data['username'];
+
+                // redirect ke dashboard admin
+                header("Location: index.php");
+                exit;
+            } else {
+                $error = "Password yang Anda masukkan salah.";
+            }
+        } else {
+            $error = "Username tidak ditemukan.";
+        }
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Mountify</title>
+    <title>Login Admin | Mountify</title>
+
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-
-<style>
-    .main {
-        height: 100vh;
-    }
-    .login-box {
-        width: 400px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 30px;
-        background-color: #fff;
-        box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-    }
-</style>
-
 <body>
-    <div class="main d-flex justify-content-center align-items-center bg-light">
-        <div class="login-box">
-            <h3 class="text-center mb-4 text-success">Login Admin Mountify</h3>
-            <form action="" method="post">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" required>
+
+<!-- BACKGROUND  -->
+<div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+
+                <div class="register-card mx-auto">
+
+                    <h1 class="register-title" style="font-size:26px;">
+                        Login Admin
+                    </h1>
+
+                    <?php if ($error) { ?>
+                        <div class="alert alert-danger text-center">
+                            <?= htmlspecialchars($error); ?>
+                        </div>
+                    <?php } ?>
+
+                    <form action="" method="post">
+
+                        <!-- Username -->
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input 
+                                type="text" 
+                                class="form-control border-0"
+                                name="username" 
+                                placeholder="Username"
+                                value="<?= isset($username) ? htmlspecialchars($username) : '' ?>"
+                                required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                class="form-control border-0"
+                                name="password" 
+                                placeholder="Password"
+                                required>
+                        </div>
+
+                        <button class="btn-register" type="submit">
+                            Login <span class="ms-1">→</span>
+                        </button>
+
+                    </form>
+
+                    <p class="register-bottom-text mt-3">
+                        Kembali ke website utama? <a href="../index.php">Beranda</a>
+                    </p>
+
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" required>
-                </div>
-                <button class="btn btn-success w-100" type="submit">Login</button>
-            </form>
+
+            </div>
         </div>
     </div>
+</div>
+
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

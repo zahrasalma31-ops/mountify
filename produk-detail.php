@@ -68,18 +68,18 @@ $queryProdukTerkait = mysqli_query(
 <?php require "navbar.php"; ?>
 
 <!-- Detail Produk -->
-<div class="container-fluid py-5 mt-5">
-  <div class="container">
-    <div class="row">
+<section class="product-detail-section">
+  <div class="container product-detail-wrapper">
+    <div class="product-detail-main">
 
       <!-- KOLOM KIRI: GAMBAR + KOTAK SEWA -->
-      <div class="col-lg-5 mb-5">
+      <div class="product-image-box">
 
         <!-- Gambar produk -->
-        <img src="image/<?= $produk['foto']; ?>" class="w-100" alt="">
+        <img src="image/<?= $produk['foto']; ?>" class="product-image" alt="<?= htmlspecialchars($produk['nama']); ?>">
 
         <!-- BLOK SEWA (CARD DI BAWAH GAMBAR) -->
-        <div class="mt-4">
+        <div class="product-rent-box">
           <div class="sewa-card p-3 p-md-4">
             <div class="row gy-3 align-items-end">
 
@@ -103,9 +103,7 @@ $queryProdukTerkait = mysqli_query(
                 <div class="sewa-label">Duration</div>
                 <div class="input-group">
                   <select class="form-select" id="durasiSewa">
-                    <!-- placeholder -->
                     <option value="" selected disabled hidden>Select Duration</option>
-
                     <?php for ($i = 2; $i <= 30; $i++): ?>
                       <option value="<?= $i ?>"><?= $i ?> Day</option>
                     <?php endfor; ?>
@@ -137,18 +135,21 @@ $queryProdukTerkait = mysqli_query(
       </div>
 
       <!-- KOLOM KANAN: DETAIL PRODUK -->
-      <div class="col-lg-6 offset-lg-1">
+      <div class="product-info">
         <h1 class="product-title"><?= $produk['nama']; ?></h1>
 
-        <p class="fs-5" style="text-align: justify;">
+        <p class="product-description">
           <?= nl2br($produk['detail']); ?>
         </p>
 
-        <p class="text-harga">
-          Rp <?= number_format($produk['harga'], 0, ',', '.'); ?>
-        </p>
+        <div class="mb-3">
+          <div class="product-price-label">Rental price</div>
+          <div class="product-price">
+            Rp <?= number_format($produk['harga'], 0, ',', '.'); ?>
+          </div>
+        </div>
 
-        <p class="fs-5">
+        <p class="product-stock">
           Status Ketersediaan:
           <strong>
             <?= isset($produk['ketersediaan_stok']) ? $produk['ketersediaan_stok'] : 'Cek ketersediaan via admin'; ?>
@@ -167,19 +168,20 @@ $queryProdukTerkait = mysqli_query(
             id="btnBookingWa"
             class="booking-btn mt-3"
             style="display: none;">
+            <i class="fab fa-whatsapp"></i>
             Booking via WhatsApp
           </button>
         </form>
       </div>
 
-    </div> <!-- /.row -->
+    </div> <!-- /.product-detail-main -->
   </div> <!-- /.container -->
-</div> <!-- /.container-fluid -->
+</section>
 
 <!-- Produk Terkait (section terpisah) -->
 <div class="container-fluid py-5 warna5">
   <div class="container">
-    <h2 class="text-center text-white mb-5">Produk Terkait</h2>
+    <h2 class="produk-terkait-title text-center mb-4">Produk Terkait</h2>
 
     <div class="row">
       <?php while ($data = mysqli_fetch_assoc($queryProdukTerkait)) { ?>
@@ -187,12 +189,11 @@ $queryProdukTerkait = mysqli_query(
           <a href="produk-detail.php?id=<?= $data['id']; ?>">
             <img src="image/<?= $data['foto']; ?>"
                  class="img-fluid img-thumbnail produk-terkait-image"
-                 alt="">
+                 alt="<?= htmlspecialchars($data['nama']); ?>">
           </a>
         </div>
       <?php } ?>
     </div>
-
   </div>
 </div>
 

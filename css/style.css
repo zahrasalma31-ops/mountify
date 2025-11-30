@@ -1,3 +1,25 @@
+/* === GLOBAL FONT === */
+body {
+    font-family: "Inter", sans-serif;
+}
+
+/* Heading + Title Style */
+h1, h2, h3, h4, h5,
+.hero-title,
+.top-picks-title,
+.brand-title,
+.product-title {
+    font-family: "Outfit", sans-serif;
+}
+
+/* Tombol & Navbar */
+.btn-lihat,
+.btn-see-more,
+.nav-link {
+    font-family: "Outfit", sans-serif;
+}
+
+
 /* === WARNA TEMA === */
 .warna1 {
     background-color: #294B29;
@@ -243,14 +265,181 @@
     object-fit: cover;
 }
 
-/* ======================================
-   === ABOUT US ===
-   ====================================== */
+/* === ABOUT US === */
+
+/* Perbaikan final warna text card */
+#about-section .about-card p {
+    margin-bottom: 0;
+    margin-top: 2px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: #3f4d3b !important;
+    opacity: 1 !important;
+}
+
 
 #about-section h3,
 #about-section p {
     color: #fafff3 !important;
 }
+
+.about-kicker {
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    color: #DBE7C9;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.about-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.about-subtitle {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 0.98rem;
+    opacity: 0.9;
+}
+
+.about-text {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+/* badge kecil di bawah teks */
+.about-pill-wrap {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.about-pill {
+    background-color: rgba(0, 0, 0, 0.18);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: #fafff3;
+}
+
+/* === ABOUT – CARD FIXED, CONSISTENT, AND CLEAR === */
+
+.about-right-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+/* Card */
+.about-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 330px;
+
+    /* ini yang bikin ukurannya seragam */
+    height: 220px;              /* kamu boleh adjust 200–240px sesuai selera */
+
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px 18px 20px;
+    border: 1px solid #e9efe7;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: 0.25s ease;
+}
+
+/* Hover */
+.about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* ICON */
+.about-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+
+    background-color: #e8f2e3;
+    color: #294B29;
+    font-size: 18px;
+
+    margin-bottom: 12px;
+}
+
+/* Judul */
+.about-card h5 {
+    margin-bottom: 6px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #294B29;
+}
+
+/* Deskripsi – PERBAIKAN: warna gelap, BUKAN putih */
+.about-card p {
+    margin-bottom: 0;
+    margin-top: 2px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: #4c5b48 !important;     /* paksa override */
+    opacity: 1 !important;         /* paksa agar tidak transparan */
+}
+
+/* step how it works */
+.about-steps h5 {
+    color: #fafff3;
+}
+
+.about-step {
+    background-color: rgba(0,0,0,0.10);
+    border-radius: 14px;
+    padding: 14px 12px 18px;
+    height: 100%;
+}
+
+.about-step h6 {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #fafff3;
+}
+
+.about-step p {
+    font-size: 0.86rem;
+    margin-bottom: 0;
+}
+
+.step-number {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #fafff3;
+    color: #294B29;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+/* responsif */
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 26px;
+    }
+    .about-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
 
 
 /* ======================================
@@ -334,6 +523,166 @@
     margin-bottom: 6px;
     display: block;
 }
+
+/* =======================
+   PRODUCT DETAIL PAGE
+   ======================= */
+
+.product-detail-section {
+    padding-top: 110px;          /* beri ruang buat navbar fixed */
+    padding-bottom: 60px;
+}
+
+.product-detail-wrapper {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+/* layout dua kolom rapi */
+.product-detail-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* kiri: gambar */
+.product-image-box {
+    flex: 1 1 380px;
+}
+
+.product-image {
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    padding: 18px;
+}
+
+/* sewa-card di bawah gambar biar ikut lebar gambar */
+.product-rent-box {
+    margin-top: 18px;
+}
+
+/* kanan: info */
+.product-info {
+    flex: 1 1 430px;
+}
+
+.product-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.product-description {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+/* harga */
+.product-price-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #777;
+}
+
+.product-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #b8860b;
+    margin-bottom: 6px;
+}
+
+/* status stok */
+.product-stock {
+    font-size: 0.98rem;
+    margin-bottom: 16px;
+}
+
+.product-stock strong {
+    color: #294B29;
+}
+
+/* tombol booking */
+.booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color:#294B29;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.96rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.booking-btn i {
+    font-size: 18px;
+}
+
+.booking-btn:hover {
+    background-color: #1e3328;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* produk terkait */
+.produk-terkait-title {
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: #294B29;
+}
+
+/* responsif */
+@media (max-width: 768px) {
+    .product-detail-section {
+        padding-top: 90px;
+    }
+
+    .product-detail-main {
+        flex-direction: column;
+    }
+
+    .product-image {
+        height: auto;
+    }
+}
+
+/* === TOMBOL SEE MORE (HOME) === */
+.btn-see-more {
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 999px;
+    border: 1px solid #2d483a;
+    color: #2d483a;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #ffffff;
+    transition: 0.25s;
+}
+
+.btn-see-more:hover {
+    background-color: #2d483a;
+    color: #ffffff;
+    border-color: #2d483a;
+}
+
 
 /* ====== INPUT GROUP (BIAR NGGAK BULAT) ====== */
 .sewa-card .input-group {
@@ -461,7 +810,6 @@
     border: 1px solid #ddd;
     transition: 0.25s;
 }
-
 
 .kategori-btn:hover {
     background-color: #294B29;

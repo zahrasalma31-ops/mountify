@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <?php require "navbar.php"; ?>
 
-<!-- BAGIAN BANNER DENGAN BACKGROUND SAMA SEPERTI INDEX -->
+<!-- BACKGROUND -->
 <div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">
