@@ -45,7 +45,7 @@ $queryProdukTerkait = mysqli_query(
   <style>
     .booking-btn {
       display: inline-block;
-      background-color: #436d61;
+      background-color:#294B29;
       color: white;
       text-align: center;
       padding: 12px 40px;
@@ -56,7 +56,7 @@ $queryProdukTerkait = mysqli_query(
       transition: background-color 0.3s ease;
     }
     .booking-btn:hover {
-      background-color: #355a50;
+      background-color: #1F3A1F;
       color: #fff;
       text-decoration: none;
     }
@@ -64,10 +64,11 @@ $queryProdukTerkait = mysqli_query(
 </head>
 
 <body>
+<?php $forceSolidNavbar = true; ?>
 <?php require "navbar.php"; ?>
 
 <!-- Detail Produk -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 mt-5">
   <div class="container">
     <div class="row">
 
@@ -176,7 +177,7 @@ $queryProdukTerkait = mysqli_query(
 </div> <!-- /.container-fluid -->
 
 <!-- Produk Terkait (section terpisah) -->
-<div class="container-fluid py-5 warna2">
+<div class="container-fluid py-5 warna5">
   <div class="container">
     <h2 class="text-center text-white mb-5">Produk Terkait</h2>
 

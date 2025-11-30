@@ -220,21 +220,21 @@
                 <div class="col-md-4 mb-3">
                     <div class="highlighted-kategori kategori-sepatu d-flex justify-content-center align-items-center">
                         <h4 class="text-white">
-                            <a class="no-decoration" href="produk.php?kategori=Sepatu Hiking">Hiking Shoes</a>
+                            <a class="no-decoration" href="produk.php?kategori=4">Hiking Shoes</a>
                         </h4>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="highlighted-kategori kategori-carrier d-flex justify-content-center align-items-center">
                         <h4 class="text-white">
-                            <a class="no-decoration" href="produk.php?kategori=Carrier">Carrier</a>
+                            <a class="no-decoration" href="produk.php?kategori=8">Carrier</a>
                         </h4>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="highlighted-kategori kategori-tenda d-flex justify-content-center align-items-center">
                         <h4 class="text-white">
-                            <a class="no-decoration" href="produk.php?kategori=Tenda">Tent</a>
+                            <a class="no-decoration" href="produk.php?kategori=7">Tent</a>
                         </h4>
                     </div>
                 </div>

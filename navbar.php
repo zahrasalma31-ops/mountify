@@ -5,7 +5,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark warna1 custom-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark warna1 custom-navbar
+    <?php
+        if (isset($forceSolidNavbar) && $forceSolidNavbar) {
+            echo ' navbar-solid';
+        }
+    ?>
+">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
             <span class="navbar-toggler-icon"></span>
