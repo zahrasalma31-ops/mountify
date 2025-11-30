@@ -5,7 +5,7 @@ require "koneksi.php";
 $error   = "";
 $success = "";
 
-// Kalau user sudah login, langsung lempar ke halaman utama (opsional)
+// Kalau user sudah login, langsung lempar ke halaman utama
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
@@ -38,17 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             } else {
                 // Cek password
                 if (password_verify($password, $user['password'])) {
+
                     // LOGIN BERHASIL → simpan data ke session
                     $_SESSION['user_id']    = $user['id'];
                     $_SESSION['username']   = $user['username'];
                     $_SESSION['user_email'] = $user['email'];
 
-                    // Kalau sebelumnya ada data booking yang tertunda,
-                    // lanjutkan proses booking
+                    // Jika ada booking tertunda
                     if (!empty($_SESSION['pending_booking'])) {
                         header("Location: booking_proses.php");
                     } else {
-                        // kalau tidak, ke home seperti biasa
                         header("Location: index.php");
                     }
                     exit();
@@ -88,13 +87,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <h1 class="register-title">Login</h1>
 
                     <?php if ($error) { ?>
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger text-center">
                             <?= htmlspecialchars($error); ?>
                         </div>
                     <?php } ?>
 
                     <?php if ($success) { ?>
-                        <div class="alert alert-success">
+                        <div class="alert alert-success text-center">
                             <?= htmlspecialchars($success); ?>
                         </div>
                     <?php } ?>
@@ -126,6 +125,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     </form>
 
+                    <!-- LUPA PASSWORD -->
+                    <p class="register-bottom-text mt-2">
+                        <a href="forgot_password.php">Lupa password?</a>
+                    </p>
+
+                    <!-- REGISTER -->
                     <p class="register-bottom-text">
                         Belum punya akun? <a href="register.php">Daftar sekarang</a>
                     </p>
