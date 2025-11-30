@@ -33,9 +33,10 @@ $queryBooking = mysqli_query($con, $sql);
 </head>
 <body>
 
+<?php $forceSolidNavbar = true; ?>
 <?php require "navbar.php"; ?>
 
-<div class="container py-5 riwayat-wrapper">
+<div class="container py-5 mt-5 riwayat-wrapper">
 
     <!-- JUDUL DI TENGAH -->
     <h1 class="riwayat-title mb-4 text-center">Booking History</h1>
