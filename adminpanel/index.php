@@ -2,148 +2,194 @@
 require "session.php";
 require "../koneksi.php";
 
-// ambil data summary
-$queryKategori   = mysqli_query($con, "SELECT id FROM kategori");
-$jumlahKategori  = mysqli_num_rows($queryKategori);
+// Ambil data summary
+$qKategori  = mysqli_query($con, "SELECT id FROM kategori");
+$jumlahKategori = mysqli_num_rows($qKategori);
 
-$queryProduk     = mysqli_query($con, "SELECT id FROM produk");
-$jumlahProduk    = mysqli_num_rows($queryProduk);
+$qProduk    = mysqli_query($con, "SELECT id FROM produk");
+$jumlahProduk   = mysqli_num_rows($qProduk);
+
+$qBooking   = mysqli_query($con, "SELECT * FROM booking");
+$jumlahBooking  = mysqli_num_rows($qBooking);
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin | Mountify</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
-    <!-- kalau mau ikut font & tone umum, bisa pakai style utama juga -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f5f7f3;
-        }
-
-        /* ====== SUMMARY CARD ala Mountify ====== */
-        .summary-card {
-            border-radius: 20px;
-            padding: 22px 26px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
-            border: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .summary-card--kategori {
-            background: #294B29;       /* warna1 */
-        }
-
-        .summary-card--produk {
-            background: #0b4c6a;       /* sejenis biru kehijauan, mirip tone produk */
-        }
-
-        .summary-icon {
-            font-size: 52px;
-            opacity: 0.16;
-        }
-
-        .summary-text h3 {
-            font-size: 1.7rem;
-            font-weight: 650;
-            margin-bottom: 4px;
-        }
-
-        .summary-text p {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .summary-link {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            display: inline-block;
-            color: #DBE7C9;              /* warna4 hijau muda */
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .summary-link:hover {
-            color: #EEC373;              /* kuning soft seperti di footer */
-            text-decoration: underline;
-        }
-
-        /* breadcrumb + judul biar mirip help / section lain */
-        .admin-breadcrumb {
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .admin-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #294B29;
-        }
-    </style>
 </head>
 <body>
 
 <?php require "navbar.php"; ?>
 
-<div class="container mt-4 mb-5">
+<div class="admin-page">
 
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-2">
-            <li class="breadcrumb-item active admin-breadcrumb" aria-current="page">
-                <i class="fas fa-home me-1"></i> Home
-            </li>
-        </ol>
-    </nav>
-
-    <!-- Greeting -->
-    <h2 class="admin-title mb-4">
-        Halo <?= htmlspecialchars($_SESSION['username']); ?>
-    </h2>
-
-    <!-- Summary cards -->
-    <div class="row g-4">
-        <!-- Kategori -->
-        <div class="col-lg-6 col-md-6 col-12">
-            <a href="kategori.php" class="text-decoration-none">
-                <div class="summary-card summary-card--kategori">
-                    <div class="summary-text">
-                        <h3>Kategori</h3>
-                        <p><?= $jumlahKategori; ?> Kategori</p>
-                        <span class="summary-link">Lihat Detail →</span>
+    <!-- HERO / HEADER HIJAU -->
+    <section class="admin-hero">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <div class="admin-hero-title mb-2">
+                        <i class="fas fa-mountain me-2"></i>
+                        Dashboard Admin
                     </div>
-                    <div class="summary-icon">
-                        <i class="fas fa-stream"></i>
+                    <h1 class="admin-hero-greeting">
+                        Halo, <?= htmlspecialchars($_SESSION['username']); ?> 👋
+                    </h1>
+                    <p class="admin-hero-text mt-2">
+                        Kelola kategori, produk, booking, dan pesan dari satu tempat.
+                        Semua yang kamu butuhkan untuk mengatur Mountify ada di sini.
+                    </p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="admin-hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Kategori</div>
+                            <div class="stat-value"><?= $jumlahKategori; ?></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Produk</div>
+                            <div class="stat-value"><?= $jumlahProduk; ?></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Total Booking</div>
+                            <div class="stat-value"><?= $jumlahBooking; ?></div>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
+    </section>
 
-        <!-- Produk -->
-        <div class="col-lg-6 col-md-6 col-12">
-            <a href="produk.php" class="text-decoration-none">
-                <div class="summary-card summary-card--produk">
-                    <div class="summary-text">
-                        <h3>Produk</h3>
-                        <p><?= $jumlahProduk; ?> Produk</p>
-                        <span class="summary-link">Lihat Detail →</span>
-                    </div>
-                    <div class="summary-icon">
-                        <i class="fas fa-box"></i>
+    <!-- KONTEN PUTIH DI BAWAH HERO -->
+    <section class="admin-main">
+        <div class="container">
+
+            <!-- BREADCRUMB KECIL -->
+            <div class="d-flex align-items-center mb-3 admin-breadcrumb">
+                <i class="fas fa-home me-2"></i>
+                <span>Home</span>
+            </div>
+
+            <!-- QUICK ACTION TITLE -->
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <h2 class="admin-section-title mb-0">Quick Management</h2>
+                <span class="admin-section-subtext">Akses cepat ke halaman pengelolaan utama</span>
+            </div>
+
+            <!-- CARD LINK 4 MENU UTAMA -->
+            <div class="row g-4">
+                <!-- Kategori -->
+                <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                    <a href="kategori.php" class="admin-link-card">
+                        <div class="admin-link-icon kategori">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="admin-link-body">
+                            <h5>Kelola Kategori</h5>
+                            <p>Tambah, ubah, dan hapus kategori perlengkapan.</p>
+                        </div>
+                        <div class="admin-link-footer">
+                            <span>Lihat kategori</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Produk -->
+                <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                    <a href="produk.php" class="admin-link-card">
+                        <div class="admin-link-icon produk">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div class="admin-link-body">
+                            <h5>Kelola Produk</h5>
+                            <p>Atur detail peralatan outdoor yang disewakan.</p>
+                        </div>
+                        <div class="admin-link-footer">
+                            <span>Lihat produk</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Booking -->
+                <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                    <a href="booking-list.php" class="admin-link-card">
+                        <div class="admin-link-icon booking">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="admin-link-body">
+                            <h5>Daftar Booking</h5>
+                            <p>Lihat dan kelola permintaan booking penyewaan.</p>
+                        </div>
+                        <div class="admin-link-footer">
+                            <span>Lihat booking</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Kontak -->
+                <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                    <a href="kontak.php" class="admin-link-card">
+                        <div class="admin-link-icon kontak">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div class="admin-link-body">
+                            <h5>Pesan Kontak</h5>
+                            <p>Baca dan balas pesan dari pengunjung.</p>
+                        </div>
+                        <div class="admin-link-footer">
+                            <span>Lihat pesan</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- OPTIONAL: PANEL INFO / CATATAN -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-8">
+                    <div class="admin-info-card">
+                        <div class="admin-info-header">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <span>Tips Pengelolaan Booking</span>
+                        </div>
+                        <p class="mb-2">
+                            Tandai booking dengan status <strong>processing</strong>, <strong>confirmed</strong>, atau
+                            <strong>completed</strong> agar riwayat penyewaan pelanggan selalu jelas dan rapi.
+                        </p>
+                        <p class="mb-0">
+                            Gunakan WhatsApp untuk konfirmasi cepat, lalu perbarui status booking di sistem agar
+                            data tersinkron dengan riwayat booking user.
+                        </p>
                     </div>
                 </div>
-            </a>
+
+                <div class="col-lg-4">
+                    <div class="admin-info-card admin-info-card--small">
+                        <div class="admin-info-header">
+                            <i class="fas fa-seedling me-2"></i>
+                            <span>Mountify Snapshot</span>
+                        </div>
+                        <ul class="admin-info-list mb-0">
+                            <li><strong><?= $jumlahKategori; ?></strong> kategori aktif</li>
+                            <li><strong><?= $jumlahProduk; ?></strong> produk siap disewa</li>
+                            <li><strong><?= $jumlahBooking; ?></strong> total booking tercatat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
 
 </div>
 

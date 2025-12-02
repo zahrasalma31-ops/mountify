@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "koneksi.php";
 
 // Pastikan parameter id ada
@@ -60,6 +61,35 @@ $queryProdukTerkait = mysqli_query(
       color: #fff;
       text-decoration: none;
     }
+
+    /* ======= TOAST ADDED TO CART ======= */
+    .add-toast {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 18px 28px;
+      border-radius: 14px;
+      text-align: center;
+      opacity: 0;
+      z-index: 9999;
+      pointer-events: none;
+      transition: all 0.25s ease-out;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .add-toast.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .toast-icon {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
   </style>
 </head>
 
@@ -104,7 +134,7 @@ $queryProdukTerkait = mysqli_query(
                 <div class="input-group">
                   <select class="form-select" id="durasiSewa">
                     <option value="" selected disabled hidden>Select Duration</option>
-                    <?php for ($i = 2; $i <= 30; $i++): ?>
+                    <?php for ($i = 1; $i <= 30; $i++): ?>
                       <option value="<?= $i ?>"><?= $i ?> Day</option>
                     <?php endfor; ?>
                   </select>
@@ -157,7 +187,7 @@ $queryProdukTerkait = mysqli_query(
         </p>
 
         <!-- FORM BOOKING: dikirim ke booking_proses.php -->
-        <form action="booking_proses.php" method="POST" id="formBooking">
+        <form action="tambah_cart.php" method="POST" id="formBooking">
           <input type="hidden" name="id_produk" value="<?= $produk['id']; ?>">
           <input type="hidden" name="tgl_ambil" id="tglAmbilHidden">
           <input type="hidden" name="durasi_hari" id="durasiHidden">
@@ -165,11 +195,11 @@ $queryProdukTerkait = mysqli_query(
 
           <button
             type="submit"
-            id="btnBookingWa"
+            id="btnAddCart"                
             class="booking-btn mt-3"
             style="display: none;">
-            <i class="fab fa-whatsapp"></i>
-            Booking via WhatsApp
+            <i class="fas fa-shopping-cart"></i>
+            Add to Cart
           </button>
         </form>
       </div>
@@ -197,6 +227,15 @@ $queryProdukTerkait = mysqli_query(
   </div>
 </div>
 
+<!-- Toast "Added to cart" -->
+<div id="toastAdded" class="add-toast">
+  <div class="toast-icon">
+    <i class="fas fa-check"></i>
+  </div>
+  <div>Added to cart</div>
+</div>
+
+
 <?php require "footer.php"; ?>
 
 <!-- jQuery & Select2 -->
@@ -207,11 +246,21 @@ $queryProdukTerkait = mysqli_query(
 <script src="fontawesome/js/all.min.js"></script>
 
 <script>
+function showToast() {
+  const toast = document.getElementById("toastAdded");
+  if (!toast) return;
+
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1000); // 1 detik
+}
+
 $(document).ready(function () {
   const $tglAmbil        = $('#tglAmbil');
   const $durasi          = $('#durasiSewa');
   const $tglKembali      = $('#tglKembali');
-  const $btnBookingWa    = $('#btnBookingWa');
+  const $btnAddCart      = $('#btnAddCart');
 
   const $tglAmbilHidden   = $('#tglAmbilHidden');
   const $durasiHidden     = $('#durasiHidden');
@@ -227,7 +276,7 @@ $(document).ready(function () {
   $tglAmbil.val(todayISO);
   $tglAmbil.attr('min', todayISO);
 
-  // --- 2. Format tanggal Indonesia ---
+  // --- 2. Format tanggal singkat ---
   function formatTanggalIndo(date) {
     const hari  = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const bulan = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Des'];
@@ -240,27 +289,23 @@ $(document).ready(function () {
     return `${h}, ${d} ${b} ${y}`;
   }
 
-  // --- 3. Fungsi hitung tanggal kembali + isi hidden + show/hide tombol ---
+  // --- 3. Hitung tanggal kembali + isi hidden + show/hide tombol ---
   function updateBookingInfo() {
     const startStr = $tglAmbil.val();
     const durasi   = parseInt($durasi.val(), 10);
 
     if (!startStr || isNaN(durasi)) {
       $tglKembali.val('Return Date');
-      $btnBookingWa.hide();
+      $btnAddCart.hide();
       return;
     }
 
     const start   = new Date(startStr);
     const kembali = new Date(start);
-    // kalau mau hari terakhir sewa, bisa diganti durasi - 1
-    // kembali.setDate(kembali.getDate() + durasi - 1);
     kembali.setDate(kembali.getDate() + durasi);
 
-    // Tampil di input readonly
     $tglKembali.val(formatTanggalIndo(kembali));
 
-    // Isi hidden (format YYYY-MM-DD untuk ke PHP)
     $tglAmbilHidden.val(startStr);
     $durasiHidden.val(durasi);
 
@@ -269,23 +314,27 @@ $(document).ready(function () {
     const d2 = String(kembali.getDate()).padStart(2, '0');
     $tglKembaliHidden.val(`${y2}-${m2}-${d2}`);
 
-    // Kalau semua sudah terisi → munculin tombol booking
-    $btnBookingWa.show();
+    $btnAddCart.show();
   }
 
   // Placeholder awal
   $tglKembali.val('Return Date');
-  $btnBookingWa.hide();
+  $btnAddCart.hide();
 
-  // --- 4. SELECT2 (Wajib ada!) ---
+  // Select2
   $durasi.select2({
     minimumResultsForSearch: Infinity,
     width: '100%'
   });
 
-  // --- 5. Hitung saat ada perubahan ---
+  // Recalc ketika berubah
   $tglAmbil.on('change', updateBookingInfo);
   $durasi.on('change', updateBookingInfo);
+
+  // 🔹 Kalau URL punya ?added=1 → tampilkan toast
+  <?php if (isset($_GET['added']) && $_GET['added'] == '1') : ?>
+    showToast();
+  <?php endif; ?>
 });
 </script>
 
