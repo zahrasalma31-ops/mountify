@@ -1,53 +1,53 @@
 <?php
 require "koneksi.php";
 
-$error   = "";
-$success = "";
+$error     = "";
+$success   = "";
 $resetLink = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? "");
 
     if ($email === "") {
-        $error = "Email wajib diisi.";
+        $error = "Email is required.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Format email tidak valid.";
+        $error = "Invalid email format.";
     } else {
         $emailEsc = mysqli_real_escape_string($con, $email);
 
-        // Cek apakah email ada
+        // Check if email exists
         $query = mysqli_query($con, "SELECT * FROM users WHERE email='$emailEsc' LIMIT 1");
 
         if (mysqli_num_rows($query) === 1) {
             $user = mysqli_fetch_assoc($query);
 
-            // Buat token reset baru
+            // Create new reset token
             $token = bin2hex(random_bytes(32));
 
             mysqli_query(
                 $con,
                 "UPDATE users 
-                SET reset_token='$token',
-                    reset_expires = DATE_ADD(NOW(), INTERVAL 1 HOUR)
-                WHERE email='$emailEsc'"
+                 SET reset_token   = '$token',
+                     reset_expires = DATE_ADD(NOW(), INTERVAL 1 HOUR)
+                 WHERE email = '$emailEsc'"
             );
 
-            // Karena localhost → tampilkan link reset password
-            $baseUrl = "http://localhost/mountify"; 
+            // Localhost: show reset link as button
+            $baseUrl   = "http://localhost/mountify";
             $resetLink = $baseUrl . "/reset_password.php?email=" . urlencode($email) . "&token=" . $token;
 
-            $success = "Permintaan reset password berhasil. Silakan klik tombol di bawah ini.";
+            $success = "Password reset request successful. Click the button below to continue.";
         } else {
-            $error = "Email tidak ditemukan.";
+            $error = "Email not found.";
         }
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lupa Password</title>
+    <title>Forgot Password</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -60,14 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
 
+            <div class="col-lg-5 col-md-7">
                 <div class="register-card mx-auto">
 
-                    <h1 class="register-title">Lupa Password</h1>
+                    <h1 class="register-title">Forgot Password</h1>
 
                     <?php if ($error) { ?>
-                        <div class="alert alert-danger"><?= htmlspecialchars($error); ?></div>
+                        <div class="alert alert-danger text-center"><?= htmlspecialchars($error); ?></div>
                     <?php } ?>
 
                     <?php if ($success) { ?>
@@ -89,21 +89,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <form method="POST" action="">
                         <div class="input-icon-wrapper">
                             <i class="far fa-envelope"></i>
-                            <input type="email" name="email" placeholder="Masukkan email Anda" required>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Enter your email" 
+                                required>
                         </div>
 
                         <button type="submit" class="btn-register">
-                            Kirim Permintaan <span class="ms-1">→</span>
+                            Send Request <span class="ms-1">→</span>
                         </button>
                     </form>
 
                     <p class="register-bottom-text">
-                        Ingat password? <a href="login.php">Login</a>
+                        Remember your password? <a href="login.php">Login</a>
                     </p>
 
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
