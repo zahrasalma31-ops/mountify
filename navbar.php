@@ -70,11 +70,6 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                             <span class="ms-2"><?= htmlspecialchars($_SESSION['username']); ?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li>
-                                <a class="dropdown-item" href="riwayat-booking.php">
-                                    Riwayat Booking
-                                </a>
-                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item" href="logout.php">
