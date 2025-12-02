@@ -1468,49 +1468,67 @@ h1, h2, h3, h4, h5,
     color: #ffffff !important;
 }
 
-/* ===== RIWAYAT BOOKING ===== */
-
-.riwayat-wrapper {
-    max-width: 1300px;
-    margin: 0 auto;            /* biar kontennya di tengah layar */
-}
-
+/* === Shared title/subtitle (Cart & Booking History) === */
 .riwayat-title {
-    font-size: 45px;
-    font-weight: 750; /* lebih bold */
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 0.03em;
     color: #2d483a;
-    letter-spacing: 0.5px;
-    text-align: center;
-    margin-bottom: 30px;
 }
 
-
-/* Card putih mengelilingi tabel, mirip "Cara Sewa" */
-.riwayat-card {
-    background-color: #ffffff;
-    border-radius: 20px;
-    padding: 30px 30px 35px;
-    border: 1px solid #e3e7db;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Biar tabel jadi rapih di dalam card */
-.riwayat-table th,
-.riwayat-table td {
-    vertical-align: middle;
-    border-color: #edf0e6;
+.riwayat-subtitle {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 0.95rem;
+    color: #67736a;
 }
 
+/* Header tabel biar rapih seperti cart */
 .riwayat-table thead th {
     font-weight: 600;
+    font-size: 0.9rem;
+    color: #4f5b4f;
+    vertical-align: middle;
 }
 
-.riwayat-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12); /* lebih timbul */
+/* Pill status di Booking History */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: none;
 }
+
+.status-pill--processing {
+    background-color: #f7b500;
+    color: #4a3b00;
+}
+
+.status-pill--confirmed {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.status-pill--completed {
+    background-color: #d0d4d9;
+    color: #333c44;
+}
+
+.status-pill--cancelled {
+    background-color: #ff4b4b;
+    color: #ffffff;
+}
+
+.status-pill--default {
+    background-color: #adb5bd;
+    color: #ffffff;
+}
+
+
 
 /* =========================
    PRODUCT HERO BANNER
@@ -1575,4 +1593,144 @@ h1, h2, h3, h4, h5,
         font-size: 13px;
         letter-spacing: 0.06em;
     }
+}
+
+/* CART ICON DI NAVBAR */
+
+.cart-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.cart-icon {
+    font-size: 1.4rem;        /* ukuran icon */
+    color: #ffffff;           /* sesuaikan dengan warna navbar-mu */
+}
+
+/* Badge merah bulat seperti contoh */
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+
+    border-radius: 999px;
+    background-color: #e53935;   /* merah badge */
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effect ringan */
+.navbar .cart-link:hover .cart-icon {
+    transform: translateY(-1px);
+}
+
+/* Kalau mau badge hilang saat 0, bisa pakai ini (opsional) */
+/*
+.cart-badge:empty,
+.cart-badge::after {
+    display: none;
+}
+*/
+
+/* ============================
+   Cart / Booking switch pills
+   ============================ */
+
+.cart-switch-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.cart-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    border-radius: 999px;
+
+    background: #e2f0e4;              /* hijau muda */
+    color: #294B29;
+    font-weight: 500;
+    font-size: 0.95rem;
+
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+    transition: background 0.2s ease, 
+                box-shadow 0.2s ease, 
+                transform 0.1s ease, 
+                color 0.2s ease;
+}
+
+.cart-switch-btn i {
+    font-size: 1rem;
+}
+
+/* state aktif (halaman yg lagi dibuka) */
+.cart-switch-btn.active {
+    background: linear-gradient(135deg, #4e7f4f, #294B29);
+    color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* hover effect */
+.cart-switch-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+/* saat hover yg non-aktif, bikin teks sedikit lebih gelap */
+.cart-switch-btn:not(.active):hover {
+    background: #d7e9da;
+    color: #1f3a21;
+}
+
+/* ===== CART TABLE ===== */
+
+.riwayat-card .riwayat-table thead th {
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* kolom checkbox "Select all" */
+.cart-col-select {
+    width: 80px;
+}
+
+.cart-select-all-label {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+/* header kolom Product di-center */
+.cart-col-product {
+    text-align: center;
+}
+
+/* tapi isi sel product tetap rata kiri */
+.cart-cell-product {
+    text-align: left;
+}
+
+/* sedikit spacing di bawah card biar lega */
+.cart-wrapper,
+.riwayat-wrapper {
+    padding-top: 120px;
+    padding-bottom: 60px;
 }

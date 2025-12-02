@@ -39,12 +39,27 @@ $queryBooking = mysqli_query($con, $sql);
 
 <div class="container py-5 mt-5 riwayat-wrapper">
 
-    <!-- JUDUL DI TENGAH -->
-    <h1 class="riwayat-title mb-4 text-center">Booking History</h1>
+    <!-- SWITCH CART / HISTORY -->
+    <div class="cart-switch-wrapper">
+        <a href="cart.php" class="cart-switch-btn">
+            <i class="fas fa-shopping-cart me-2"></i>
+            Booking Cart
+        </a>
+        <a href="riwayat-booking.php" class="cart-switch-btn active">
+            <i class="fas fa-clock-rotate-left me-2"></i>
+            Booking History
+        </a>
+    </div>
+
+    <!-- JUDUL + SUBTITLE (sama konsepnya dengan Cart) -->
+    <h1 class="riwayat-title mb-2 text-center">Booking History</h1>
+    <p class="riwayat-subtitle text-center mb-4">
+        Review all your past and ongoing bookings in one place.
+    </p>
 
     <?php if (mysqli_num_rows($queryBooking) === 0) { ?>
         <div class="alert alert-info text-center mt-4">
-            You dont have any booking history yet.
+            You don’t have any booking history yet.
         </div>
     <?php } else { ?>
 
@@ -66,50 +81,65 @@ $queryBooking = mysqli_query($con, $sql);
                     <tbody>
                     <?php while ($row = mysqli_fetch_assoc($queryBooking)) { ?>
                         <tr>
+                            <!-- KODE BOOKING -->
                             <td><?= htmlspecialchars($row['kode_booking']); ?></td>
 
+                            <!-- PRODUK -->
                             <td>
                                 <div class="d-flex align-items-center">
                                     <?php if (!empty($row['foto_produk'])) { ?>
                                         <img src="image/<?= htmlspecialchars($row['foto_produk']); ?>"
-                                            alt=""
-                                            style="width:50px;height:50px;object-fit:cover;"
-                                            class="me-2 rounded">
+                                             alt=""
+                                             style="width:50px;height:50px;object-fit:cover;"
+                                             class="me-2 rounded">
                                     <?php } ?>
                                     <span><?= htmlspecialchars($row['nama_produk']); ?></span>
                                 </div>
                             </td>
 
+                            <!-- RENTAL DATE -->
                             <td class="text-center">
                                 <?= date("d M Y", strtotime($row['tgl_ambil'])); ?>
                             </td>
 
+                            <!-- RETURN DATE -->
                             <td class="text-center">
                                 <?= date("d M Y", strtotime($row['tgl_kembali'])); ?>
                             </td>
 
+                            <!-- DURATION (pakai "day" seperti di Cart) -->
                             <td class="text-center">
-                                <?= (int)$row['durasi_hari']; ?> hari
+                                <?php
+                                    $d = (int)$row['durasi_hari'];
+                                    echo $d . ' day' . ($d > 1 ? 's' : '');
+                                ?>
                             </td>
 
+                            <!-- TOTAL PRICE -->
                             <td class="text-center">
                                 Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?>
                             </td>
 
+                            <!-- STATUS (pill style mirip screenshot) -->
                             <td class="text-center">
-                                <span class="badge 
-                                    <?php
-                                    switch (strtolower($row['status'])) {
-                                        case 'processing': echo 'bg-warning text-dark'; break;
-                                        case 'confirmed':  echo 'bg-success'; break;
-                                        case 'completed':  echo 'bg-secondary'; break;
-                                        case 'cancelled':  echo 'bg-danger'; break;
-                                        default:           echo 'bg-secondary';
-                                    }
-                                    ?>">
-                                    <?= htmlspecialchars($row['status']); ?>
-                                </span>
+                                <?php
+                                    $status      = strtolower($row['status']);
+                                    $statusLabel = ucfirst($status);
+                                    $statusClass = 'status-pill--default';
 
+                                    if ($status === 'processing') {
+                                        $statusClass = 'status-pill--processing';
+                                    } elseif ($status === 'confirmed') {
+                                        $statusClass = 'status-pill--confirmed';
+                                    } elseif ($status === 'completed') {
+                                        $statusClass = 'status-pill--completed';
+                                    } elseif ($status === 'cancelled') {
+                                        $statusClass = 'status-pill--cancelled';
+                                    }
+                                ?>
+                                <span class="status-pill <?= $statusClass; ?>">
+                                    <?= htmlspecialchars($statusLabel); ?>
+                                </span>
                             </td>
                         </tr>
                     <?php } ?>
@@ -120,7 +150,6 @@ $queryBooking = mysqli_query($con, $sql);
 
     <?php } ?>
 </div>
-
 
 <?php require "footer.php"; ?>
 

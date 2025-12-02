@@ -3,15 +3,22 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// hitung jumlah item di cart
+$cartCount = 0;
+if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $cartCount += isset($item['qty']) ? (int)$item['qty'] : 1;
+    }
+}
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark warna1 custom-navbar
-    <?php
-        if (isset($forceSolidNavbar) && $forceSolidNavbar) {
-            echo ' navbar-solid';
-        }
-    ?>
-">
+<nav class="navbar navbar-expand-lg navbar-dark warna1 custom-navbar<?php
+    // kalau halaman minta navbar solid
+    if (isset($forceSolidNavbar) && $forceSolidNavbar) {
+        echo ' navbar-solid';
+    }
+?>">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
             <span class="navbar-toggler-icon"></span>
@@ -37,6 +44,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!-- RIGHT MENU -->
             <div class="d-flex align-items-center gap-4">
+
+                <!-- CART ICON -->
+                <a href="cart.php" class="nav-link cart-link position-relative">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge"><?= $cartCount; ?></span>
+                </a>
 
                 <?php if (!isset($_SESSION['user_id'])) { ?>
                     <!-- BELUM LOGIN: tampilkan link Login biasa -->
@@ -72,7 +85,6 @@ if (session_status() === PHP_SESSION_NONE) {
                     </div>
                 <?php } ?>
 
-                <!-- Keranjang DIHILANGKAN sesuai permintaan, jadi tak ada apa-apa lagi di kanan -->
             </div>
 
         </div>
