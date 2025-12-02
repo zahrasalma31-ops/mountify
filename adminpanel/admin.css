@@ -1,0 +1,782 @@
+        body {
+            background-color: #f5f7f3;
+        }
+
+        /* ====== SUMMARY CARD ala Mountify ====== */
+        .summary-card {
+            border-radius: 20px;
+            padding: 22px 26px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .summary-card--kategori {
+            background: #294B29;       /* warna1 */
+        }
+
+        .summary-card--produk {
+            background: #0b4c6a;       /* sejenis biru kehijauan, mirip tone produk */
+        }
+
+        .summary-icon {
+            font-size: 52px;
+            opacity: 0.16;
+        }
+
+        .summary-text h3 {
+            font-size: 1.7rem;
+            font-weight: 650;
+            margin-bottom: 4px;
+        }
+
+        .summary-text p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .summary-link {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: inline-block;
+            color: #DBE7C9;              /* warna4 hijau muda */
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .summary-link:hover {
+            color: #EEC373;              /* kuning soft seperti di footer */
+            text-decoration: underline;
+        }
+
+        /* breadcrumb + judul biar mirip help / section lain */
+        .admin-breadcrumb {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .admin-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #294B29;
+        }
+
+/* ===================================
+   ADMIN DASHBOARD – GLOBAL STYLE
+   =================================== */
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: #f6f7f6;
+}
+
+/* Breadcrumb */
+.admin-breadcrumb {
+    font-weight: 500;
+    color: #294B29;
+}
+
+/* Section Titles */
+.admin-title {
+    font-weight: 700;
+    color: #294B29;
+}
+
+
+/* ===================================
+   SUMMARY CARDS (Kategori & Produk)
+   =================================== */
+
+.summary-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+}
+
+.summary-card--kategori {
+    border-left: 7px solid #4CAF50;
+}
+.summary-card--produk {
+    border-left: 7px solid #0057b8;
+}
+
+.summary-text h3 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.summary-text p {
+    font-size: 16px;
+    margin: 5px 0 12px;
+    color: #666;
+}
+
+.summary-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #294B29;
+}
+
+.summary-icon i {
+    font-size: 42px;
+    color: #294B29;
+}
+
+
+/* ===================================
+   QUICK MANAGEMENT SECTION
+   =================================== */
+
+/* ===================================
+   PALET WARNA MOUNTIFY ADMIN
+   =================================== */
+
+:root {
+    --green-dark: #14351f;
+    --green-main: #294B29;
+    --green-soft: #8CBF7F;
+    --green-bg:   #f3f6f1;
+    --card-bg:    #ffffff;
+    --text-main:  #16301c;
+    --text-soft:  #6e7a6f;
+    --accent-orange: #f39c12;
+    --accent-blue:   #1d7dd8;
+}
+
+/* Global */
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: var(--green-bg);
+}
+
+.admin-page {
+    min-height: 100vh;
+}
+
+/* ===================================
+   HERO SECTION (HIJAU ATAS)
+   =================================== */
+
+.admin-hero {
+    background: linear-gradient(135deg, #335e33, #294B29);
+    color: #fff;
+    padding: 70px 0 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+}
+
+.admin-hero-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.85;
+}
+
+.admin-hero-greeting {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.admin-hero-text {
+    font-size: 15px;
+    max-width: 420px;
+    opacity: 0.9;
+}
+
+/* Hero stats kecil di sebelah kanan */
+.admin-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.stat-item {
+    background: rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 12px 14px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.9;
+}
+.stat-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ===================================
+   MAIN CONTENT (PUTIH)
+   =================================== */
+
+.admin-main {
+    padding: 25px 0 60px;
+}
+
+/* Breadcrumb kecil */
+.admin-breadcrumb {
+    font-size: 13px;
+    color: var(--text-soft);
+}
+
+/* Section Title */
+.admin-section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green-main);
+}
+
+.admin-section-subtext {
+    font-size: 13px;
+    color: var(--text-soft);
+}
+
+/* ===================================
+   LINK CARDS (KATEGORI, PRODUK, BOOKING, KONTAK)
+   =================================== */
+
+.admin-link-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    border-radius: 18px;
+    padding: 18px 18px 14px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-link-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.admin-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(0,0,0,0.12);
+    border-color: rgba(41,75,41,0.35);
+}
+
+.admin-link-card:hover::before {
+    opacity: 1;
+}
+
+/* Icon bulat di atas */
+.admin-link-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* warna per menu */
+.admin-link-icon.kategori {
+    background: linear-gradient(135deg, #4caf50, #3b7d3c);
+}
+.admin-link-icon.produk {
+    background: linear-gradient(135deg, #1d7dd8, #15558f);
+}
+.admin-link-icon.booking {
+    background: linear-gradient(135deg, #16a085, #0e7460);
+}
+.admin-link-icon.kontak {
+    background: linear-gradient(135deg, #f39c12, #d47c07);
+}
+
+/* Body text card */
+.admin-link-body h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.admin-link-body p {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+}
+
+/* Footer card (text + arrow) */
+.admin-link-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--green-main);
+    margin-top: auto;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(0,0,0,0.06);
+}
+
+.admin-link-footer i {
+    font-size: 12px;
+}
+
+/* ===================================
+   INFO CARD BAWAH
+   =================================== */
+
+.admin-info-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.admin-info-card--small {
+    padding: 16px 18px;
+}
+
+.admin-info-header {
+    font-weight: 600;
+    color: var(--green-main);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-info-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.admin-info-list li {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 992px) {
+    .admin-hero {
+        padding: 50px 0 30px;
+        border-radius: 0 0 28px 28px;
+    }
+
+    .admin-hero-stats {
+        margin-top: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-hero-greeting {
+        font-size: 26px;
+    }
+
+    .admin-hero-stats {
+        grid-template-columns: repeat(3, minmax(0, 90px));
+        gap: 8px;
+    }
+}
+
+
+/* ================================
+   ADMIN NAVBAR – FINAL VERSION
+   ================================ */
+
+/* 1. NAVBAR DEFAULT: FULL TRANSPARAN (HANYA BLUR) */
+.admin-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+
+    background: rgba(255, 255, 255, 0.02);       /* hampir bening */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* 2. NAVBAR SETELAH DISCROLL: HIJAU DOVE LEMBUT (SAMA DI SEMUA HALAMAN) */
+.admin-navbar.navbar-solid {
+    background: linear-gradient(
+        180deg,
+        rgba(210, 221, 210, 0.96),   /* hijau sangat muda */
+        rgba(196, 209, 196, 0.94)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    border-bottom-color: transparent;
+}
+
+/* LINK DI NAVBAR */
+.admin-navbar .nav-link {
+    font-weight: 500;
+    color: var(--green-dark);
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color .2s ease, opacity .2s ease;
+    opacity: 0.95;
+}
+
+.admin-navbar .nav-link:hover {
+    color: var(--green-main);
+    opacity: 1;
+}
+
+.admin-navbar .nav-link i {
+    font-size: 15px;
+}
+
+/* LOGOUT */
+.admin-navbar .logout-link {
+    color: #c0392b;
+}
+
+.admin-navbar .logout-link:hover {
+    color: #e74c3c;
+}
+
+/* TOGGLER */
+.navbar-toggler {
+    border: 0;
+}
+.navbar-toggler i {
+    color: var(--green-dark);
+    font-size: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 992px) {
+    .admin-navbar .nav-link {
+        margin-right: 0;
+        padding: 8px 0;
+    }
+}
+
+/* ===================================
+                Kategori
+   =================================== */
+
+           .no-decoration {
+            text-decoration: none;
+        }
+        .kategori-page-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #16301c;
+        }
+        .kategori-subtitle {
+            font-size: 14px;
+            color: #6e7a6f;
+        }
+        .badge-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(41, 75, 41, 0.07);
+            font-size: 13px;
+            color: #16301c;
+            font-weight: 500;
+        }
+        .badge-count i {
+            font-size: 14px;
+        }
+
+        .admin-form-card {
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.02);
+            padding: 18px 20px;
+        }
+        .admin-form-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #16301c;
+        }
+        .admin-form-card label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #16301c;
+        }
+        .admin-form-card .form-control {
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .admin-form-card .btn-primary {
+            border-radius: 999px;
+            padding-inline: 22px;
+        }
+
+        .admin-list-card {
+            margin-top: 24px;
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.02);
+            padding: 18px 20px;
+        }
+        .admin-list-card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #16301c;
+            margin-bottom: 12px;
+        }
+        .admin-list-card .table {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        .admin-list-card thead tr {
+            background-color: #f7faf6;
+        }
+        .admin-list-card thead th {
+            border-bottom: none;
+            color: #6e7a6f;
+            font-weight: 500;
+        }
+        .admin-list-card tbody td {
+            vertical-align: middle;
+        }
+        .admin-list-card .btn-info {
+            border-radius: 999px;
+            padding-inline: 10px;
+        }
+
+        .admin-tip-card {
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.02);
+            padding: 18px 20px;
+            font-size: 14px;
+            color: #16301c;
+        }
+        .admin-tip-card-title {
+            font-weight: 600;
+            color: #294B29;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .admin-tip-card-title i {
+            font-size: 15px;
+        }
+        .admin-tip-card ul {
+            padding-left: 18px;
+            margin-bottom: 0;
+        }
+        .admin-tip-card li {
+            margin-bottom: 4px;
+            color: #6e7a6f;
+        }
+
+        @media (max-width: 768px) {
+            .kategori-page-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+
+/* ===================================
+                Produk
+   =================================== */
+    .no-decoration {
+        text-decoration: none;
+  }
+
+  form div{
+    margin-bottom: 10px;
+  }
+
+  /* ========= UTILITIES ========= */
+
+.no-decoration {
+    text-decoration: none;
+}
+
+/* Wrapper halaman admin */
+.admin-page {
+    background: #f3f6f1;
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+.admin-main {
+    padding-top: 88px;   /* beri ruang karena navbar sticky */
+    padding-bottom: 40px;
+}
+
+/* Breadcrumb */
+.admin-breadcrumb {
+    font-size: 14px;
+    color: #6e7a6f;
+}
+.admin-breadcrumb i {
+    font-size: 14px;
+}
+
+/* ========= PRODUK PAGE ========= */
+
+.produk-page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #16301c;
+}
+
+.produk-subtitle {
+    font-size: 14px;
+    color: #6e7a6f;
+}
+
+/* Badge jumlah data (dipakai juga di kategori) */
+.badge-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(41, 75, 41, 0.07);
+    font-size: 13px;
+    color: #16301c;
+    font-weight: 500;
+}
+.badge-count i {
+    font-size: 14px;
+}
+
+/* Card form umum (dipakai di kategori & produk) */
+.admin-form-card {
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+    padding: 18px 20px;
+}
+.admin-form-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #16301c;
+}
+.admin-form-card label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #16301c;
+}
+.admin-form-card .form-control {
+    border-radius: 10px;
+    font-size: 14px;
+}
+.admin-form-card .btn-primary {
+    border-radius: 999px;
+    padding-inline: 22px;
+}
+
+/* Card list tabel umum */
+.admin-list-card {
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+    padding: 18px 20px;
+}
+.admin-list-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #16301c;
+    margin-bottom: 8px;
+}
+.admin-list-card .table {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.admin-list-card thead tr {
+    background-color: #f7faf6;
+}
+.admin-list-card thead th {
+    border-bottom: none;
+    color: #6e7a6f;
+    font-weight: 500;
+}
+.admin-list-card tbody td {
+    vertical-align: middle;
+}
+.admin-list-card .btn-info {
+    border-radius: 999px;
+    padding-inline: 10px;
+}
+
+/* Card tips umum */
+.admin-tip-card {
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+    padding: 18px 20px;
+    font-size: 14px;
+    color: #16301c;
+}
+.admin-tip-card-title {
+    font-weight: 600;
+    color: #294B29;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.admin-tip-card-title i {
+    font-size: 15px;
+}
+.admin-tip-card ul {
+    padding-left: 18px;
+    margin-bottom: 0;
+}
+.admin-tip-card li {
+    margin-bottom: 4px;
+    color: #6e7a6f;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+    .produk-page-title {
+        font-size: 22px;
+    }
+}
