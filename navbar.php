@@ -28,6 +28,13 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 
             <!-- LEFT MENU -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-4 d-flex align-items-center">
+                    <a class="nav-link p-0" href="index.php">
+                        <img src="image/logoutama.png"
+                            alt="Mountify Logo"
+                            style="height:40px;">
+                    </a>
+                </li>
                 <li class="nav-item me-4">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
