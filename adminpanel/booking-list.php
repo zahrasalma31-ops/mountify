@@ -1,7 +1,7 @@
 <?php
 // adminpanel/booking-list.php
 
-require "session.php";          // kalau belum dipakai, boleh disesuaikan
+require "session.php";
 require "../koneksi.php";
 
 // AMBIL DATA BOOKING + USER + PRODUK
@@ -74,19 +74,19 @@ $query = mysqli_query($con, $sql);
                                     <th>Kode Booking</th>
                                     <th>Customer</th>
                                     <th>Produk</th>
-                                    <th>Tgl Ambil</th>
-                                    <th>Tgl Kembali</th>
-                                    <th>Durasi</th>
-                                    <th>Total Biaya</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th class="text-center">Tgl Ambil</th>
+                                    <th class="text-center">Tgl Kembali</th>
+                                    <th class="text-center">Durasi</th>
+                                    <th class="text-end">Total Biaya</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php while ($row = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
                                     <!-- KODE BOOKING -->
-                                    <td class="kode-booking-cell">
+                                    <td class="booking-code-cell">
                                         <?= htmlspecialchars($row['kode_booking']); ?>
                                     </td>
 
@@ -102,39 +102,41 @@ $query = mysqli_query($con, $sql);
                                         </div>
                                     </td>
 
-                                    <!-- PRODUK -->
+                                    <!-- PRODUK (FOTO DI ATAS, NAMA DI BAWAH) -->
                                     <td>
-                                        <div class="d-flex align-items-center produk-cell">
+                                        <div class="product-cell">
                                             <?php if (!empty($row['foto_produk'])) { ?>
                                                 <img
                                                     src="../image/<?= htmlspecialchars($row['foto_produk']); ?>"
                                                     alt=""
-                                                    class="booking-product-thumb me-2">
+                                                    class="booking-product-thumb">
                                             <?php } ?>
-                                            <span class="produk-name">
+                                            <span class="product-name">
                                                 <?= htmlspecialchars($row['nama_produk']); ?>
                                             </span>
                                         </div>
                                     </td>
 
                                     <!-- TANGGAL -->
-                                    <td class="text-nowrap">
+                                    <td class="text-center text-nowrap">
                                         <?= date("d M Y", strtotime($row['tgl_ambil'])); ?>
                                     </td>
-                                    <td class="text-nowrap">
+                                    <td class="text-center text-nowrap">
                                         <?= date("d M Y", strtotime($row['tgl_kembali'])); ?>
                                     </td>
 
                                     <!-- DURASI -->
-                                    <td><?= (int)$row['durasi_hari']; ?> hari</td>
+                                    <td class="text-center">
+                                        <?= (int)$row['durasi_hari']; ?> hari
+                                    </td>
 
                                     <!-- TOTAL BIAYA -->
-                                    <td class="text-nowrap">
+                                    <td class="text-end text-nowrap">
                                         Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?>
                                     </td>
 
                                     <!-- STATUS (BADGE BERWARNA) -->
-                                    <td>
+                                    <td class="text-center">
                                         <?php
                                         $statusLower = strtolower($row['status']);
                                         $badgeClass  = 'status-pill-other';
@@ -150,8 +152,8 @@ $query = mysqli_query($con, $sql);
                                         </span>
                                     </td>
 
-                                    <!-- AKSI -->
-                                    <td>
+                                    <!-- ACTION -->
+                                    <td class="text-center">
                                         <form action="booking-update-status.php" method="post"
                                               class="d-inline-flex align-items-center gap-2 booking-status-form">
                                             <input type="hidden" name="id_booking"
@@ -175,7 +177,7 @@ $query = mysqli_query($con, $sql);
 
                                             <button type="submit"
                                                     class="btn btn-sm btn-primary booking-save-btn">
-                                                Simpan
+                                                Save
                                             </button>
                                         </form>
                                     </td>
