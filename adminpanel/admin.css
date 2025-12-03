@@ -780,29 +780,15 @@ body {
     }
 }
 
-/* ==========================
-   BOOKING LIST PAGE
-   ========================== */
+/* =============== BOOKING TABLE LAYOUT =============== */
 
-.booking-page-title {
-    font-size: 28px;
-    font-weight: 700;
-    color: #16301c;
-}
-
-.booking-alert {
-    border-radius: 12px;
-    font-size: 14px;
-}
-
-/* Card tabel booking (turunan admin-list-card) */
-.booking-card {
-    margin-top: 8px;
-}
-
-/* Tabel */
 .booking-table {
     font-size: 14px;
+}
+
+.booking-table th,
+.booking-table td {
+    padding: 14px 16px;
 }
 
 .booking-table thead tr {
@@ -815,7 +801,12 @@ body {
     font-weight: 500;
 }
 
-.kode-booking-cell {
+.booking-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #eef1ea;
+}
+
+/* Booking code cell */
+.booking-code-cell {
     font-weight: 600;
     color: #16301c;
 }
@@ -834,18 +825,20 @@ body {
     color: #6e7a6f;
 }
 
-/* Produk cell + FOTO KECIL */
-.booking-product-thumb {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-.produk-name {
+/* Product cell */
+.product-cell .product-name {
     font-weight: 500;
 }
 
-/* Status pill (warna tetap, tapi lebih rapi) */
+/* Small product photo */
+.booking-product-thumb {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Status pill (warna sudah kamu pakai sebelumnya) */
 .status-pill {
     display: inline-flex;
     align-items: center;
@@ -856,60 +849,50 @@ body {
     font-weight: 600;
 }
 
+/* Existing colors (tidak diubah) */
 .status-pill-processing {
     background: #f8e39a;
     color: #7a5a00;
 }
-
 .status-pill-confirmed {
     background: #b7f0c2;
     color: #1b5e20;
 }
-
 .status-pill-completed {
     background: #d0d7de;
     color: #37474f;
 }
-
 .status-pill-cancelled {
     background: #f8b4b4;
     color: #b71c1c;
 }
-
 .status-pill-other {
     background: #e0e0e0;
     color: #424242;
 }
 
-/* Form di kolom Aksi */
+/* Action column form */
 .booking-status-form {
-    justify-content: flex-end;
+    justify-content: center;
 }
-
 .booking-status-select {
     min-width: 120px;
     border-radius: 999px;
     font-size: 12px;
 }
-
 .booking-save-btn {
     border-radius: 999px;
     padding-inline: 14px;
     font-size: 12px;
 }
 
-/* Responsive */
+/* Responsive tweaks */
 @media (max-width: 768px) {
-    .booking-page-title {
-        font-size: 22px;
-    }
-
     .booking-status-form {
         flex-direction: column;
         align-items: stretch;
         gap: 4px;
     }
-
     .booking-status-select,
     .booking-save-btn {
         width: 100%;

@@ -4,14 +4,14 @@
 require "session.php";
 require "../koneksi.php";
 
-// GET ALL BOOKINGS + USER + PRODUCT
+// AMBIL DATA BOOKING + USER + PRODUK
 $sql = "
     SELECT 
         b.*,
         u.username,
         u.email,
-        p.nama AS product_name,
-        p.foto AS product_photo
+        p.nama AS nama_produk,
+        p.foto AS foto_produk
     FROM booking b
     JOIN users  u ON b.id_user   = u.id
     JOIN produk p ON b.id_produk = p.id
@@ -21,10 +21,10 @@ $query = mysqli_query($con, $sql);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Admin | Booking List</title>
+    <title>Admin | Daftar Booking</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
@@ -40,27 +40,27 @@ $query = mysqli_query($con, $sql);
     <section class="admin-main">
         <div class="container">
 
-            <!-- SMALL BREADCRUMB -->
+            <!-- BREADCRUMB KECIL -->
             <div class="d-flex align-items-center mb-2 admin-breadcrumb">
                 <i class="fas fa-home me-2"></i>
                 <span>Home</span>
                 <span class="mx-1">/</span>
-                <span>Bookings</span>
+                <span>Booking</span>
             </div>
 
-            <!-- PAGE TITLE -->
-            <h1 class="booking-page-title mb-4">Booking List</h1>
+            <!-- JUDUL HALAMAN -->
+            <h1 class="booking-page-title mb-4">Daftar Booking</h1>
 
             <?php if (isset($_GET['msg']) && $_GET['msg'] === 'updated') { ?>
                 <div class="alert alert-success booking-alert" role="alert">
-                    Booking status has been updated successfully.
+                    Status booking berhasil diperbarui.
                 </div>
             <?php } ?>
 
             <?php if (mysqli_num_rows($query) === 0) { ?>
 
                 <div class="alert alert-info booking-alert">
-                    There are no bookings yet.
+                    Belum ada data booking.
                 </div>
 
             <?php } else { ?>
@@ -71,13 +71,13 @@ $query = mysqli_query($con, $sql);
                         <table class="table align-middle booking-table">
                             <thead>
                                 <tr>
-                                    <th>Booking Code</th>
+                                    <th>Kode Booking</th>
                                     <th>Customer</th>
-                                    <th>Product</th>
-                                    <th class="text-center">Pickup Date</th>
-                                    <th class="text-center">Return Date</th>
-                                    <th class="text-center">Duration</th>
-                                    <th class="text-end">Total Price</th>
+                                    <th>Produk</th>
+                                    <th class="text-center">Tgl Ambil</th>
+                                    <th class="text-center">Tgl Kembali</th>
+                                    <th class="text-center">Durasi</th>
+                                    <th class="text-end">Total Biaya</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -85,7 +85,7 @@ $query = mysqli_query($con, $sql);
                             <tbody>
                             <?php while ($row = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
-                                    <!-- BOOKING CODE -->
+                                    <!-- KODE BOOKING -->
                                     <td class="booking-code-cell">
                                         <?= htmlspecialchars($row['kode_booking']); ?>
                                     </td>
@@ -102,22 +102,22 @@ $query = mysqli_query($con, $sql);
                                         </div>
                                     </td>
 
-                                    <!-- PRODUCT -->
+                                    <!-- PRODUK (FOTO DI ATAS, NAMA DI BAWAH) -->
                                     <td>
-                                        <div class="d-flex align-items-center product-cell">
-                                            <?php if (!empty($row['product_photo'])) { ?>
+                                        <div class="product-cell">
+                                            <?php if (!empty($row['foto_produk'])) { ?>
                                                 <img
-                                                    src="../image/<?= htmlspecialchars($row['product_photo']); ?>"
+                                                    src="../image/<?= htmlspecialchars($row['foto_produk']); ?>"
                                                     alt=""
-                                                    class="booking-product-thumb me-2">
+                                                    class="booking-product-thumb">
                                             <?php } ?>
                                             <span class="product-name">
-                                                <?= htmlspecialchars($row['product_name']); ?>
+                                                <?= htmlspecialchars($row['nama_produk']); ?>
                                             </span>
                                         </div>
                                     </td>
 
-                                    <!-- DATES -->
+                                    <!-- TANGGAL -->
                                     <td class="text-center text-nowrap">
                                         <?= date("d M Y", strtotime($row['tgl_ambil'])); ?>
                                     </td>
@@ -125,17 +125,17 @@ $query = mysqli_query($con, $sql);
                                         <?= date("d M Y", strtotime($row['tgl_kembali'])); ?>
                                     </td>
 
-                                    <!-- DURATION -->
+                                    <!-- DURASI -->
                                     <td class="text-center">
-                                        <?= (int)$row['durasi_hari']; ?> days
+                                        <?= (int)$row['durasi_hari']; ?> hari
                                     </td>
 
-                                    <!-- TOTAL PRICE -->
+                                    <!-- TOTAL BIAYA -->
                                     <td class="text-end text-nowrap">
                                         Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?>
                                     </td>
 
-                                    <!-- STATUS (COLORED BADGE) -->
+                                    <!-- STATUS (BADGE BERWARNA) -->
                                     <td class="text-center">
                                         <?php
                                         $statusLower = strtolower($row['status']);
@@ -162,13 +162,13 @@ $query = mysqli_query($con, $sql);
                                             <select name="status"
                                                     class="form-select form-select-sm booking-status-select">
                                                 <?php
-                                                $statusOptions = [
+                                                $opsiStatus = [
                                                     'Processing',
                                                     'Confirmed',
                                                     'Completed',
                                                     'Cancelled'
                                                 ];
-                                                foreach ($statusOptions as $st) {
+                                                foreach ($opsiStatus as $st) {
                                                     $selected = ($row['status'] === $st) ? 'selected' : '';
                                                     echo "<option value=\"$st\" $selected>$st</option>";
                                                 }
