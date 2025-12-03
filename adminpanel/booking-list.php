@@ -1,5 +1,5 @@
 <?php
-// adminpanel/booking-list.php
+// adminpanel/booking_list.php
 
 require "session.php";
 require "../koneksi.php";
@@ -17,7 +17,8 @@ $sql = "
     JOIN produk p ON b.id_produk = p.id
     ORDER BY b.created_at DESC
 ";
-$query = mysqli_query($con, $sql);
+$query          = mysqli_query($con, $sql);
+$jumlahBooking  = mysqli_num_rows($query);
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@ $query = mysqli_query($con, $sql);
     <section class="admin-main">
         <div class="container">
 
-            <!-- BREADCRUMB KECIL -->
+            <!-- Breadcrumb -->
             <div class="d-flex align-items-center mb-2 admin-breadcrumb">
                 <i class="fas fa-home me-2"></i>
                 <span>Home</span>
@@ -48,27 +49,42 @@ $query = mysqli_query($con, $sql);
                 <span>Booking</span>
             </div>
 
-            <!-- JUDUL HALAMAN -->
-            <h1 class="booking-page-title mb-4">Daftar Booking</h1>
+            <!-- Header -->
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-3">
+                <div>
+                    <h1 class="contact-page-title mb-1">Daftar Booking</h1>
+                    <p class="contact-subtitle mb-0">
+                        Kelola seluruh pemesanan sewa dari pelanggan Mountify.
+                    </p>
+                </div>
 
+                <?php if ($jumlahBooking > 0) { ?>
+                    <div class="contact-counter mt-3 mt-md-0">
+                        <span class="label">Total booking</span>
+                        <span class="value"><?= $jumlahBooking; ?></span>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <!-- Notifikasi update status -->
             <?php if (isset($_GET['msg']) && $_GET['msg'] === 'updated') { ?>
-                <div class="alert alert-success booking-alert" role="alert">
+                <div class="alert alert-success contact-alert" role="alert">
                     Status booking berhasil diperbarui.
                 </div>
             <?php } ?>
 
-            <?php if (mysqli_num_rows($query) === 0) { ?>
+            <?php if ($jumlahBooking === 0) { ?>
 
-                <div class="alert alert-info booking-alert">
+                <div class="alert alert-info contact-alert">
                     Belum ada data booking.
                 </div>
 
             <?php } else { ?>
 
-                <div class="admin-list-card booking-card">
+                <div class="admin-list-card contact-card">
 
                     <div class="table-responsive">
-                        <table class="table align-middle booking-table">
+                        <table class="table align-middle contact-table">
                             <thead>
                                 <tr>
                                     <th>Kode Booking</th>
@@ -177,7 +193,7 @@ $query = mysqli_query($con, $sql);
 
                                             <button type="submit"
                                                     class="btn btn-sm btn-primary booking-save-btn">
-                                                Save
+                                                Simpan
                                             </button>
                                         </form>
                                     </td>
