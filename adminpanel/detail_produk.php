@@ -86,7 +86,7 @@
                         <?php
                             if($data['ketersediaan_stok']=='Tersedia'){
                         ?>
-                            <option value="Habis">Habis</option>
+                            <option value="Tidak Tersedia">Tidak Tersedia</option>
                         <?php
                             } else {
                         ?>
