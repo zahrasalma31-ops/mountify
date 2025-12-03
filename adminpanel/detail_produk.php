@@ -108,14 +108,13 @@ function generateRandomString($length = 10) {
             <div>
                 <label for="ketersediaan_stok">Ketersediaan Stok</label>
                     <select name="ketersediaan_stok" id="ketersediaan_stok" class="form-control">
-                        <option value="<?php echo $data['ketersediaan_stok']; ?>"><?php echo $data['ketersediaan_stok']; ?></option>
-                        <?php
-                            if($data['ketersediaan_stok']=='Tersedia'){
-                        ?>
-                            <option value="Habis">Habis</option>
-                        <?php
-                            } else {
-                        ?>
+                        <option value="<?php echo $data['ketersediaan_stok']; ?>">
+                            <?php echo $data['ketersediaan_stok']; ?>
+                        </option>
+
+                        <?php if ($data['ketersediaan_stok'] == 'Tersedia') { ?>
+                            <option value="Tidak tersedia">Tidak tersedia</option>
+                        <?php } else { ?>
                             <option value="Tersedia">Tersedia</option>
                         <?php } ?>
                     </select>

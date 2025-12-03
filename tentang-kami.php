@@ -19,8 +19,8 @@
     <div class="product-hero-overlay"></div>
 
     <div class="product-hero-text">
-        <p class="hero-small-title">MOUNTIFY OUTDOOR</p>
-        <h1 class="hero-big-title">Your Guide to a Smooth Rental Experience.</h1>
+        <p class="hero-small-title hero-anim hero-anim-1">MOUNTIFY OUTDOOR</p>
+        <h1 class="hero-big-title hero-anim hero-anim-2">Your Guide to a Smooth Rental Experience.</h1>
     </div>
 </section>
 
