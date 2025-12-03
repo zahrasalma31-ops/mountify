@@ -1,17 +1,17 @@
 <?php
 // adminpanel/booking-list.php
 
-require "session.php";          // kalau belum dipakai, boleh disesuaikan
+require "session.php";
 require "../koneksi.php";
 
-// AMBIL DATA BOOKING + USER + PRODUK
+// GET ALL BOOKINGS + USER + PRODUCT
 $sql = "
     SELECT 
         b.*,
         u.username,
         u.email,
-        p.nama AS nama_produk,
-        p.foto AS foto_produk
+        p.nama AS product_name,
+        p.foto AS product_photo
     FROM booking b
     JOIN users  u ON b.id_user   = u.id
     JOIN produk p ON b.id_produk = p.id
@@ -21,10 +21,10 @@ $query = mysqli_query($con, $sql);
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin | Daftar Booking</title>
+    <title>Admin | Booking List</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
@@ -40,27 +40,27 @@ $query = mysqli_query($con, $sql);
     <section class="admin-main">
         <div class="container">
 
-            <!-- BREADCRUMB KECIL -->
+            <!-- SMALL BREADCRUMB -->
             <div class="d-flex align-items-center mb-2 admin-breadcrumb">
                 <i class="fas fa-home me-2"></i>
                 <span>Home</span>
                 <span class="mx-1">/</span>
-                <span>Booking</span>
+                <span>Bookings</span>
             </div>
 
-            <!-- JUDUL HALAMAN -->
-            <h1 class="booking-page-title mb-4">Daftar Booking</h1>
+            <!-- PAGE TITLE -->
+            <h1 class="booking-page-title mb-4">Booking List</h1>
 
             <?php if (isset($_GET['msg']) && $_GET['msg'] === 'updated') { ?>
                 <div class="alert alert-success booking-alert" role="alert">
-                    Status booking berhasil diperbarui.
+                    Booking status has been updated successfully.
                 </div>
             <?php } ?>
 
             <?php if (mysqli_num_rows($query) === 0) { ?>
 
                 <div class="alert alert-info booking-alert">
-                    Belum ada data booking.
+                    There are no bookings yet.
                 </div>
 
             <?php } else { ?>
@@ -71,22 +71,22 @@ $query = mysqli_query($con, $sql);
                         <table class="table align-middle booking-table">
                             <thead>
                                 <tr>
-                                    <th>Kode Booking</th>
+                                    <th>Booking Code</th>
                                     <th>Customer</th>
-                                    <th>Produk</th>
-                                    <th>Tgl Ambil</th>
-                                    <th>Tgl Kembali</th>
-                                    <th>Durasi</th>
-                                    <th>Total Biaya</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th>Product</th>
+                                    <th class="text-center">Pickup Date</th>
+                                    <th class="text-center">Return Date</th>
+                                    <th class="text-center">Duration</th>
+                                    <th class="text-end">Total Price</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php while ($row = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
-                                    <!-- KODE BOOKING -->
-                                    <td class="kode-booking-cell">
+                                    <!-- BOOKING CODE -->
+                                    <td class="booking-code-cell">
                                         <?= htmlspecialchars($row['kode_booking']); ?>
                                     </td>
 
@@ -102,39 +102,41 @@ $query = mysqli_query($con, $sql);
                                         </div>
                                     </td>
 
-                                    <!-- PRODUK -->
+                                    <!-- PRODUCT -->
                                     <td>
-                                        <div class="d-flex align-items-center produk-cell">
-                                            <?php if (!empty($row['foto_produk'])) { ?>
+                                        <div class="d-flex align-items-center product-cell">
+                                            <?php if (!empty($row['product_photo'])) { ?>
                                                 <img
-                                                    src="../image/<?= htmlspecialchars($row['foto_produk']); ?>"
+                                                    src="../image/<?= htmlspecialchars($row['product_photo']); ?>"
                                                     alt=""
                                                     class="booking-product-thumb me-2">
                                             <?php } ?>
-                                            <span class="produk-name">
-                                                <?= htmlspecialchars($row['nama_produk']); ?>
+                                            <span class="product-name">
+                                                <?= htmlspecialchars($row['product_name']); ?>
                                             </span>
                                         </div>
                                     </td>
 
-                                    <!-- TANGGAL -->
-                                    <td class="text-nowrap">
+                                    <!-- DATES -->
+                                    <td class="text-center text-nowrap">
                                         <?= date("d M Y", strtotime($row['tgl_ambil'])); ?>
                                     </td>
-                                    <td class="text-nowrap">
+                                    <td class="text-center text-nowrap">
                                         <?= date("d M Y", strtotime($row['tgl_kembali'])); ?>
                                     </td>
 
-                                    <!-- DURASI -->
-                                    <td><?= (int)$row['durasi_hari']; ?> hari</td>
+                                    <!-- DURATION -->
+                                    <td class="text-center">
+                                        <?= (int)$row['durasi_hari']; ?> days
+                                    </td>
 
-                                    <!-- TOTAL BIAYA -->
-                                    <td class="text-nowrap">
+                                    <!-- TOTAL PRICE -->
+                                    <td class="text-end text-nowrap">
                                         Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?>
                                     </td>
 
-                                    <!-- STATUS (BADGE BERWARNA) -->
-                                    <td>
+                                    <!-- STATUS (COLORED BADGE) -->
+                                    <td class="text-center">
                                         <?php
                                         $statusLower = strtolower($row['status']);
                                         $badgeClass  = 'status-pill-other';
@@ -150,8 +152,8 @@ $query = mysqli_query($con, $sql);
                                         </span>
                                     </td>
 
-                                    <!-- AKSI -->
-                                    <td>
+                                    <!-- ACTION -->
+                                    <td class="text-center">
                                         <form action="booking-update-status.php" method="post"
                                               class="d-inline-flex align-items-center gap-2 booking-status-form">
                                             <input type="hidden" name="id_booking"
@@ -160,13 +162,13 @@ $query = mysqli_query($con, $sql);
                                             <select name="status"
                                                     class="form-select form-select-sm booking-status-select">
                                                 <?php
-                                                $opsiStatus = [
+                                                $statusOptions = [
                                                     'Processing',
                                                     'Confirmed',
                                                     'Completed',
                                                     'Cancelled'
                                                 ];
-                                                foreach ($opsiStatus as $st) {
+                                                foreach ($statusOptions as $st) {
                                                     $selected = ($row['status'] === $st) ? 'selected' : '';
                                                     echo "<option value=\"$st\" $selected>$st</option>";
                                                 }
@@ -175,7 +177,7 @@ $query = mysqli_query($con, $sql);
 
                                             <button type="submit"
                                                     class="btn btn-sm btn-primary booking-save-btn">
-                                                Simpan
+                                                Save
                                             </button>
                                         </form>
                                     </td>
