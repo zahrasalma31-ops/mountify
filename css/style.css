@@ -1754,3 +1754,17 @@ h1, h2, h3, h4, h5,
     padding-top: 120px;
     padding-bottom: 60px;
 }
+
+/* make input wrapper relative so we can position the eye icon */
+.input-icon-wrapper {
+    position: relative;
+}
+
+/* eye icon for show/hide password */
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    cursor: pointer;
+    color: #50623A;
+    font-size: 16px;
+}
