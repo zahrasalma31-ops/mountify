@@ -7,7 +7,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-12 footer-col">
                 <h3 class="footer-brand-name mb-3">Mountify Outdoor</h3>
 
-                <img src="image/mountifylogo.jpeg"
+                <img src="image/logoutama.png"
                      alt="Mountify Outdoor"
                      class="footer-logo mb-3">
 

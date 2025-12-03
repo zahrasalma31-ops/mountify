@@ -1278,7 +1278,7 @@ h1, h2, h3, h4, h5,
 
 /* LOGO di footer (kecil, nggak gede banget) */
 .footer-logo {
-    max-width: 120px;      /* atur ukuran logo di sini */
+    max-width: 200px;      /* atur ukuran logo di sini */
     height: auto;
     display: block;
 }
@@ -1408,6 +1408,26 @@ h1, h2, h3, h4, h5,
 .custom-navbar .dropdown-toggle::after {
     border-top-color: #ffffff;
 }
+
+/* Dropdown user di navbar – padding & ukuran lebih rapih */
+.custom-navbar .user-dropdown-menu {
+    padding: 6px 0;
+    min-width: 160px;
+}
+
+/* Biar item di tengah vertikal dan jarak nyaman */
+.custom-navbar .user-dropdown-menu .dropdown-item {
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+}
+
+/* Optional: kalau mau garis hijau di kiri cuma muncul saat hover sudah OK
+   kamu sudah punya ini:
+   .custom-navbar .dropdown-menu .dropdown-item:hover { ... }
+   jadi tidak perlu diubah kalau efeknya kamu suka.
+*/
+
 
 /* Style dasar item dropdown user */
 .custom-navbar .dropdown-menu {
