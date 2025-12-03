@@ -1,15 +1,10 @@
 <?php
 // adminpanel/booking-list.php
 
-// kalau di adminpanel kamu biasanya pakai session.php, pakai ini:
-# require "session.php";
-
-// kalau belum ada / bingung, minimal:
-session_start();
-
+require "session.php";          // kalau belum dipakai, boleh disesuaikan
 require "../koneksi.php";
 
-// AMBIL DATA SEMUA BOOKING + USER + PRODUK
+// AMBIL DATA BOOKING + USER + PRODUK
 $sql = "
     SELECT 
         b.*,
@@ -18,13 +13,13 @@ $sql = "
         p.nama AS nama_produk,
         p.foto AS foto_produk
     FROM booking b
-    JOIN users u   ON b.id_user   = u.id
-    JOIN produk p  ON b.id_produk = p.id
+    JOIN users  u ON b.id_user   = u.id
+    JOIN produk p ON b.id_produk = p.id
     ORDER BY b.created_at DESC
 ";
 $query = mysqli_query($con, $sql);
-
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -41,113 +36,160 @@ $query = mysqli_query($con, $sql);
 
 <?php require "navbar.php"; ?>
 
-<div class="container py-5">
-    <h1 class="mb-4" style="color:#2d483a;">Daftar Booking</h1>
+<div class="admin-page">
+    <section class="admin-main">
+        <div class="container">
 
-    <?php if (isset($_GET['msg']) && $_GET['msg'] === 'updated') { ?>
-        <div class="alert alert-success">
-            Status booking berhasil diperbarui.
+            <!-- BREADCRUMB KECIL -->
+            <div class="d-flex align-items-center mb-2 admin-breadcrumb">
+                <i class="fas fa-home me-2"></i>
+                <span>Home</span>
+                <span class="mx-1">/</span>
+                <span>Booking</span>
+            </div>
+
+            <!-- JUDUL HALAMAN -->
+            <h1 class="booking-page-title mb-4">Daftar Booking</h1>
+
+            <?php if (isset($_GET['msg']) && $_GET['msg'] === 'updated') { ?>
+                <div class="alert alert-success booking-alert" role="alert">
+                    Status booking berhasil diperbarui.
+                </div>
+            <?php } ?>
+
+            <?php if (mysqli_num_rows($query) === 0) { ?>
+
+                <div class="alert alert-info booking-alert">
+                    Belum ada data booking.
+                </div>
+
+            <?php } else { ?>
+
+                <div class="admin-list-card booking-card">
+
+                    <div class="table-responsive">
+                        <table class="table align-middle booking-table">
+                            <thead>
+                                <tr>
+                                    <th>Kode Booking</th>
+                                    <th>Customer</th>
+                                    <th>Produk</th>
+                                    <th>Tgl Ambil</th>
+                                    <th>Tgl Kembali</th>
+                                    <th>Durasi</th>
+                                    <th>Total Biaya</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+                                <tr>
+                                    <!-- KODE BOOKING -->
+                                    <td class="kode-booking-cell">
+                                        <?= htmlspecialchars($row['kode_booking']); ?>
+                                    </td>
+
+                                    <!-- CUSTOMER -->
+                                    <td>
+                                        <div class="customer-cell">
+                                            <span class="customer-name">
+                                                <?= htmlspecialchars($row['username']); ?>
+                                            </span>
+                                            <span class="customer-email">
+                                                <?= htmlspecialchars($row['email']); ?>
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <!-- PRODUK -->
+                                    <td>
+                                        <div class="d-flex align-items-center produk-cell">
+                                            <?php if (!empty($row['foto_produk'])) { ?>
+                                                <img
+                                                    src="../image/<?= htmlspecialchars($row['foto_produk']); ?>"
+                                                    alt=""
+                                                    class="booking-product-thumb me-2">
+                                            <?php } ?>
+                                            <span class="produk-name">
+                                                <?= htmlspecialchars($row['nama_produk']); ?>
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <!-- TANGGAL -->
+                                    <td class="text-nowrap">
+                                        <?= date("d M Y", strtotime($row['tgl_ambil'])); ?>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <?= date("d M Y", strtotime($row['tgl_kembali'])); ?>
+                                    </td>
+
+                                    <!-- DURASI -->
+                                    <td><?= (int)$row['durasi_hari']; ?> hari</td>
+
+                                    <!-- TOTAL BIAYA -->
+                                    <td class="text-nowrap">
+                                        Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?>
+                                    </td>
+
+                                    <!-- STATUS (BADGE BERWARNA) -->
+                                    <td>
+                                        <?php
+                                        $statusLower = strtolower($row['status']);
+                                        $badgeClass  = 'status-pill-other';
+                                        switch ($statusLower) {
+                                            case 'processing': $badgeClass = 'status-pill-processing'; break;
+                                            case 'confirmed': $badgeClass  = 'status-pill-confirmed';  break;
+                                            case 'completed': $badgeClass  = 'status-pill-completed';  break;
+                                            case 'cancelled': $badgeClass  = 'status-pill-cancelled';  break;
+                                        }
+                                        ?>
+                                        <span class="status-pill <?= $badgeClass; ?>">
+                                            <?= htmlspecialchars($row['status']); ?>
+                                        </span>
+                                    </td>
+
+                                    <!-- AKSI -->
+                                    <td>
+                                        <form action="booking-update-status.php" method="post"
+                                              class="d-inline-flex align-items-center gap-2 booking-status-form">
+                                            <input type="hidden" name="id_booking"
+                                                   value="<?= (int)$row['id_booking']; ?>">
+
+                                            <select name="status"
+                                                    class="form-select form-select-sm booking-status-select">
+                                                <?php
+                                                $opsiStatus = [
+                                                    'Processing',
+                                                    'Confirmed',
+                                                    'Completed',
+                                                    'Cancelled'
+                                                ];
+                                                foreach ($opsiStatus as $st) {
+                                                    $selected = ($row['status'] === $st) ? 'selected' : '';
+                                                    echo "<option value=\"$st\" $selected>$st</option>";
+                                                }
+                                                ?>
+                                            </select>
+
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-primary booking-save-btn">
+                                                Simpan
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div> <!-- /.admin-list-card -->
+            <?php } ?>
+
         </div>
-    <?php } ?>
-
-    <?php if (mysqli_num_rows($query) === 0) { ?>
-        <div class="alert alert-info">
-            Belum ada data booking.
-        </div>
-    <?php } else { ?>
-
-        <div class="table-responsive">
-            <table class="table table-striped align-middle">
-                <thead class="table-light">
-                    <tr>
-                        <th>Kode Booking</th>
-                        <th>Customer</th>
-                        <th>Produk</th>
-                        <th>Tgl Ambil</th>
-                        <th>Tgl Kembali</th>
-                        <th>Durasi</th>
-                        <th>Total Biaya</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['kode_booking']); ?></td>
-
-                        <td>
-                            <strong><?= htmlspecialchars($row['username']); ?></strong><br>
-                            <small><?= htmlspecialchars($row['email']); ?></small>
-                        </td>
-
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <?php if (!empty($row['foto_produk'])) { ?>
-                                    <img src="../image/<?= htmlspecialchars($row['foto_produk']); ?>"
-                                        alt=""
-                                        style="width:45px;height:45px;object-fit:cover;"
-                                        class="me-2 rounded">
-                                <?php } ?>
-                                <span><?= htmlspecialchars($row['nama_produk']); ?></span>
-                            </div>
-                        </td>
-
-                        <td><?= date("d M Y", strtotime($row['tgl_ambil'])); ?></td>
-                        <td><?= date("d M Y", strtotime($row['tgl_kembali'])); ?></td>
-
-                        <td><?= (int)$row['durasi_hari']; ?> hari</td>
-
-                        <td>Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?></td>
-
-                        <td>
-                            <span class="badge 
-                                <?php
-                                  switch (strtolower($row['status'])) {
-                                    case 'processing': echo 'bg-warning text-dark'; break;
-                                    case 'confirmed':        echo 'bg-success'; break;
-                                    case 'completed':             echo 'bg-secondary'; break;
-                                    case 'cancelled':          echo 'bg-danger'; break;
-
-                                    default:                    echo 'bg-light text-dark';
-                                  }
-                                ?>">
-                                <?= htmlspecialchars($row['status']); ?>
-                            </span>
-                        </td>
-
-                        <td>
-                            <!-- FORM UBAH STATUS -->
-                            <form action="booking-update-status.php" method="post" class="d-flex align-items-center gap-2">
-                                <input type="hidden" name="id_booking" value="<?= (int)$row['id_booking']; ?>">
-
-                                <select name="status" class="form-select form-select-sm">
-                                    <?php
-                                    $opsiStatus = [
-                                        'Processing',
-                                        'Confirmed',
-                                        'Completed',
-                                        'Cancelled'
-                                    ];
-                                    foreach ($opsiStatus as $st) {
-                                        $selected = ($row['status'] === $st) ? 'selected' : '';
-                                        echo "<option value=\"$st\" $selected>$st</option>";
-                                    }
-                                    ?>
-                                </select>
-
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    Simpan
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </tbody>
-            </table>
-        </div>
-
-    <?php } ?>
+    </section>
 </div>
 
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
