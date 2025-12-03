@@ -11,13 +11,16 @@ if (!isset($_GET['id'])) {
 // Ambil data produk berdasarkan ID
 $id = intval($_GET['id']);
 $queryProduk = mysqli_query($con, "SELECT * FROM produk WHERE id = $id");
-$produk = mysqli_fetch_assoc($queryProduk);
+$produk      = mysqli_fetch_assoc($queryProduk);
 
 // Jika produk tidak ditemukan
 if (!$produk) {
     echo "<h1>Produk tidak ditemukan</h1>";
     exit();
 }
+
+// Flag stok tersedia / tidak
+$stokTersedia = isset($produk['ketersediaan_stok']) && $produk['ketersediaan_stok'] === 'Tersedia';
 
 // Produk terkait berdasarkan kategori_id
 $queryProdukTerkait = mysqli_query(
@@ -27,7 +30,6 @@ $queryProdukTerkait = mysqli_query(
      LIMIT 4"
 );
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +62,16 @@ $queryProdukTerkait = mysqli_query(
       background-color: #1F3A1F;
       color: #fff;
       text-decoration: none;
+    }
+
+    /* tombol out of stock */
+    .booking-btn.disabled-btn {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+    .booking-btn.disabled-btn:hover {
+      background-color: #999;
+      color: #fff;
     }
 
     /* ======= TOAST ADDED TO CART ======= */
@@ -106,9 +118,13 @@ $queryProdukTerkait = mysqli_query(
       <div class="product-image-box">
 
         <!-- Gambar produk -->
-        <img src="image/<?= $produk['foto']; ?>" class="product-image" alt="<?= htmlspecialchars($produk['nama']); ?>">
+        <img
+          src="image/<?= htmlspecialchars($produk['foto']); ?>"
+          class="product-image"
+          alt="<?= htmlspecialchars($produk['nama']); ?>">
 
         <!-- BLOK SEWA (CARD DI BAWAH GAMBAR) -->
+        <?php if ($stokTersedia): ?>
         <div class="product-rent-box">
           <div class="sewa-card p-3 p-md-4">
             <div class="row gy-3 align-items-end">
@@ -123,8 +139,7 @@ $queryProdukTerkait = mysqli_query(
                   <input
                     type="date"
                     class="form-control"
-                    id="tglAmbil"
-                  >
+                    id="tglAmbil">
                 </div>
               </div>
 
@@ -141,7 +156,7 @@ $queryProdukTerkait = mysqli_query(
                 </div>
               </div>
 
-              <!-- Maks. Pengembalian -->
+              <!-- Tanggal Kembali -->
               <div class="col-md-4">
                 <div class="sewa-label">Return Date</div>
                 <div class="input-group">
@@ -152,24 +167,24 @@ $queryProdukTerkait = mysqli_query(
                     type="text"
                     class="form-control"
                     id="tglKembali"
-                    readonly
-                  >
+                    readonly>
                 </div>
               </div>
 
             </div>
           </div>
         </div>
+        <?php endif; ?>
         <!-- END BLOK SEWA -->
 
       </div>
 
       <!-- KOLOM KANAN: DETAIL PRODUK -->
       <div class="product-info">
-        <h1 class="product-title"><?= $produk['nama']; ?></h1>
+        <h1 class="product-title"><?= htmlspecialchars($produk['nama']); ?></h1>
 
         <p class="product-description">
-          <?= nl2br($produk['detail']); ?>
+          <?= nl2br(htmlspecialchars($produk['detail'])); ?>
         </p>
 
         <div class="mb-3">
@@ -181,34 +196,48 @@ $queryProdukTerkait = mysqli_query(
 
         <p class="product-stock">
           Status Ketersediaan:
-          <strong>
-            <?= isset($produk['ketersediaan_stok']) ? $produk['ketersediaan_stok'] : 'Cek ketersediaan via admin'; ?>
+          <strong class="<?= $stokTersedia ? 'text-success' : 'text-danger'; ?>">
+            <?php
+            if (isset($produk['ketersediaan_stok'])) {
+                echo htmlspecialchars($produk['ketersediaan_stok']);
+            } else {
+                echo 'Cek ketersediaan via admin';
+            }
+            ?>
           </strong>
         </p>
 
-        <!-- FORM BOOKING: dikirim ke booking_proses.php -->
-        <form action="tambah_cart.php" method="POST" id="formBooking">
-          <input type="hidden" name="id_produk" value="<?= $produk['id']; ?>">
-          <input type="hidden" name="tgl_ambil" id="tglAmbilHidden">
-          <input type="hidden" name="durasi_hari" id="durasiHidden">
-          <input type="hidden" name="tgl_kembali" id="tglKembaliHidden">
+        <?php if ($stokTersedia): ?>
+          <!-- FORM BOOKING: hanya muncul jika stok tersedia -->
+          <form action="tambah_cart.php" method="POST" id="formBooking">
+            <input type="hidden" name="id_produk"   value="<?= (int)$produk['id']; ?>">
+            <input type="hidden" name="tgl_ambil"   id="tglAmbilHidden">
+            <input type="hidden" name="durasi_hari" id="durasiHidden">
+            <input type="hidden" name="tgl_kembali" id="tglKembaliHidden">
 
-          <button
-            type="submit"
-            id="btnAddCart"                
-            class="booking-btn mt-3"
-            style="display: none;">
-            <i class="fas fa-shopping-cart"></i>
-            Add to Cart
+            <button
+              type="submit"
+              id="btnAddCart"
+              class="booking-btn mt-3"
+              style="display: none;">
+              <i class="fas fa-shopping-cart"></i>
+              Add to Cart
+            </button>
+          </form>
+        <?php else: ?>
+          <!-- Jika stok habis: tidak ada form, hanya tombol nonaktif -->
+          <button class="booking-btn disabled-btn mt-3" disabled>
+            <i class="fas fa-ban"></i>
+            Out of Stock
           </button>
-        </form>
+        <?php endif; ?>
       </div>
 
     </div> <!-- /.product-detail-main -->
   </div> <!-- /.container -->
 </section>
 
-<!-- Produk Terkait (section terpisah) -->
+<!-- Produk Terkait -->
 <div class="container-fluid py-5 warna5">
   <div class="container">
     <h2 class="produk-terkait-title text-center mb-4">Produk Terkait</h2>
@@ -217,9 +246,10 @@ $queryProdukTerkait = mysqli_query(
       <?php while ($data = mysqli_fetch_assoc($queryProdukTerkait)) { ?>
         <div class="col-md-6 col-lg-3 mb-3">
           <a href="produk-detail.php?id=<?= $data['id']; ?>">
-            <img src="image/<?= $data['foto']; ?>"
-                 class="img-fluid img-thumbnail produk-terkait-image"
-                 alt="<?= htmlspecialchars($data['nama']); ?>">
+            <img
+              src="image/<?= htmlspecialchars($data['foto']); ?>"
+              class="img-fluid img-thumbnail produk-terkait-image"
+              alt="<?= htmlspecialchars($data['nama']); ?>">
           </a>
         </div>
       <?php } ?>
@@ -234,7 +264,6 @@ $queryProdukTerkait = mysqli_query(
   </div>
   <div>Added to cart</div>
 </div>
-
 
 <?php require "footer.php"; ?>
 
@@ -253,9 +282,11 @@ function showToast() {
   toast.classList.add("show");
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 1000); // 1 detik
+  }, 1000);
 }
 
+<?php if ($stokTersedia): ?>
+// JS booking hanya jalan kalau stok tersedia
 $(document).ready(function () {
   const $tglAmbil        = $('#tglAmbil');
   const $durasi          = $('#durasiSewa');
@@ -317,25 +348,30 @@ $(document).ready(function () {
     $btnAddCart.show();
   }
 
-  // Placeholder awal
   $tglKembali.val('Return Date');
   $btnAddCart.hide();
 
-  // Select2
+  // Select2 untuk durasi
   $durasi.select2({
     minimumResultsForSearch: Infinity,
     width: '100%'
   });
 
-  // Recalc ketika berubah
   $tglAmbil.on('change', updateBookingInfo);
   $durasi.on('change', updateBookingInfo);
 
-  // 🔹 Kalau URL punya ?added=1 → tampilkan toast
+  // Kalau URL punya ?added=1 → tampilkan toast
   <?php if (isset($_GET['added']) && $_GET['added'] == '1') : ?>
     showToast();
   <?php endif; ?>
 });
+<?php else: ?>
+// Jika stok tidak tersedia, tidak perlu inisialisasi JS booking,
+// tapi toast masih boleh dipakai kalau mau.
+<?php if (isset($_GET['added']) && $_GET['added'] == '1') : ?>
+  showToast();
+<?php endif; ?>
+<?php endif; ?>
 </script>
 
 </body>
