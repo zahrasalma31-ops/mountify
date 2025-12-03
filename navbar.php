@@ -28,6 +28,13 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 
             <!-- LEFT MENU -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-4 d-flex align-items-center">
+                    <a class="nav-link p-0" href="index.php">
+                        <img src="image/logoutama.png"
+                            alt="Mountify Logo"
+                            style="height:40px;">
+                    </a>
+                </li>
                 <li class="nav-item me-4">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
@@ -43,22 +50,22 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             </ul>
 
             <!-- RIGHT MENU -->
-            <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center gap-3">
 
                 <!-- CART ICON -->
-                <a href="cart.php" class="nav-link cart-link position-relative">
+                <a href="cart.php" class="nav-link cart-link position-relative me-1">
                     <i class="fas fa-shopping-cart cart-icon"></i>
                     <span class="cart-badge"><?= $cartCount; ?></span>
                 </a>
 
                 <?php if (!isset($_SESSION['user_id'])) { ?>
-                    <!-- BELUM LOGIN: tampilkan link Login biasa -->
-                    <a href="login.php" class="nav-link d-flex align-items-center">
-                        <i class="fas fa-user"></i>
-                        <span class="ms-2">Login</span>
+                    <!-- BELUM LOGIN -->
+                    <a href="login.php" class="nav-link d-flex align-items-center nav-login">
+                        <i class="fas fa-user me-1"></i>
+                        <span>Login</span>
                     </a>
                 <?php } else { ?>
-                    <!-- SUDAH LOGIN: tampilkan dropdown nama user -->
+                    <!-- SUDAH LOGIN -->
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center"
                            href="#"
@@ -66,11 +73,12 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                            role="button"
                            data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-user"></i>
-                            <span class="ms-2"><?= htmlspecialchars($_SESSION['username']); ?></span>
+                            <i class="fas fa-user me-1"></i>
+                            <span><?= htmlspecialchars($_SESSION['username']); ?></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><hr class="dropdown-divider"></li>
+                        <ul class="dropdown-menu dropdown-menu-end user-dropdown-menu"
+                            aria-labelledby="userDropdown">
+                            <!-- Kalau nanti mau tambah menu lain, taruh di sini -->
                             <li>
                                 <a class="dropdown-item" href="logout.php">
                                     Logout

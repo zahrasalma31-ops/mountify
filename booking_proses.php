@@ -89,18 +89,21 @@ mysqli_query($con, "INSERT INTO booking (
 // 7. Siapkan pesan WA
 $noWaAdmin = '628988712806'; 
 
-$pesan  = "Halo admin Mountify, saya ingin booking alat:\n\n";
+$pesan  = "Halo admin Mountify,\n\n";
+$pesan .= "Saya ingin melakukan booking peralatan outdoor dengan detail berikut:\n\n";
 
-$pesan .= "*Kode Booking:* $kode_booking\n";
-$pesan .= "*Nama:* {$user['username']}\n";
-$pesan .= "*Produk:* {$produk['nama']}\n";
-$pesan .= "*Tanggal Ambil:* " . date("d M Y", strtotime($tgl_ambil)) . "\n";
-$pesan .= "*Durasi Sewa:* $durasi_hari hari\n";
-$pesan .= "*Tanggal Kembali:* " . date("d M Y", strtotime($tgl_kembali)) . "\n";
+$pesan .= "Data Pemesan\n";
+$pesan .= "- Nama          : {$user['username']}\n\n";
 
-$pesan .= "*Total Biaya:* Rp " . number_format($total_biaya, 0, ',', '.') . "\n\n";
+$pesan .= "Detail Booking\n";
+$pesan .= "- Kode Booking  : $kode_booking\n";
+$pesan .= "- Produk        : {$produk['nama']}\n";
+$pesan .= "- Tanggal Ambil : " . date("d M Y", strtotime($tgl_ambil)) . "\n";
+$pesan .= "- Tanggal Kembali: " . date("d M Y", strtotime($tgl_kembali)) . "\n";
+$pesan .= "- Durasi Sewa   : {$durasi_hari} hari\n";
+$pesan .= "- Total Biaya   : Rp " . number_format($total_biaya, 0, ',', '.') . "\n\n";
 
-$pesan .= "Mohon konfirmasi ketersediaan ukuran dan metode pembayarannya ya. Terima Kasih! :)";
+$pesan .= "Mohon konfirmasi ketersediaan barang dan instruksi pembayarannya. Terima kasih.";
 
 
 // 8. Redirect ke WhatsApp
