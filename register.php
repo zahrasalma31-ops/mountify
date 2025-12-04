@@ -1,18 +1,18 @@
 <?php
 require "koneksi.php";
 
-$error   = "";
-$success = "";
+$error     = "";
+$success   = "";
 $verifyLink = "";
 
 /**
- * Password strength rules:
- * - minimum 8 characters
+ * Check if password is strong:
+ * - 8–64 characters
  * - at least one lowercase letter
  * - at least one uppercase letter
- * - at least one number
+ * - at least one digit
  * - at least one symbol
- * - no spaces allowed
+ * - no spaces
  */
 function isStrongPassword(string $password): bool
 {
@@ -22,7 +22,6 @@ function isStrongPassword(string $password): bool
 
 // FORM PROCESS
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
     $username  = trim($_POST['username'] ?? '');
     $email     = trim($_POST['email'] ?? '');
     $password  = $_POST['password'] ?? '';
@@ -30,32 +29,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($username === '' || $email === '' || $password === '' || $password2 === '') {
         $error = "All fields are required.";
-    } 
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format.";
-    } 
-    elseif ($password !== $password2) {
+    } elseif ($password !== $password2) {
         $error = "Password confirmation does not match.";
-    } 
-    elseif (!isStrongPassword($password)) {
+    } elseif (!isStrongPassword($password)) {
         $error = "Password must be at least 8 characters long and include uppercase letters, lowercase letters, numbers, symbols, and contain no spaces.";
-    }
-    else {
+    } else {
 
-        // Check if email already exists
+        // Check if email is already registered
         $emailEsc = mysqli_real_escape_string($con, $email);
         $cek = mysqli_query($con, "SELECT id FROM users WHERE email='$emailEsc'");
-
         if (mysqli_num_rows($cek) > 0) {
             $error = "Email is already registered.";
-        } 
-        else {
+        } else {
 
             $usernameEsc  = mysqli_real_escape_string($con, $username);
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $token        = bin2hex(random_bytes(32)); // verification token
 
-            // INSERT new user (not verified yet)
+            // INSERT user (not verified yet)
             $simpan = mysqli_query(
                 $con,
                 "INSERT INTO users (username, email, password, verification_token, is_verified) 
@@ -63,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             );
 
             if ($simpan) {
-                // LOCALHOST MODE: Show verification link instead of sending email
+                // LOCALHOST MODE: show verification link as button
                 $baseUrl    = "http://localhost/mountify";
                 $verifyLink = $baseUrl . "/verify.php?email=" . urlencode($email) . "&token=" . $token;
 
@@ -75,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -94,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">
-            
+            <!-- Card width -->
             <div class="col-lg-5 col-md-7">
 
                 <div class="register-card mx-auto">
@@ -102,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <h1 class="register-title">Register</h1>
 
                     <?php if ($error) { ?>
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger text-center">
                             <?= htmlspecialchars($error); ?>
                         </div>
                     <?php } ?>
@@ -123,7 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </div>
                     <?php } ?>
 
-                    <!-- FORM -->
                     <form method="POST" action="">
 
                         <div class="input-icon-wrapper">
@@ -153,6 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 name="password" 
                                 placeholder="Password"
                                 required>
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                         </div>
 
                         <div class="input-icon-wrapper">
@@ -162,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 name="password2" 
                                 placeholder="Confirm Password"
                                 required>
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                         </div>
 
                         <button type="submit" class="btn-register">
@@ -184,5 +178,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php require "footer.php"; ?>
 
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+function togglePassword(icon) {
+    const input = icon.previousElementSibling;
+    if (!input) return;
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+</script>
 </body>
 </html>
