@@ -39,8 +39,8 @@ $countData = mysqli_num_rows($queryProduk);
     <div class="product-hero-overlay"></div>
 
     <div class="product-hero-text">
-        <p class="hero-small-title">MOUNTIFY OUTDOOR</p>
-        <h1 class="hero-big-title">Everything You Need for the Trail.</h1>
+        <p class="hero-small-title hero-anim hero-anim-1">MOUNTIFY OUTDOOR</p>
+        <h1 class="hero-big-title hero-anim hero-anim-2">Everything You Need for the Trail.</h1>
     </div>
 </section>
 

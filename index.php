@@ -27,16 +27,16 @@
                 <div class="col-lg-7 col-md-9">
 
                     <!-- tagline kecil hijau -->
-                    <p class="hero-kicker">MOUNTIFY OUTDOOR</p>
+                    <p class="hero-kicker hero-anim hero-anim-1">MOUNTIFY OUTDOOR</p>
 
                     <!-- judul besar -->
-                    <h1 class="hero-title">
+                    <h1 class="hero-title hero-anim hero-anim-2">
                         Gear Up for Your <br>
                         Next Adventure.
                     </h1>
 
                     <!-- badges benefit (dibungkus .hero-badges agar CSS kepakai) -->
-                    <div class="hero-badges">
+                    <div class="hero-badges hero-anim hero-anim-3">
                         <span class="hero-badge">
                             <div class="hero-icon-circle">
                                 <i class="fas fa-check-circle"></i>
@@ -60,7 +60,7 @@
                     </div>
 
                     <!-- search bar -->
-                    <form method="get" action="produk.php" class="hero-search">
+                    <form method="get" action="produk.php" class="hero-search mt-4 hero-anim hero-anim-4">
                         <div class="input-group input-group-lg">
                             <input
                                 type="text"
@@ -82,7 +82,7 @@
 
     <!-- BRAND MARQUEE -->
     <div class="container-fluid brand-section py-5">
-        <div class="container">
+        <div class="container reveal-on-scroll">
             <h2 class="brand-title">Brand Collection</h2>
             <p class="brand-subtitle">
                 Handpicked from top brands for the best experience.
@@ -138,8 +138,8 @@
 
     <!-- TOP PICKS (HIGHLIGHTED CATEGORY) -->
     <div class="container-fluid py-5">
-        <div class="container text-center">
-            <h3 class="top-picks-title">Top Picks</h3>
+        <div class="container text-center reveal-on-scroll">
+            <h3 class="top-picks-title reveal-on-scroll reveal-delay-1">Top Picks</h3>
 
             <div class="row mt-5">
                 <div class="col-md-4 mb-3">
@@ -172,7 +172,7 @@
         <div class="container">
 
             <!-- Judul + subjudul -->
-            <div class="text-center mb-5">
+            <div class="text-center mb-5 reveal-on-scroll">
                 <p class="about-kicker">ABOUT MOUNTIFY</p>
                 <h3 class="about-title">Practical Adventure Made Simple</h3>
                 <p class="about-subtitle">
@@ -269,7 +269,7 @@
     <!-- PRODUCT GRID  -->
     <div class="container-fluid py-5">
         <div class="container text-center">
-            <h3>Product</h3>
+            <h3 class="riwayat-title reveal-on-scroll">Product</h3>
 
             <div class="row mt-5">
                 <?php while($data = mysqli_fetch_array($queryProduk)) { ?>
@@ -306,5 +306,25 @@
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="fontawesome/js/all.min.js"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const revealEls = document.querySelectorAll('.reveal-on-scroll');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                obs.unobserve(entry.target); // biar animasinya cuma sekali
+            }
+        });
+    }, {
+        threshold: 0.15  // bagian elemen yang kelihatan sebelum animasi jalan
+    });
+
+    revealEls.forEach(el => observer.observe(el));
+});
+</script>
+  
 </body>
 </html>
