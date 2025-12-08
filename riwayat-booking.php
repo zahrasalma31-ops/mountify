@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $id_user = (int)$_SESSION['user_id'];
 
-// Ambil semua booking milik user ini
+// Ambil semua booking milik user 
 $sql = "
     SELECT b.*, p.nama AS nama_produk, p.foto AS foto_produk
     FROM booking b

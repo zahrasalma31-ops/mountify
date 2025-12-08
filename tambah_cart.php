@@ -50,13 +50,6 @@ if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-/*
-    Cek dulu:
-    - Kalau produk dengan tanggal sewa yang sama SUDAH ADA di cart,
-      → tinggal tambahin qty + hitung ulang subtotal.
-    - Kalau BELUM ADA,
-      → push item baru ke array cart.
-*/
 $found = false;
 
 foreach ($_SESSION['cart'] as &$item) {
@@ -76,14 +69,14 @@ foreach ($_SESSION['cart'] as &$item) {
         break;
     }
 }
-unset($item); // supaya referensi &$item gak kebawa
+unset($item); 
 
 // kalau belum ada item yang sama di cart → tambah item baru
 if (!$found) {
     $_SESSION['cart'][] = [
         'id_produk'   => $id_produk,
-        'nama'        => $produk['nama'],   // kolom "nama" di tabel produk
-        'foto'        => $produk['foto'],   // kolom "foto" di tabel produk
+        'nama'        => $produk['nama'],   
+        'foto'        => $produk['foto'],   
         'harga'       => $harga,
         'tgl_ambil'   => $tgl_ambil,
         'tgl_kembali' => $tgl_kembali,

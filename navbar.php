@@ -1,10 +1,8 @@
 <?php
-// pastikan session ada, supaya bisa baca $_SESSION['user_id'], $_SESSION['username']
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// hitung jumlah item di cart
 $cartCount = 0;
 if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $item) {
@@ -14,7 +12,6 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark warna1 custom-navbar<?php
-    // kalau halaman minta navbar solid
     if (isset($forceSolidNavbar) && $forceSolidNavbar) {
         echo ' navbar-solid';
     }
