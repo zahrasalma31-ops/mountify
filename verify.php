@@ -17,7 +17,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
     );
 
     if (mysqli_num_rows($query) === 1) {
-        // update jadi verified
+        // update to verified
         $update = mysqli_query(
             $con,
             "UPDATE users 
@@ -27,22 +27,22 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 
         if ($update) {
             $success = true;
-            $status  = "Akun Anda berhasil diverifikasi. Silakan login.";
+            $status  = "Your account has been successfully verified. Please log in to continue.";
         } else {
-            $status  = "Terjadi kesalahan saat memverifikasi akun.";
+            $status  = "An error occurred while verifying your account. Please try again later.";
         }
     } else {
-        $status = "Link verifikasi tidak valid atau akun sudah terverifikasi.";
+        $status = "This verification link is invalid or your account has already been verified.";
     }
 } else {
-    $status = "Parameter verifikasi tidak lengkap.";
+    $status = "Verification parameters are incomplete.";
 }
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Verifikasi Akun</title>
+    <title>Account Verification</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -52,7 +52,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 
 <?php require "navbar.php"; ?>
 
-<!-- BACKGROUND -->
+<!-- BACKGROUND-->
 <div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">
@@ -61,7 +61,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
                 <div class="register-card mx-auto text-center">
 
                     <h3 class="mb-3">
-                        <?= $success ? "Verifikasi Berhasil" : "Verifikasi Gagal"; ?>
+                        <?= $success ? "Verification Successful" : "Verification Failed"; ?>
                     </h3>
 
                     <p class="mb-4">
@@ -71,7 +71,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
                     <a href="login.php"
                        class="btn btn-success px-4 py-2"
                        style="background-color:#2d483a;border:none;border-radius:8px;">
-                        Ke Halaman Login
+                        Go to Login Page
                     </a>
 
                 </div>
