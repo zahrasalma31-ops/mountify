@@ -52,7 +52,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 
 <?php require "navbar.php"; ?>
 
-<!-- Background gunung sama seperti index / register / login -->
+<!-- BACKGROUND -->
 <div class="container-fluid banner d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">

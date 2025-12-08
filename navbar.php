@@ -78,7 +78,6 @@ if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dropdown-menu"
                             aria-labelledby="userDropdown">
-                            <!-- Kalau nanti mau tambah menu lain, taruh di sini -->
                             <li>
                                 <a class="dropdown-item" href="logout.php">
                                     Logout

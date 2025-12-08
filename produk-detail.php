@@ -74,7 +74,7 @@ $queryProdukTerkait = mysqli_query(
       color: #fff;
     }
 
-    /* ======= TOAST ADDED TO CART ======= */
+    /*TOAST ADDED TO CART*/
     .add-toast {
       position: fixed;
       top: 50%;
@@ -297,7 +297,7 @@ $(document).ready(function () {
   const $durasiHidden     = $('#durasiHidden');
   const $tglKembaliHidden = $('#tglKembaliHidden');
 
-  // --- 1. Set default & batas minimal tanggal ambil (hari ini) ---
+  // 1. Set default & batas minimal tanggal ambil (hari ini) 
   const today   = new Date();
   const yyyy    = today.getFullYear();
   const mm      = String(today.getMonth() + 1).padStart(2, '0');
@@ -307,7 +307,7 @@ $(document).ready(function () {
   $tglAmbil.val(todayISO);
   $tglAmbil.attr('min', todayISO);
 
-  // --- 2. Format tanggal singkat ---
+  // 2. Format tanggal 
   function formatTanggalIndo(date) {
     const hari  = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const bulan = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Des'];
@@ -320,7 +320,7 @@ $(document).ready(function () {
     return `${h}, ${d} ${b} ${y}`;
   }
 
-  // --- 3. Hitung tanggal kembali + isi hidden + show/hide tombol ---
+  // 3. Hitung tanggal kembali + isi hidden + show/hide tombol 
   function updateBookingInfo() {
     const startStr = $tglAmbil.val();
     const durasi   = parseInt($durasi.val(), 10);

@@ -2,7 +2,7 @@
 session_start();
 require 'koneksi.php';
 
-// (OPSIONAL TAPI DISARANKAN) - Wajib login dulu sebelum bisa add to cart
+//  Wajib login dulu sebelum bisa add to cart
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
@@ -20,7 +20,7 @@ if (
     $_POST['tgl_ambil'] === '' ||
     $_POST['tgl_kembali'] === ''
 ) {
-    // bisa kamu ganti dengan redirect + pesan error
+    
     die('Data sewa tidak lengkap.');
 }
 

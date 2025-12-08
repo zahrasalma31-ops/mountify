@@ -154,7 +154,7 @@ $jumlahBooking  = mysqli_num_rows($qBooking);
                 </div>
             </div>
 
-            <!-- OPTIONAL: PANEL INFO / CATATAN -->
+            <!--  PANEL CATATAN -->
             <div class="row g-4 mt-4">
                 <div class="col-lg-8">
                     <div class="admin-info-card">

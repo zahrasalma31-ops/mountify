@@ -181,7 +181,7 @@
             </div>
 
             <div class="row align-items-center gy-4">
-                <!-- KIRI: cerita singkat -->
+                <!-- KIRI-->
                 <div class="col-lg-6">
                     <p class="about-text">
                         Mountify is your go-to place for practical, ready-to-use outdoor gear. 
@@ -200,7 +200,7 @@
                     </div>
                 </div>
 
-                <!-- KANAN: kartu Why Mountify -->
+                <!-- KANAN -->
                 <div class="col-lg-6">
                     <div class="row g-3">
                         <div class="col-sm-6">

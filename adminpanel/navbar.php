@@ -47,7 +47,7 @@
     </div>
 </nav>
 
-<!-- SCRIPT NAVBAR SCROLL – aktif di SEMUA halaman admin -->
+<!-- SCRIPT NAVBAR SCROLL -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.querySelector('.admin-navbar');

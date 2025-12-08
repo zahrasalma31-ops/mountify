@@ -79,8 +79,8 @@ foreach ($selectedIndexes as $idx) {
     $no++;
 }
 
-// 6. SUSUN PESAN FINAL EXACT SEPERTI TEMPLATE MU
-$pesan  = "Halo admin Mountify!👋🏻\n";
+// 6. PESAN WA
+$pesan  = "Halo admin Mountify!\n";
 $pesan .= "Saya ingin melakukan booking peralatan outdoor dengan detail berikut:\n\n";
 
 $pesan .= "Nama Pemesan   : {$user['username']}\n\n";
@@ -92,7 +92,7 @@ $pesan .= "* Total biaya   : Rp " . number_format($totalAll, 0, ',', '.') . "\n\
 $pesan .= "*Detail Barang*\n";
 $pesan .= $detailPesan;
 
-$pesan .= "Mohon konfirmasi ketersediaan barang dan metode pembayarannya. Terima kasih!☺️";
+$pesan .= "Mohon konfirmasi ketersediaan barang dan metode pembayarannya. Terima kasih!:)";
 
 // 7. Bersihkan cart dari item yang sudah di-checkout
 foreach ($selectedIndexes as $idx) {

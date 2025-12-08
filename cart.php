@@ -49,7 +49,7 @@ $cart = $_SESSION['cart'] ?? [];
 
     <?php } else { ?>
 
-        <!-- CARD PUTIH MENGELILINGI TABEL (sama seperti riwayat booking) -->
+        <!-- CARD PUTIH MENGELILINGI TABEL -->
         <div class="riwayat-card mt-3">
             <form action="checkout_whatsapp.php" method="POST" id="cartForm">
                 <div class="table-responsive">

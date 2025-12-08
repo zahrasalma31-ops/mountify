@@ -70,7 +70,7 @@ function generateRandomString($length = 10) {
                 </select>
             </div>
 
-            <!-- Harga (pakai angka murni di value) -->
+            <!-- Harga  -->
             <div>
                 <label for="harga">Harga</label>
                 <input
@@ -127,14 +127,14 @@ function generateRandomString($length = 10) {
         </form>
 
         <?php
-        // ======================== PROSES UPDATE ========================
+        // PROSES UPDATE 
         if (isset($_POST['simpan'])) {
             $nama     = htmlspecialchars($_POST['nama']);
             $kategori = htmlspecialchars($_POST['kategori']);
             $detail   = htmlspecialchars($_POST['detail']);
             $ketersediaan_stok = htmlspecialchars($_POST['ketersediaan_stok']);
 
-            // BERSIHKAN HARGA: hanya angka, buang titik/koma
+            // BERSIHKAN HARGA
             $hargaInput = $_POST['harga'] ?? '';
             $hargaBersih = preg_replace('/[^0-9]/', '', $hargaInput);
             $harga = (int) $hargaBersih;
@@ -201,7 +201,7 @@ function generateRandomString($length = 10) {
             }
         }
 
-        // ======================== PROSES HAPUS ========================
+        // PROSES HAPUS
         if (isset($_POST['hapus'])) {
             $queryHapus = mysqli_query($con, "DELETE FROM produk WHERE id='$id'");
 

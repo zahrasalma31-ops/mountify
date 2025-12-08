@@ -51,7 +51,7 @@ $queryBooking = mysqli_query($con, $sql);
         </a>
     </div>
 
-    <!-- JUDUL + SUBTITLE (sama konsepnya dengan Cart) -->
+    <!-- JUDUL + SUBTITLE  -->
     <h1 class="riwayat-title mb-2 text-center">Booking History</h1>
     <p class="riwayat-subtitle text-center mb-4">
         Review all your past and ongoing bookings in one place.
@@ -107,7 +107,7 @@ $queryBooking = mysqli_query($con, $sql);
                                 <?= date("d M Y", strtotime($row['tgl_kembali'])); ?>
                             </td>
 
-                            <!-- DURATION (pakai "day" seperti di Cart) -->
+                            <!-- DURATION  -->
                             <td class="text-center">
                                 <?php
                                     $d = (int)$row['durasi_hari'];
@@ -120,7 +120,7 @@ $queryBooking = mysqli_query($con, $sql);
                                 Rp <?= number_format($row['total_biaya'], 0, ',', '.'); ?>
                             </td>
 
-                            <!-- STATUS (pill style mirip screenshot) -->
+                            <!-- STATUS -->
                             <td class="text-center">
                                 <?php
                                     $status      = strtolower($row['status']);

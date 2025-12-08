@@ -1,4 +1,4 @@
-/* === GLOBAL FONT === */
+/* GLOBAL FONT */
 body {
     font-family: "Inter", sans-serif;
 }
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5,
 }
 
 
-/* === WARNA TEMA === */
+/* WARNA TEMA*/
 .warna1 {
     background-color: #294B29;
 }
@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5,
     background-color: #c1c9c0;
 }
 
-/* === BANNER STYLE BARU === */
+/* BANNER STYLE BARU */
 
 .banner {
     height: 100vh;
@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5,
     background-position: center;
 }
 
-/* konten kiri, putih semua */
+/* konten kiri putih */
 .hero-kicker,
 .hero-title,
 .hero-badge,
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5,
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #9FE870;              /* hijau terang ala referensi */
+    color: #9FE870;              
     margin-bottom: 12px;
 }
 
@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5,
 
 /* search bar: lebih pendek dan pill */
 .hero-search {
-    max-width: 580px;        /* ini bikin dia lebih pendek */
+    max-width: 580px;        /* atur agar lebih pendek*/
 }
 
 .hero-search .input-group {
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5,
 
 /* ikon centang di dalam lingkaran */
 .hero-icon-circle i {
-    color: #0f3018;     /* hijau gelap */
+    color: #0f3018;     
     font-size: 13px;
 }
 
@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5,
     margin-top: 20px !important;
 }
 
-/* ===== HERO SLIDE-UP ANIMATION ===== */
+/* HERO SLIDE-UP ANIMATION */
 @keyframes heroSlideUp {
     from {
         opacity: 0;
@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5,
 
 /* base animation style */
 .hero-anim {
-    opacity: 0;                     /* awalnya tidak kelihatan */
+    opacity: 0;                     /* awalnya ga kelihatan */
     transform: translateY(30px);    /* agak turun dikit */
     animation-name: heroSlideUp;
     animation-duration: 0.7s;
@@ -215,7 +215,7 @@ h1, h2, h3, h4, h5,
     animation-delay: 0.65s;  /* search bar */
 }
 
-/* Optional: kalau user minta reduce motion, matikan animasi */
+/* Optional kalau user minta reduce motion, matikan animasi */
 @media (prefers-reduced-motion: reduce) {
     .hero-anim {
         animation: none;
@@ -298,7 +298,7 @@ h1, h2, h3, h4, h5,
     color: #EEC373;
 }
 
-/* === PRODUK LAMA (tetap dibiarkan) === */
+/* === PRODUK LAMA === */
 .text-harga{
     font-size: 20px;
     color: #CA965C;

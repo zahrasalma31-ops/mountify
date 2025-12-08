@@ -1,5 +1,5 @@
 <?php
-session_start(); // selalu di paling atas sebelum HTML
+session_start(); 
 
 // pastikan file koneksi ada di ../koneksi.php
 require_once __DIR__ . "/../koneksi.php";

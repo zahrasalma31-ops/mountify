@@ -113,7 +113,7 @@
                     </div>
                 </div>
 
-                <!-- Tips / info -->
+                <!-- Tips  -->
                 <div class="col-lg-7">
                     <div class="admin-tip-card">
                         <div class="admin-tip-card-title">

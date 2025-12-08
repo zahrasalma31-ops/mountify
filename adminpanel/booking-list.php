@@ -118,7 +118,7 @@ $jumlahBooking  = mysqli_num_rows($query);
                                         </div>
                                     </td>
 
-                                    <!-- PRODUK (FOTO DI ATAS, NAMA DI BAWAH) -->
+                                    <!-- PRODUK -->
                                     <td>
                                         <div class="product-cell">
                                             <?php if (!empty($row['foto_produk'])) { ?>
