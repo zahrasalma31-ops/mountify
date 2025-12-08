@@ -5,7 +5,7 @@ require "koneksi.php";
 $error   = "";
 $success = "";
 
-// If user is already logged in → redirect to homepage
+// Jika user sudah login → mengarah ke halaman home
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (mysqli_num_rows($query) === 1) {
             $user = mysqli_fetch_assoc($query);
 
-            // Check if verified
+            // Periksa apakah terverifikasi
             if ((int)$user['is_verified'] !== 1) {
                 $error = "Your account is not verified yet. Please verify your email first.";
             } else {
-                // Check password
+                // Periksa password
                 if (password_verify($password, $user['password'])) {
 
                     // LOGIN SUCCESS → store data in session
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $_SESSION['username']   = $user['username'];
                     $_SESSION['user_email'] = $user['email'];
 
-                    // If there is pending booking, continue booking
+                    // Jika ada pemesanan yang tertunda, lanjutkan pemesanan
                     if (!empty($_SESSION['pending_booking'])) {
                         header("Location: booking_proses.php");
                     } else {

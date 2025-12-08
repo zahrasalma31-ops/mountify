@@ -35,7 +35,7 @@
                         Next Adventure.
                     </h1>
 
-                    <!-- badges benefit (dibungkus .hero-badges agar CSS kepakai) -->
+                    <!-- badges benefit -->
                     <div class="hero-badges hero-anim hero-anim-3">
                         <span class="hero-badge">
                             <div class="hero-icon-circle">
