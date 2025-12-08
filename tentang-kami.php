@@ -13,7 +13,6 @@
 <body>
     <?php require "navbar.php"; ?>
 
-    <!-- banner -->
 <!-- HELP HERO -->
 <section class="product-hero-banner">
     <div class="product-hero-overlay"></div>
@@ -23,7 +22,6 @@
         <h1 class="hero-big-title hero-anim hero-anim-2">Your Guide to a Smooth Rental Experience.</h1>
     </div>
 </section>
-
 
     <!-- main -->
     <div class="container-fluid py-4 help-main-section">
@@ -544,14 +542,12 @@ function activateTabFromHash() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // jalan pas halaman pertama kali dibuka
+    // jalan saat halaman pertama kali dibuka
     activateTabFromHash();
 
-    // jalan lagi tiap hash berubah (klik link #tnc / #returns dll di halaman yang sama)
+    // jalan lagi tiap hash berubah
     window.addEventListener('hashchange', activateTabFromHash);
 });
 </script>
-
-
 </body>
 </html>

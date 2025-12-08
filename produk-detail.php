@@ -367,7 +367,7 @@ $(document).ready(function () {
 });
 <?php else: ?>
 // Jika stok tidak tersedia, tidak perlu inisialisasi JS booking,
-// tapi toast masih boleh dipakai kalau mau.
+// tapi toast masih boleh dipakai.
 <?php if (isset($_GET['added']) && $_GET['added'] == '1') : ?>
   showToast();
 <?php endif; ?>
